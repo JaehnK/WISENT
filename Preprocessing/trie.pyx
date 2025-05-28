@@ -1,0 +1,5 @@
+struct Trie
+{
+    bool finish;
+    
+}
