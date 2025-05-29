@@ -1,3 +1,16 @@
+from typing import List, Optional, Union
+import re
+import sys
+
+import nltk
+import spacy
+from nltk.corpus import wordnet
+from nltk.stem import WordNetLemmatizer
+from nltk.tag import pos_tag
+from nltk.tokenize import word_tokenize
+
+from .word import Word
+
 class Sentence:
     def __init__(self, docs_ref=None):
         self._raw: Optional[str] = None

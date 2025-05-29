@@ -1,3 +1,6 @@
+from typing import List, Optional, Dict
+from .word import Word
+
 class TrieNode:
     """접두사 트리 노드"""
     def __init__(self):
@@ -51,3 +54,40 @@ class WordTrie:
         
         for child in node.children.values():
             self._dfs_collect_words(child, words)
+
+    def get_top_words_by_pos(self, top_n: int = 500) -> List[Word]:
+        """명사, 동사, 형용사만 필터링 후 빈도수 기준 상위 N개 단어 반환
+        
+        Args:
+            top_n: 상위 몇 개까지 가져올지 (기본값: 500)
+        
+        Returns:
+            빈도수 내림차순으로 정렬된 Word 객체 리스트 (최대 top_n개)
+        """
+        # 모든 단어 수집
+        all_words = self.get_all_words()
+        
+        # 명사, 동사, 형용사만 필터링
+        filtered_words = []
+        for word in all_words:
+            if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
+                filtered_words.append(word)
+        
+        # 빈도수 기준 내림차순 정렬 후 상위 N개 반환
+        return sorted(filtered_words, key=lambda w: w._freq, reverse=True)[:top_n]
+    
+    def get_word_stats(self) -> Dict[str, int]:
+        """품사별 단어 통계 반환"""
+        all_words = self.get_all_words()
+
+        noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
+        verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())
+        adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())
+
+        return {
+            'total_words': len(all_words),
+            'nouns': noun_count,
+            'verbs': verb_count,
+            'adjectives': adj_count,
+            'other_pos': len(all_words) - noun_count - verb_count - adj_count
+        }

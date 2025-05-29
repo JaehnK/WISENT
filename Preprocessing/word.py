@@ -1,10 +1,13 @@
+from typing import List, Optional, Union
+import numpy as np
+
 class Word:
     TensorType = Union[np.ndarray, 'np.typing.NDArray[np.float32]']
     
     def __init__(self, content: str = None):
         self._content: Optional[str] = content
         self._idx: Optional[int] = None
-        self._w2v_emb: Optional[Word.TensorType] = None  # Word2Vec 임베딩
+        self._glv_emb: Optional[Word.TensorType] = None  # glove 임베딩
         self._dbert_emb: Optional[Word.TensorType] = None  # DistilBERT 임베딩
         self._freq: int = 0  # 빈도수는 0으로 초기화
         self._isnode: Optional[bool] = None

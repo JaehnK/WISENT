@@ -1,19 +1,25 @@
-import spacy
-import fasttext
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
-from nltk.tag import pos_tag
-from nltk.corpus import wordnet
-import nltk
+# Standard
 import re
-from sklearn.feature_extraction.text import CountVectorizer
-from typing import Optional, Union, List
+import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import List, Optional, Union
+
+# Numpy
 import numpy as np
 import numpy.typing as npt
-import sys
-from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# NLP
+import nltk
+import spacy
+from nltk.corpus import wordnet
+from nltk.stem import WordNetLemmatizer
+from nltk.tag import pos_tag
+from nltk.tokenize import word_tokenize
+
+# etc
+from sklearn.feature_extraction.text import CountVectorizer
 from tqdm import tqdm
-import threading
 
 from .docs import Docs
 from .sentense import Sentence

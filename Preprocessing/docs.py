@@ -1,9 +1,18 @@
+import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import List, Optional
+
+from .sentense import Sentence
+from .word import Word
+from .trie import WordTrie
+
 class Docs:
     def __init__(self):
         self._rawdata: Optional[List[str]] = None
         self._words_list: Optional[List[Word]] = None
         self._sentence_list: Optional[List[Sentence]] = None
-        self._nlp: Optional[fasttext.FastText._FastText] = None
+        # self._nlp: Optional[fasttext.FastText._FastText] = None
         self._lock = threading.Lock()
         self._word_trie = WordTrie()  # 접두사 트리
     
