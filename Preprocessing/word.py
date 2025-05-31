@@ -18,6 +18,9 @@ class Word:
         self._pos_tags: List[str] = []  # 이 단어가 나타난 모든 품사들
         self._pos_counts: dict = {}  # 각 품사별 등장 횟수
         self._dominant_pos: Optional[str] = None  # 가장 빈번한 품사
+        
+        self._is_stopword: Optional[bool] = None  # 불용어 여부 (None=미확인)
+        self._stopword_checked: bool = False  # 불용어 체크 완료 여부
     
     def __str__(self):
         return self._content or ""
@@ -56,6 +59,41 @@ class Word:
     def dominant_pos(self):
         """가장 빈번하게 나타나는 품사"""
         return self._dominant_pos
+    
+    @property
+    def is_stopword(self):
+        """불용어 여부 반환 (확인되지 않은 경우 False 반환)"""
+        return self._is_stopword if self._is_stopword is not None else False
+    
+    @property
+    def stopword_checked(self):
+        """불용어 체크가 완료되었는지 여부"""
+        return self._stopword_checked
+    
+    def check_stopword_with_spacy(self, nlp_model):
+        """spaCy 모델을 사용해 불용어 여부 확인 (캐시됨)"""
+        if self._stopword_checked:
+            return self._is_stopword
+        
+        if not self._content:
+            self._is_stopword = False
+        else:
+            try:
+                # spaCy의 불용어 사전 활용
+                doc = nlp_model(self._content)
+                self._is_stopword = len(doc) > 0 and doc[0].is_stop
+            except:
+                # 처리 실패시 False로 설정
+                self._is_stopword = False
+        
+        self._stopword_checked = True
+        return self._is_stopword
+    
+    def set_stopword_status(self, is_stopword: bool):
+        """불용어 상태를 직접 설정"""
+        self._is_stopword = is_stopword
+        self._stopword_checked = True
+    
     
     def increment_freq(self, pos_tag: str = None):
         """빈도수 증가 및 품사 정보 업데이트"""
@@ -136,3 +174,12 @@ class Word:
             return True
         return False
     
+    def get_stats(self):
+        return {
+            'content': self._content,
+            'frequency': self._freq,
+            'dominant_pos': self._dominant_pos,
+            'pos_category': self.get_pos_category(),
+            'is_stopword': self.is_stopword,
+            'stopword_checked': self._stopword_checked
+        }

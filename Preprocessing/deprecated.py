@@ -11,6 +11,7 @@ from typing import Optional, Union, List
 import numpy as np
 import numpy.typing as npt
 import sys
+import time
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
@@ -508,8 +509,10 @@ if __name__ == "__main__":
     
     print("🧪 TESTING CONTRACTIONS AND APOSTROPHES")
     print("="*60)
-    
+    start = time.time()
     docs.rawdata = test_docs
+    end = time.time()
+    print(f"{end - start:.5f} sec") 
     
     print("\n" + "="*60)
     print("DOCUMENT PROCESSING SUMMARY")

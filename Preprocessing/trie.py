@@ -54,12 +54,23 @@ class WordTrie:
         
         for child in node.children.values():
             self._dfs_collect_words(child, words)
+    
+    def get_content_words(self) -> List[Word]:
+        """내용어(content words)만 반환 - 불용어 제외"""
+        all_words = self.get_all_words()
+        return [word for word in all_words if not word.is_stopword]
+    
+    def get_stopwords(self) -> List[Word]:
+        """불용어만 반환"""
+        all_words = self.get_all_words()
+        return [word for word in all_words if word.is_stopword]
 
-    def get_top_words_by_pos(self, top_n: int = 500) -> List[Word]:
+    def get_top_words_by_pos(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:
         """명사, 동사, 형용사만 필터링 후 빈도수 기준 상위 N개 단어 반환
         
         Args:
             top_n: 상위 몇 개까지 가져올지 (기본값: 500)
+            exclude_stopwords: 불용어 제외 여부 (기본값: True)
         
         Returns:
             빈도수 내림차순으로 정렬된 Word 객체 리스트 (최대 top_n개)
@@ -70,6 +81,10 @@ class WordTrie:
         # 명사, 동사, 형용사만 필터링
         filtered_words = []
         for word in all_words:
+            # 불용어 제외 옵션 확인
+            if exclude_stopwords and word.is_stopword:
+                continue
+                
             if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
                 filtered_words.append(word)
         
@@ -77,17 +92,32 @@ class WordTrie:
         return sorted(filtered_words, key=lambda w: w._freq, reverse=True)[:top_n]
     
     def get_word_stats(self) -> Dict[str, int]:
-        """품사별 단어 통계 반환"""
+        """품사별 단어 통계 반환 (불용어 정보 포함)"""
         all_words = self.get_all_words()
 
+        # 기본 품사 통계
         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())
         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())
+        
+        # 불용어 통계
+        stopword_count = sum(1 for w in all_words if w.is_stopword)
+        content_word_count = len(all_words) - stopword_count
+        
+        # 불용어 제외 품사 통계
+        content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)
+        content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)
+        content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)
 
         return {
             'total_words': len(all_words),
+            'stopwords': stopword_count,
+            'content_words': content_word_count,
             'nouns': noun_count,
             'verbs': verb_count,
             'adjectives': adj_count,
+            'content_nouns': content_nouns,
+            'content_verbs': content_verbs,
+            'content_adjectives': content_adjs,
             'other_pos': len(all_words) - noun_count - verb_count - adj_count
         }
