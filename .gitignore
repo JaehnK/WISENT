@@ -147,3 +147,7 @@ logs/
 tmp/
 temp/
 .tmp/
+
+# etc
+*.csv
+deprecated/

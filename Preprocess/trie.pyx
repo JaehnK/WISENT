@@ -1,60 +1,122 @@
+# cython: language_level=3
+# distutils: language=c++
+
 from typing import List, Optional, Dict
+from cython.operator cimport dereference, preincrement
+from libc.stdlib cimport malloc, free
+from libc.string cimport strlen, strcpy, strcmp, strdup
+from libcpp.unordered_map cimport unordered_map
+from libcpp.vector cimport vector
+from libcpp.string cimport string
+
+
+from .sentense import Sentence
 from .word import Word
 
-class TrieNode:
+from typing import Optional
+
+
+cdef class TrieNode:
     """접두사 트리 노드"""
+    cdef:
+        dict    children
+        object  word_obj  # Word 객체
+        bint    is_end_of_word
+    
     def __init__(self):
         self.children = {}
-        self.word_obj: Optional[Word] = None
+        self.word_obj = None
         self.is_end_of_word = False
 
-class WordTrie:
-    """접두사 트리를 이용한 Word 객체 관리"""
-    def __init__(self):
-        self.root = TrieNode()
-        self.word_count = 0  # 고유 단어 개수 (idx 할당용)
+cdef void _dfs_collect_words(TrieNode node, list words):
+    """내부용 DFS 함수"""
+    if node.is_end_of_word:
+        words.append(node.word_obj)
     
+    # Python dict 순회 (C++ unordered_map 대신)
+    cdef:
+        object child_node
+    
+    for child_node in node.children.values():
+        _dfs_collect_words(child_node, words)
+
+cdef TrieNode _find_node(TrieNode node, str word_content, str pos_tag):
+    cdef:
+        char c
+
+    for char in word_content:
+        c = ord(char)
+        if c not in node.children:
+            node.children[c] = TrieNode()
+        node = node.children[c]
+    
+    return (node)
+
+class WordTrie:
+    """접두사 트리를 이용하여 word 객체 저장"""
+
+    # cdef public TrieNode    root
+    # cdef public int         word_count
+    # cdef:
+    #     TrieNode    root
+    #     int         word_count
+
+    def __init__(self) -> None:
+        self.root = TrieNode()
+        self.word_count:int = 0 # idx count
+
+    # cdef TrieNode _find_node(TrieNode node, str word_content, pos_tag:str):
+    #     cdef:
+    #         char        c
+
+    #     for char in word_content:
+    #         c = ord(char)
+    #         if node.children.find(c) == node.children.end():
+    #             node.children[c] = TrieNode()
+    #         node = node.children[c]
+        
+    #     return (node)
+
     def insert_or_get_word(self, word_content: str, pos_tag: str = None) -> Word:
-        """단어를 트리에 삽입하거나 기존 Word 객체 반환"""
-        node = self.root
         
-        # 트리 탐색
-        for char in word_content:
-            if char not in node.children:
-                node.children[char] = TrieNode()
-            node = node.children[char]
-        
-        # 단어 끝 지점에서 Word 객체 처리
+        node = _find_node(self.root, word_content, pos_tag)
+
         if node.is_end_of_word:
-            # 기존 단어 - 빈도수 및 품사 정보 업데이트
             node.word_obj.increment_freq(pos_tag)
-            return node.word_obj
+            return (node.word_obj)
         else:
-            # 새 단어 - Word 객체 생성 및 설정
             word_obj = Word(word_content)
             word_obj.idx = self.word_count
             word_obj.increment_freq(pos_tag)
-            
+
             node.word_obj = word_obj
             node.is_end_of_word = True
             self.word_count += 1
-            
-            return word_obj
-    
+
+            return (word_obj)
+
     def get_all_words(self) -> List[Word]:
         """모든 Word 객체 반환"""
+
         words = []
-        self._dfs_collect_words(self.root, words)
-        return words
-    
-    def _dfs_collect_words(self, node: TrieNode, words: List[Word]):
-        """DFS로 모든 Word 객체 수집"""
-        if node.is_end_of_word:
-            words.append(node.word_obj)
+        _dfs_collect_words(self.root, words)
+        return (words)
+
+    # cdef _dfs_collect_words(self, TrieNode node, list words):
         
-        for child in node.children.values():
-            self._dfs_collect_words(child, words)
-    
+    #     if node.is_end_of_word:
+    #         words.append(node.word_obj)
+        
+    #     cdef:
+    #         unordered_map[char, TrieNode].iterator it
+    #         TrieNode    child_node
+        
+    #     it = node.children.begin()
+    #     while it != node.children.end():
+    #         child_node = dereference(it).second
+    #         self._dfs_collect_words(child_node, words)
+    #         preincrement(it)
+
     def get_content_words(self) -> List[Word]:
         """내용어(content words)만 반환 - 불용어 제외"""
         all_words = self.get_all_words()
@@ -64,6 +126,24 @@ class WordTrie:
         """불용어만 반환"""
         all_words = self.get_all_words()
         return [word for word in all_words if word.is_stopword]
+
+    # cdef list   _filter_words_by_pos(self, list all_words, bint exclude_stopwords):
+    #     cdef:
+    #         list    filtered_words = []
+    #         object  word
+    #         int     i
+    #         int     words_count = len(all_words)
+
+    #     for i in range(words_count):
+    #         word = all_words[i]
+
+    #         if exclude_stopwords and word.is_stopword:
+    #             continue
+            
+    #         if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
+    #             filtered_words.append(word)
+        
+    #     return (filtered_words)
 
     def get_top_words_by_pos(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:
         """명사, 동사, 형용사만 필터링 후 빈도수 기준 상위 N개 단어 반환
@@ -90,7 +170,8 @@ class WordTrie:
         
         # 빈도수 기준 내림차순 정렬 후 상위 N개 반환
         return sorted(filtered_words, key=lambda w: w._freq, reverse=True)[:top_n]
-    
+
+
     def get_word_stats(self) -> Dict[str, int]:
         """품사별 단어 통계 반환 (불용어 정보 포함)"""
         all_words = self.get_all_words()

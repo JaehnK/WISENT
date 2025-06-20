@@ -1,5 +1,0 @@
-struct Trie
-{
-    bool finish;
-    
-}
