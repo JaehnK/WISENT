@@ -151,3 +151,4 @@ temp/
 # etc
 *.csv
 deprecated/
+main-service/distilBERT/model

@@ -1,13 +1,15 @@
 import sys
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 import spacy
 
 from .sentense import Sentence
 from .word import Word
 from .trie import WordTrie
+from .co_occurence import build_cooccurrence_edges
+
 
 class Docs:
     def __init__(self, model_name='en_core_web_sm', disable_components=None):
@@ -173,6 +175,10 @@ class Docs:
         # 모든 문장 처리 완료 후 words_list 업데이트
         self._words_list = self._word_trie.get_all_words()
         print(f"Created {len(self._words_list)} unique words", file=sys.stderr)
+
+    
+    def get_co_occurrence_edges(self, word_to_node: Dict[str, int]):
+        return build_cooccurrence_edges(word_to_node, self._sentence_list)
 
     @property
     def words_list(self):

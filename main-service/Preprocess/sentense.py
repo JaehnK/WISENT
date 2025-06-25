@@ -60,7 +60,12 @@ class Sentence:
         except Exception as e:
             print(f"Contraction expansion failed for text: {text[:50]}... Error: {e}", file=sys.stderr)
             return text.lower()
-        
+    
+    def _is_valid_token(self, text):
+    # 알파벳, 숫자, 한글, 이모지만 허용 (기타 특수문자 제외)
+        return bool(re.match(r'^[\w가-힣\U0001F600-\U0001F64F\U0001F300-\U0001F5FF\U0001F680-\U0001F6FF\U0001F1E0-\U0001F1FF\U00002700-\U000027BF\U0001F900-\U0001F9FF]+$', text))
+
+    
     def _process_spacy_doc(self):
         """spaCy 문서 객체로부터 lemmatised 정보 추출"""
         if self._spacy_doc is None:
@@ -75,7 +80,9 @@ class Sentence:
                 if (not token.is_punct and  # 구두점 제외
                     not token.is_space and  # 공백 제외
                     len(token.text.strip()) >= 1 and  # 빈 토큰 제외
-                    token.text.strip()):  # 의미있는 단어 유지
+                    token.text.strip() and
+                    self._is_valid_token(str(token))):
+                    # self._is_valid_token(token.text)):  # 의미있는 단어 유지
                     
                     # spaCy의 lemma 사용 (더 정확함)
                     lemma = token.lemma_.lower()
