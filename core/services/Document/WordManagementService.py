@@ -29,3 +29,10 @@ class WordManagementService:
     def get_top_words(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:
         """상위 빈도 단어들"""
         return self._documents.word_trie.get_top_words_by_pos(top_n, exclude_stopwords)
+    
+    def get_word2vec_mappings(self) -> tuple[Dict[str, int], Dict[int, str]]:
+        """Word2Vec용 매핑 반환"""
+        words = self.get_all_words()
+        word2id = {w.content: w.idx for w in words}
+        id2word = {w.idx: w.content for w in words}
+        return word2id, id2word
