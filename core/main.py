@@ -6,6 +6,7 @@ import time
 from typing import List, Optional
 
 import pandas as pd
+import numpy as np
 
 # 새로운 아키텍처 import
 from services import *
@@ -228,10 +229,10 @@ class TextProcessingBenchmark:
         print("="*60 + "\n")
     
     def run_complete_benchmark(self, csv_path: str, 
-                             limit: int = 10000,
-                             top_n: int = 500,
-                             top_k_viz: int = 50,
-                             save_path: str = './graph_output.png') -> None:
+                                limit: int = 10000,
+                                top_n: int = 500,
+                                top_k_viz: int = 50,
+                                save_path: str = './graph_output.png') -> None:
         """전체 벤치마크 실행"""
         try:
             # 1. 데이터 로드
@@ -243,11 +244,139 @@ class TextProcessingBenchmark:
             # 3. 그래프 생성
             self.create_graph(top_n=top_n, use_word_graph=True)
             
-            # 4. 그래프 시각화
-            self.visualize_graph(top_k=top_k_viz, save_path=save_path)
+            # # 4. 그래프 시각화
+            # self.visualize_graph(top_k=top_k_viz, save_path=save_path)
             
-            # 5. 성능 리포트
-            self.print_performance_report()
+            # # 5. 성능 리포트
+            # self.print_performance_report()
+            
+            try:
+                # Word2Vec 서비스 생성
+                print("Creating Word2Vec service...")
+                word2vec_service = Word2VecService.create_default(self.doc_service)
+                
+                # 어휘 정보 출력
+                vocab_info = word2vec_service.get_vocabulary_info()
+                print(f"Vocabulary size: {vocab_info['vocab_size']}")
+                print(f"Total sentences: {vocab_info['total_sentences']}")
+                print(f"Total tokens: {vocab_info['total_tokens']}")
+                print(f"Most frequent words: {[word for word, _ in vocab_info['most_frequent_words'][:10]]}")
+                
+                # 모델 훈련
+                print("\nStarting Word2Vec training...")
+                word2vec_service.train("word2vec_embeddings.txt")
+                
+                # 7. 단어 벡터 테스트
+                print("\n" + "-"*40)
+                print("Word Vector Tests")
+                print("-"*40)
+                
+                # 빈도 높은 단어들로 테스트
+                test_words = [word for word, _ in vocab_info['most_frequent_words'][:5]]
+                
+                for word in test_words:
+                    vector = word2vec_service.get_word_vector(word)
+                    if vector is not None:
+                        print(f"'{word}' vector shape: {vector.shape}, norm: {np.linalg.norm(vector):.4f}")
+                        print(f"  First 5 dimensions: {vector[:5]}")
+                
+                # 8. 유사도 테스트
+                print("\n" + "-"*40)
+                print("Word Similarity Tests")
+                print("-"*40)
+                
+                # 상위 빈도 단어들의 유사 단어 찾기
+                for word in test_words[:3]:
+                    similar_words = word2vec_service.find_similar_words(word, top_k=5)
+                    if similar_words:
+                        print(f"\nWords similar to '{word}':")
+                        for similar_word, similarity in similar_words:
+                            print(f"  {similar_word}: {similarity:.4f}")
+                
+                # 9. 단어 유추 테스트 (가능한 경우)
+                print("\n" + "-"*40)
+                print("Word Analogy Tests")
+                print("-"*40)
+                
+                # 어휘에서 적절한 단어 쌍을 찾아서 테스트
+                vocab_words = list(word2vec_service.data_loader.word2id.keys())
+                
+                # 일반적인 유추 테스트 단어들 (있는 경우에만)
+                analogy_tests = [
+                    ("man", "woman", "king"),  # man:woman = king:?
+                    ("good", "better", "bad"), # good:better = bad:?
+                    ("big", "bigger", "small") # big:bigger = small:?
+                ]
+                
+                for word_a, word_b, word_c in analogy_tests:
+                    if all(word in vocab_words for word in [word_a, word_b, word_c]):
+                        result = word2vec_service.word_analogy(word_a, word_b, word_c, top_k=3)
+                        if result:
+                            print(f"\n{word_a} is to {word_b} as {word_c} is to:")
+                            for word, score in result:
+                                print(f"  {word}: {score:.4f}")
+                    else:
+                        missing = [w for w in [word_a, word_b, word_c] if w not in vocab_words]
+                        print(f"Skipping analogy test - missing words: {missing}")
+                
+                # 10. 벡터 연산 테스트
+                print("\n" + "-"*40)
+                print("Vector Operations Tests")
+                print("-"*40)
+                
+                if len(test_words) >= 3:
+                    word1, word2, word3 = test_words[:3]
+                    
+                    vec1 = word2vec_service.get_word_vector(word1)
+                    vec2 = word2vec_service.get_word_vector(word2)
+                    vec3 = word2vec_service.get_word_vector(word3)
+                    
+                    if all(v is not None for v in [vec1, vec2, vec3]):
+                        # 벡터 합
+                        vec_sum = vec1 + vec2
+                        print(f"Vector addition: {word1} + {word2}")
+                        print(f"  Result norm: {np.linalg.norm(vec_sum):.4f}")
+                        
+                        # 코사인 유사도 계산
+                        def cosine_similarity(v1, v2):
+                            return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+                        
+                        sim_12 = cosine_similarity(vec1, vec2)
+                        sim_13 = cosine_similarity(vec1, vec3)
+                        sim_23 = cosine_similarity(vec2, vec3)
+                        
+                        print(f"\nCosine similarities:")
+                        print(f"  {word1} <-> {word2}: {sim_12:.4f}")
+                        print(f"  {word1} <-> {word3}: {sim_13:.4f}")
+                        print(f"  {word2} <-> {word3}: {sim_23:.4f}")
+                
+                # 11. 모델 저장
+                print("\n" + "-"*40)
+                print("Model Saving")
+                print("-"*40)
+                
+                model_path = "word2vec_model.pth"
+                word2vec_service.save_model(model_path)
+                print(f"Model saved to {model_path}")
+                
+                # 12. 전체 평가
+                print("\n" + "-"*40)
+                print("Overall Evaluation")
+                print("-"*40)
+                
+                word2vec_service.evaluate_similarity(test_words[:5], top_k=3)
+                
+                # 13. 서비스 정보 요약
+                print("\n" + "-"*40)
+                print("Word2Vec Service Summary")
+                print("-"*40)
+                print(word2vec_service)
+            
+            except Exception as e:
+                print(f"Word2Vec training/testing failed: {e}")
+                import traceback
+                traceback.print_exc()            
+            
             
         except Exception as e:
             print(f"❌ Error during benchmark: {e}")

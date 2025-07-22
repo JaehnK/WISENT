@@ -11,7 +11,7 @@ class Sentence:
     """순수 문장 데이터 클래스 - 기존 호환성 완벽 유지"""
     
     def __init__(self, raw: str = "", doc_id: Optional[str] = None, 
-                 sentence_id: Optional[str] = None, docs_ref: Optional[Any] = None):
+                sentence_id: Optional[str] = None, docs_ref: Optional[Any] = None):
         # 원본 데이터 (private storage)
         self.__raw = raw
         self.doc_id = doc_id
@@ -116,10 +116,10 @@ class Sentence:
     # === 데이터 처리 메서드들 ===
     
     def set_processed_data(self, 
-                          lemmatised: List[str],
-                          word_objects: List[Word],
-                          word_indices: List[int],
-                          pos_tags: List[str] = None) -> None:
+                            lemmatised: List[str],
+                            word_objects: List[Word],
+                            word_indices: List[int],
+                            pos_tags: List[str] = None) -> None:
         """처리 결과 데이터 설정"""
         self.lemmatised = lemmatised
         self.word_objects = word_objects

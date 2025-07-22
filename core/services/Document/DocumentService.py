@@ -1,5 +1,5 @@
 import sys
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Any
 import threading
 
 import spacy
@@ -63,6 +63,38 @@ class DocumentService:
     def get_co_occurrence_edges(self, word_to_node: Dict[str, int]):
         """공출현 엣지 생성 (GraphService에서 사용하기 위한 데이터 제공)"""
         return self._documents.get_co_occurrence_edges(word_to_node)
+    
+    def get_preprocessed_sentences(self)-> List[List[str]]:
+        sentences = self._documents.sentence_list
+        if sentences is None:
+            return []
+        return [sentence.lemmatised for sentence in sentences]
+    
+    def get_sentences_with_word2id(self)-> List[List[int]]:
+        sentences = self._documents.sentence_list
+        if sentences is None:
+            return []
+        return [sentence.word_indices for sentence in sentences]
+    
+    def get_word2vec_data(self, min_count: int = 5) -> Dict[str, Any]:
+        """Word2Vec에 필요한 모든 데이터 반환"""
+        words = self._word_service.get_all_words()
+        
+        # min_count 필터링
+        filtered_words = [w for w in words if w.freq >= min_count]
+        
+        word2id = {w.content: w.idx for w in filtered_words}
+        id2word = {w.idx: w.content for w in filtered_words}
+        word_frequency = {w.idx: w.freq for w in filtered_words}
+        total_tokens = sum(w.freq for w in filtered_words)
+        
+        return {
+            'word2id': word2id,
+            'id2word': id2word,
+            'word_frequency': word_frequency,
+            'vocab_size': len(filtered_words),
+            'total_tokens': total_tokens
+        }
     
     def __str__(self):
         """기존 호환성"""

@@ -81,7 +81,7 @@ class GraphService:
         print(f"Set {len(edges)} co-occurrence edges")
     
     def build_complete_graph(self, top_n: int = 500, exclude_stopwords: bool = True, 
-                           max_length: int = -1) -> 'WordGraph':
+                            max_length: int = -1) -> 'WordGraph':
         """
         완전한 WordGraph 생성 (노드 + 공출현 엣지)
         
