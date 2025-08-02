@@ -182,8 +182,12 @@ class WordGraph:
             raise ValueError("Edge list and weights must have same length")
         
         # PyTorch Geometric 형태로 변환
-        edge_index = torch.tensor(edge_list, dtype=torch.long).t().contiguous()  # [2, num_edges]
-        edge_attr = torch.tensor(co_occurrence_weights, dtype=torch.float32).unsqueeze(1)  # [num_edges, 1]
+        if not edge_list:
+            edge_index = torch.empty((2, 0), dtype=torch.long)
+            edge_attr = torch.empty((0, 1), dtype=torch.float32)
+        else:
+            edge_index = torch.tensor(edge_list, dtype=torch.long).t().contiguous()
+            edge_attr = torch.tensor(co_occurrence_weights, dtype=torch.float32).unsqueeze(1)
         
         self._edge_index = edge_index
         self._edge_attr = edge_attr

@@ -120,10 +120,7 @@ class Documents:
             print(f"❌ Error in Documents.add_word: {e}")
             raise
     
-    def get_co_occurrence_edges(self, word_to_node: Dict[str, int]):
-        """공출현 엣지 생성 (기존 메서드 유지)"""
-        from .co_occurence import build_cooccurrence_edges
-        return build_cooccurrence_edges(word_to_node, self._sentence_list)
+    
     
     def clear(self):
         """모든 데이터 초기화"""

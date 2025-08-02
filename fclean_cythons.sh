@@ -1,3 +1,17 @@
-rm ./main-service/Preprocess/*.so
-rm ./main-service/Preprocess/*.c
-rm ./main-service/Preprocess/*.cpp
+#!/bin/bash
+# Cleans up the Cython build artifacts
+
+# Change to the entities directory
+cd ./core/entities
+
+# Remove the compiled .so files
+find . -name "*.so" -delete
+
+# Remove the generated .c and .cpp files
+find . -name "*.c" -delete
+find . -name "*.cpp" -delete
+
+# Remove the build directory
+rm -rf build
+
+echo "Cython build artifacts cleaned up."

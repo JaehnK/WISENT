@@ -6,11 +6,11 @@ cpdef tuple build_cooccurrence_edges(dict word_to_node, list sentence_list, int 
         object sentence, word
     
     for sentence in sentence_list:
-        if sentence._word_objects is None:
+        if sentence.word_objects is None:
             continue
         
         sentence_nodes = []
-        for word in sentence._word_objects:
+        for word in sentence.word_objects:
             node_idx = word_to_node.get(word.content, -1)
             if node_idx != -1:
                 sentence_nodes.append(node_idx)
