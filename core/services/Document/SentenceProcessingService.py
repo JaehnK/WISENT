@@ -67,13 +67,13 @@ class SentenceProcessingService:
             print(f"Parallel processing failed, falling back to sequential: {e}", file=sys.stderr)
             self._create_sentence_list_sequential()
         
-        # 모든 문장 처리 완료 후 words_list 업데이트 (중요!)
-        print(f"🔍 Updating words_list after sentence processing...", file=sys.stderr)
+        # 모든 문장 처리 완료 후 words_list 업데이트
+        print(f"Updating words_list after sentence processing...", file=sys.stderr)
         try:
             all_words = self._documents.word_trie.get_all_words()
-            print(f"🔍 Found {len(all_words) if all_words else 0} unique words in WordTrie", file=sys.stderr)
+            print(f"Found {len(all_words) if all_words else 0} unique words in WordTrie", file=sys.stderr)
         except Exception as e:
-            print(f"❌ Error updating words_list: {e}", file=sys.stderr)
+            print(f"Error updating words_list: {e}", file=sys.stderr)
     
     def create_sentence_list_sequential(self) -> None:
         """순차 처리로 문장 리스트 생성"""
