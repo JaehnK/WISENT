@@ -88,10 +88,10 @@ class Sentence:
                     if self.docs_ref is not None:
                         word_obj = self.docs_ref.add_word(lemma, pos_tag)
                         if not word_obj.stopword_checked:
-                            if token.is_stop:
-                                print(word_obj.content, "is StopWord")
-                            if token.is_stop is False:
-                                print(word_obj.content , "is NOT STOPWORD")
+                            # if token.is_stop:
+                            #     print(word_obj.content, "is StopWord")
+                            # if token.is_stop is False:
+                            #     print(word_obj.content , "is NOT STOPWORD")
                             word_obj.set_stopword_status(token.is_stop)
                         word_objects.append(word_obj)
                         word_indices.append(word_obj.idx)
