@@ -1,25 +1,36 @@
 from typing import List, Dict, Any
 
-from entities import *
+from entities import Word
 
 class WordAnalysisService:
-    """단어 분석 서비스 - 기존 Word 클래스의 로직들"""
+    """단어 분석 서비스 - 품사 분석, 분류 등
     
-    # POS 카테고리 매핑
+    이 서비스는 Word 엔티티의 품사 정보를 분석하고 분류하는 역할을 담당합니다.
+    엔티티에서 제거된 품사 판별 로직들이 여기로 이동되었습니다.
+    """
+    
+    # POS 카테고리 매핑 - 영어 품사 태그를 주요 카테고리로 분류
     POS_CATEGORIES = {
-        'NOUN': ['N', 'NN', 'NNS', 'NNP', 'NNPS'],
-        'VERB': ['V', 'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ'],
-        'ADJECTIVE': ['J', 'JJ', 'JJR', 'JJS'],
-        'ADVERB': ['R', 'RB', 'RBR', 'RBS'],
-        'PRONOUN': ['PRP', 'PRP$', 'WP', 'WP$'],
-        'PREPOSITION': ['IN'],
-        'CONJUNCTION': ['CC'],
-        'DETERMINER': ['DT', 'WDT'],
+        'NOUN': ['N', 'NN', 'NNS', 'NNP', 'NNPS'],        # 명사
+        'VERB': ['V', 'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ'],  # 동사
+        'ADJECTIVE': ['J', 'JJ', 'JJR', 'JJS'],            # 형용사
+        'ADVERB': ['R', 'RB', 'RBR', 'RBS'],               # 부사
+        'PRONOUN': ['PRP', 'PRP$', 'WP', 'WP$'],          # 대명사
+        'PREPOSITION': ['IN'],                              # 전치사
+        'CONJUNCTION': ['CC'],                              # 접속사
+        'DETERMINER': ['DT', 'WDT'],                        # 관사
     }
     
     @staticmethod
     def get_pos_category(word: Word) -> str:
-        """품사를 주요 카테고리로 분류"""
+        """품사를 주요 카테고리로 분류
+        
+        Args:
+            word: 분석할 Word 엔티티
+            
+        Returns:
+            str: 품사 카테고리 (NOUN, VERB, ADJECTIVE 등)
+        """
         if not word.dominant_pos:
             return "UNKNOWN"
         
@@ -33,11 +44,15 @@ class WordAnalysisService:
     
     @staticmethod
     def is_noun(word: Word) -> bool:
-        """명사 여부 확인"""
-        if not word.dominant_pos:
-            return False
-        pos = word.dominant_pos.upper()
-        return any(pos.startswith(p) for p in WordAnalysisService.POS_CATEGORIES['NOUN'])
+        """명사 여부 확인
+        
+        Args:
+            word: 확인할 Word 엔티티
+            
+        Returns:
+            bool: 명사 여부
+        """
+        return WordAnalysisService.get_pos_category(word) == 'NOUN'
     
     @staticmethod
     def is_verb(word: Word) -> bool:
