@@ -9,18 +9,22 @@ from entities import *
 from .TextPreprocssingService import TextPreprocessingService
 from .SentenceProcessingService import SentenceProcessingService
 from .WordManagementService import WordManagementService
+from ..Word.wordAnalysisService import WordAnalysisService
+from ..Word.wordStatisticsService import WordStatisticsService
 
 class DocumentService:
-    """문서 처리 Facade 서비스"""
+    """문서 처리 Facade 서비스 - 다른 서비스들을 조율"""
     
     def __init__(self, model_name='en_core_web_sm', disable_components=None):
         # 데이터 레이어
         self._documents = Documents()
         
-        # 서비스 레이어들 (문서 전처리만 담당)
+        # 서비스 레이어들
         self._preprocessing = TextPreprocessingService(model_name, disable_components)
         self._sentence_service = SentenceProcessingService(self._documents, self._preprocessing)
         self._word_service = WordManagementService(self._documents)
+        self._word_analysis = WordAnalysisService()
+        self._word_stats = WordStatisticsService()
     
     # === 기존 Docs 클래스 호환 인터페이스 ===
     
@@ -96,44 +100,67 @@ class DocumentService:
             'total_tokens': total_tokens
         }
     
+    # === 새로운 Facade 메서드들 ===
+    
+    def analyze_word(self, word_content: str) -> Dict[str, Any]:
+        """단어 분석 결과 반환"""
+        word = self._word_service.get_word(word_content)
+        if not word:
+            return None
+        
+        return {
+            'word': word,
+            'pos_category': self._word_analysis.get_pos_category(word),
+            'is_content_word': self._word_analysis.is_content_word(word),
+            'is_function_word': self._word_analysis.is_function_word(word),
+            'statistics': self._word_stats.get_basic_stats(word),
+            'pos_distribution': self._word_stats.get_pos_distribution(word)
+        }
+    
+    def get_top_words(self, top_n: int = 10) -> List[Dict[str, Any]]:
+        """상위 단어들의 상세 정보 반환"""
+        words = self._word_service.get_all_words()
+        top_words = self._word_stats.get_top_words_by_frequency(words, top_n)
+        
+        return [
+            {
+                'word': word,
+                'analysis': self._word_analysis.get_pos_category(word),
+                'stats': self._word_stats.get_basic_stats(word)
+            }
+            for word in top_words
+        ]
+    
+    def get_word_statistics_summary(self) -> Dict[str, Any]:
+        """전체 단어 통계 요약"""
+        words = self._word_service.get_all_words()
+        return self._word_stats.get_word_frequency_summary(words)
+    
+    def get_pos_statistics(self) -> Dict[str, int]:
+        """품사별 통계"""
+        words = self._word_service.get_all_words()
+        return self._word_stats.get_pos_statistics(words)
+    
+    def get_words_by_pos_category(self, pos_category: str) -> List[Word]:
+        """특정 품사 카테고리에 속하는 단어들 반환"""
+        words = self._word_service.get_all_words()
+        return [
+            word for word in words 
+            if self._word_analysis.get_pos_category(word) == pos_category
+        ]
+    
     def __str__(self):
         """기존 호환성"""
-        return str(self._documents)
+        return f"DocumentService(docs={self.get_document_count()}, sentences={self.get_sentence_count()}, words={self.get_word_count()})"
     
-    def __getitem__(self, idx):
-        """기존 호환성"""
-        return self._documents[idx]
+    def get_document_count(self) -> int:
+        """문서 개수"""
+        return len(self._documents.rawdata) if self._documents.rawdata else 0
     
-    def __len__(self):
-        return len(self._documents)
+    def get_sentence_count(self) -> int:
+        """문장 개수"""
+        return len(self._documents.sentence_list) if self._documents.sentence_list else 0
     
-    # === 새로운 편의 메서드들 ===
-    
-    def get_stats(self) -> Dict[str, int]:
-        """전체 통계"""
-        doc_stats = self._documents.get_stats()
-        word_stats = self._word_service.get_word_stats()
-        return {**doc_stats, **word_stats}
-    
-    def get_top_words(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:
-        """상위 빈도 단어들"""
-        print("get top Words called" )
-        return self._word_service.get_top_words(top_n, exclude_stopwords)
-    
-    def reset(self):
-        """모든 데이터 초기화"""
-        self._documents.clear()
-    
-    # === 개별 서비스 접근 (필요시) ===
-    
-    @property
-    def preprocessing_service(self) -> TextPreprocessingService:
-        return self._preprocessing
-    
-    @property
-    def sentence_service(self) -> SentenceProcessingService:
-        return self._sentence_service
-    
-    @property
-    def word_service(self) -> WordManagementService:
-        return self._word_service
+    def get_word_count(self) -> int:
+        """고유 단어 개수"""
+        return self._word_service.get_word_count() if self._word_service else 0
