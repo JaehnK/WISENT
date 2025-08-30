@@ -1,5 +1,4 @@
-# Python 3.9 베이스 이미지 사용
-FROM python:3.9-slim
+FROM python:3.12-trixie
 
 # 작업 디렉토리 설정
 WORKDIR /app
@@ -15,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # RUN python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
 
 # 소스 코드 복사
-COPY src/ /app/
+COPY core/ /app/core/
 
 # 컨테이너 실행 시 실행할 명령어
 CMD ["python", "main.py"]
