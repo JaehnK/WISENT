@@ -385,8 +385,8 @@ class TextProcessingBenchmark:
 
 def main():
     """메인 함수 - 리팩토링된 버전"""
-    print("🚀 Starting Text Processing & Graph Creation Benchmark")
-    print("📋 Using New Architecture: DocumentService + GraphService + WordGraph")
+    print("Starting Text Processing & Graph Creation Benchmark")
+    print("Using New Architecture: DocumentService + GraphService + WordGraph")
     print("-" * 60)
     
     # 벤치마크 실행
@@ -395,10 +395,10 @@ def main():
     try:
         benchmark.run_complete_benchmark(
             csv_path="../kaggle_RC_2019-05.csv",
-            limit=1000,
+            limit=10000,
             top_n=500,
             top_k_viz=50,
-            save_path='./refactored_graph_output.png'
+            save_path='./graphOutput.png'
         )
         
         print("🎉 Benchmark completed successfully!")

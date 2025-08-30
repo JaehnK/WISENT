@@ -37,7 +37,6 @@ class DocumentService:
     def rawdata(self, docs: List[str]):
         """원본 데이터 설정 및 자동 처리"""
         self._documents.rawdata = docs
-        self.create_sentence_list()
     
     @property
     def words_list(self) -> Optional[List[Word]]:
@@ -53,16 +52,33 @@ class DocumentService:
         """단어 추가"""
         return self._word_service.add_word(word_content, pos_tag)
     
-    def create_sentence_list(self, max_workers: int = 1) -> None:
-        """문장 리스트 생성 (기존 인터페이스 호환)"""
+    def create_sentence_list(self, documents: Optional[List[str]] = None, max_workers: int = 4, batch_size: int = 100, n_processes: int = None) -> None:
+        """문장 리스트를 생성합니다.
+        documents 인자가 제공되면 해당 문서를 처리하고, 그렇지 않으면 내부 _documents.rawdata를 사용합니다.
+        max_workers 기본값이 4로 설정되어 있어, 명시적으로 1을 지정하지 않는 한 병렬 처리됩니다.
+
+        Args:
+            documents (Optional[List[str]]): 처리할 문서 리스트. 제공되지 않으면 기존 rawdata를 사용합니다.
+            max_workers (int): 병렬 처리 시 사용할 워커 수. 1보다 크면 병렬 처리합니다. 기본값은 4입니다.
+            batch_size (int): 병렬 처리 시 spaCy 배치 크기.
+            n_processes (Optional[int]): 병렬 처리 시 사용할 프로세스 수. None이면 CPU 코어 수를 사용합니다.
+        """
+        if documents is not None:
+            self._documents.rawdata = documents # 제공된 문서를 내부 _documents 객체에 설정
+
+        # 처리할 rawdata가 없으면 빈 리스트로 초기화하고 종료
+        if not self._documents.rawdata:
+            self._documents.sentence_list = []
+            return
+
         if max_workers > 1:
-            self.create_sentence_list_parallel()
+            self.create_sentence_list_parallel(batch_size=batch_size, n_processes=n_processes)
         else:
             self._sentence_service.create_sentence_list_sequential()
     
-    def create_sentence_list_parallel(self, batch_size: int = 100, n_process: int = None) -> None:
+    def create_sentence_list_parallel(self, batch_size: int = 100, n_processes: int = None) -> None:
         """병렬 문장 리스트 생성"""
-        self._sentence_service.create_sentence_list_parallel(batch_size, n_process)
+        self._sentence_service.create_sentence_list_parallel(batch_size, n_processes)
     
     def get_co_occurrence_edges(self, word_to_node: Dict[str, int]):
         """공출현 엣지 생성 (GraphService에서 사용하기 위한 데이터 제공)"""

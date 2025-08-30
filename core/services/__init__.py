@@ -9,9 +9,9 @@ from .Word.wordStatisticsService import WordStatisticsService
 
 from .Graph.GraphService import GraphService
 
-from .Word2Vector.Word2VecService import Word2VecService
-from .Word2Vector.DataLoader import MemoryDataLoader, MemoryWord2vecDataset
-from .Word2Vector.Trainer import Word2VecTrainer
+from .Word2Vec.Word2VecService import Word2VecService
+from .Word2Vec.DataLoader import MemoryDataLoader, MemoryWord2vecDataset
+from .Word2Vec.Trainer import Word2VecTrainer
 
 __all__ = [
     'DocumentService', 'SentenceProcessingService', 'TextPreprocessingService', 'WordManagementService', 
