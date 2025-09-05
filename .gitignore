@@ -158,4 +158,5 @@ temp/
 *.csv
 deprecated/
 DistillBERT/
+core/DistillBERT/DistillBERT/
 core/DistillBERT/
