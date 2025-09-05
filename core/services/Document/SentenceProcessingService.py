@@ -37,7 +37,10 @@ class SentenceProcessingService:
             
             # spaCy 배치 처리
             texts = [doc for _, doc in valid_docs]
-            processed_docs = self._preprocessing.process_text_batch(texts, batch_size, n_process)
+            # === Contractions 확장 추가 ===
+            import contractions # 함수 내에서 임포트하여 필요할 때만 로드
+            expanded_texts = [contractions.fix(text) for text in texts]
+            processed_docs = self._preprocessing.process_text_batch(expanded_texts, batch_size, n_process)
             
             # Sentence 객체 생성
             sentences = [None] * len(rawdata)  # 원본 인덱스 유지
@@ -94,8 +97,11 @@ class SentenceProcessingService:
                 print(f"Processed {i}/{len(rawdata)} documents", file=sys.stderr)
             
             try:
+                # === Contractions 확장 추가 ===
+                import contractions # 함수 내에서 임포트하여 필요할 때만 로드
+                expanded_doc_text = contractions.fix(doc_text)
                 # 새로운 방식: 생성자에서 raw 텍스트 설정
-                sentence = Sentence(raw=doc_text, docs_ref=self._documents)
+                sentence = Sentence(raw=expanded_doc_text, docs_ref=self._documents)
                 
                 # 기존 호환성: raw property setter가 자동 처리 수행
                 if not sentence.is_processed:

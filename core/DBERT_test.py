@@ -3,6 +3,7 @@ import torch
 from transformers import DistilBertTokenizer, DistilBertModel
 import numpy as np
 import pandas as pd
+from typing import List, Dict, Any
 
 from services import DocumentService
 from entities import Documents
@@ -68,6 +69,65 @@ def get_token_embeddings(text):
     
     return results
 
+def combine_subword_embeddings(token_results: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    서브워드 토큰들을 원래 단어로 합치고 그 임베딩을 평균합니다.
+    예: 'cr', '##inge' -> 'cringe' (평균 임베딩)
+    """
+    combined_results = []
+    current_word_tokens = []
+    current_word_embeddings_list = []
+
+    for item in token_results:
+        token = item['token']
+        embedding = item['embedding']
+
+        if token.startswith('##'):
+            # 이전 토큰의 서브워드인 경우
+            current_word_tokens.append(token[2:]) # '##' 제거 후 추가
+            current_word_embeddings_list.append(embedding)
+        else:
+            # 새로운 단어의 시작 또는 특수 토큰인 경우
+            if current_word_tokens:
+                # 이전에 누적된 서브워드가 있다면 합치고 임베딩 평균 계산
+                combined_token = "".join(current_word_tokens)
+                averaged_embedding = np.mean(current_word_embeddings_list, axis=0)
+                combined_results.append({
+                    'token': combined_token,
+                    'embedding': averaged_embedding,
+                    'embedding_shape': averaged_embedding.shape # 평균 후 shape
+                })
+                current_word_tokens = []
+                current_word_embeddings_list = []
+            
+            # 현재 토큰 처리
+            if token in ['[CLS]', '[SEP]']:
+                combined_results.append({
+                    'token': token,
+                    'embedding': embedding,
+                    'embedding_shape': embedding.shape
+                })
+            else:
+                # 새로운 단어 (또는 서브워드의 첫 부분) 누적 시작
+                current_word_tokens.append(token)
+                current_word_embeddings_list.append(embedding)
+    
+    # 루프 종료 후 남아있는 서브워드 처리 (예: 문장 끝이 서브워드로 끝나는 경우)
+    if current_word_tokens:
+        combined_token = "".join(current_word_tokens)
+        averaged_embedding = np.mean(current_word_embeddings_list, axis=0)
+        combined_results.append({
+            'token': combined_token,
+            'embedding': averaged_embedding,
+            'embedding_shape': averaged_embedding.shape
+        })
+    
+    # 최종 결과에 position 재할당
+    for i, item in enumerate(combined_results):
+        item['position'] = i
+
+    return combined_results
+
 # 예시 사용
 if __name__ == "__main__":
     # 테스트 문장들
@@ -86,12 +146,14 @@ if __name__ == "__main__":
     for i,sentence in enumerate(text):
         print(f"\n{'='*50}")
         print(f"원본 문장: {sentence}")
-        print(f"독스 문장: {doc_serv.sentence_list[i]._lemmatised}")
+        lemmatised_sentence = " ".join(doc_serv.sentence_list[i]._lemmatised)
+        print(f"독스 문장: {lemmatised_sentence}")
         print(f"{'='*50}")
         
         # 토큰 임베딩 추출
-        lemmatised_sentence = " ".join(doc_serv.sentence_list[i]._lemmatised)
-        token_results = get_token_embeddings(lemmatised_sentence)
+        raw_token_results = get_token_embeddings(lemmatised_sentence)
+        # 서브워드 합치기 및 임베딩 평균
+        token_results = combine_subword_embeddings(raw_token_results)
         
         # 결과 출력
         print(f"총 토큰 수: {len(token_results)}")
