@@ -27,7 +27,7 @@ class WordStatisticsService:
         return {pos: count / total for pos, count in word.pos_counts.items()}
     
     @staticmethod
-    def get_top_words_by_frequency(words: List[Word], top_n: int = 10) -> List[Word]:
+    def get_top_words_by_frequency(words: List[Word], top_n: int = 10, contain_stopword: bool = False) -> List[Word]:
         """빈도순으로 상위 단어 반환"""
         return sorted(words, key=lambda w: w.freq, reverse=True)[:top_n]
     

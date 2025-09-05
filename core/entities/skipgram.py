@@ -1,7 +1,9 @@
+from typing import Dict
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import init
+
 
 class SkipGramModel(nn.Module):
     def __init__(self, emb_size, emb_dimension):
@@ -29,11 +31,3 @@ class SkipGramModel(nn.Module):
         neg_score = -torch.sum(F.logsigmoid(-neg_score), dim=1)
 
         return torch.mean(score + neg_score)
-
-    def save_embedding(self, id2word, file_name):
-        embedding = self.u_embeddings.weight.cpu().data.numpy()
-        with open(file_name, 'w') as f:
-            f.write('%d %d\n' % (len(id2word), self.emb_dimension))
-            for wid, w in id2word.items():
-                e = ' '.join(map(lambda x: str(x), embedding[wid]))
-                f.write('%s %s\n' % (w, e))

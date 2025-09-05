@@ -103,15 +103,23 @@ class DocumentService:
         # min_count 필터링
         filtered_words = [w for w in words if w.freq >= min_count]
         
-        word2id = {w.content: w.idx for w in filtered_words}
-        id2word = {w.idx: w.content for w in filtered_words}
-        word_frequency = {w.idx: w.freq for w in filtered_words}
+        # 새로운 0-indexed ID 맵 생성
+        new_word2id: Dict[str, int] = {}
+        new_id2word: Dict[int, str] = {}
+        new_word_frequency: Dict[int, int] = {}
+        
+        # 0부터 시작하는 새로운 ID 할당
+        for i, word_obj in enumerate(filtered_words):
+            new_word2id[word_obj.content] = i
+            new_id2word[i] = word_obj.content
+            new_word_frequency[i] = word_obj.freq
+            
         total_tokens = sum(w.freq for w in filtered_words)
         
         return {
-            'word2id': word2id,
-            'id2word': id2word,
-            'word_frequency': word_frequency,
+            'word2id': new_word2id,
+            'id2word': new_id2word,
+            'word_frequency': new_word_frequency,
             'vocab_size': len(filtered_words),
             'total_tokens': total_tokens
         }
@@ -133,19 +141,20 @@ class DocumentService:
             'pos_distribution': self._word_stats.get_pos_distribution(word)
         }
     
-    def get_top_words(self, top_n: int = 10) -> List[Dict[str, Any]]:
+    def get_top_words(self, top_n: int = 10, except_stopword: bool = False) -> List[Dict[str, Any]]:
         """상위 단어들의 상세 정보 반환"""
         words = self._word_service.get_all_words()
-        top_words = self._word_stats.get_top_words_by_frequency(words, top_n)
+        top_words = self._word_stats.get_top_words_by_frequency(words, top_n, except_stopword)
         
-        return [
-            {
-                'word': word,
-                'analysis': self._word_analysis.get_pos_category(word),
-                'stats': self._word_stats.get_basic_stats(word)
-            }
-            for word in top_words
-        ]
+        # return [
+        #     {
+        #         'word': word,
+        #         'analysis': self._word_analysis.get_pos_category(word),
+        #         'stats': self._word_stats.get_basic_stats(word)
+        #     }
+        #     for word in top_words
+        # ]
+        return [ word for word in top_words]
     
     def get_word_statistics_summary(self) -> Dict[str, Any]:
         """전체 단어 통계 요약"""

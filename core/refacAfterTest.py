@@ -5,8 +5,7 @@ import functools
 import pandas as pd
 from pprint import pprint
 
-from services import DocumentService
-
+from services import DocumentService, Word2VecService
 
 
 def timer_with_result(func):
@@ -48,9 +47,16 @@ def preprocess_time_test():
 
 if __name__ == "__main__":
     # print(preprocess_time_test())
-
-    data = pd.read_csv("../kaggle_RC_2019-05.csv").loc[:9999, 'body'].to_list()
+    data = pd.read_csv("./kaggle_RC_2019-05.csv").loc[:9999, 'body'].to_list()
     doc_serv = DocumentService()
     doc_serv.create_sentence_list(documents=data, n_processes=None)
-    freq = doc_serv.get_top_words()
-    pprint(freq[0])
+    freq = doc_serv.get_top_words(500, True) 
+    for word in freq[:100]:
+        print(f"word: {word.content}")
+        print(f" stopword: {word.is_stopword}")
+
+    w2v = Word2VecService.create_default(doc_serv)
+    w2v = w2v.train()
+    vec = w2v.get_word_vector("leave")
+    print(type(vec) )
+    print(vec)

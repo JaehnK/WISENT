@@ -7,11 +7,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# # spaCy 한국어 모델 다운로드 (필요하다면)
-# RUN python -m spacy download ko_core_news_sm
 
-# # NLTK 데이터 다운로드
-# RUN python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
 
 # 소스 코드 복사
 COPY core/ /app/core/

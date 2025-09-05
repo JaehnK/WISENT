@@ -57,15 +57,7 @@ class Word2VecTrainer:
             
             self._train_epoch(model, torch_dataloader, iteration)
             
-            # 중간 결과 저장 (선택사항)
-            if iteration < self.iterations - 1:
-                temp_file = f"temp_embeddings_iter_{iteration + 1}.txt"
-                model.save_embedding(data_loader.id2word, temp_file)
-                print(f"Intermediate embeddings saved to {temp_file}")
-        
-        # 최종 임베딩 저장
-        model.save_embedding(data_loader.id2word, output_file)
-        print(f"\nTraining completed! Final embeddings saved to {output_file}")
+        print(f"\nTraining completed!")
         
         return model
     
@@ -87,7 +79,8 @@ class Word2VecTrainer:
             enumerate(dataloader), 
             total=total_batches,
             desc=f"Epoch {iteration + 1}",
-            ncols=100
+            ncols=100,
+            leave=False # 에포크 완료 후 프로그레스 바를 터미널에 남기지 않음
         )
         
         for batch_idx, sample_batched in progress_bar:
@@ -119,9 +112,9 @@ class Word2VecTrainer:
                     'LR': f'{scheduler.get_last_lr()[0]:.6f}'
                 })
             
-            # 주기적으로 손실 출력
-            if batch_idx > 0 and batch_idx % 500 == 0:
-                print(f"\nBatch {batch_idx}/{total_batches} - Loss: {running_loss:.4f}")
+            # 주기적으로 손실 출력 (tqdm postfix로 대체되므로 주석 처리)
+            # if batch_idx > 0 and batch_idx % 500 == 0:
+            #     print(f"\nBatch {batch_idx}/{total_batches} - Loss: {running_loss:.4f}")
         
         print(f"Epoch {iteration + 1} completed - Final loss: {running_loss:.4f}")
     

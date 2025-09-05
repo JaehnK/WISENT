@@ -12,10 +12,10 @@ class Word2VecService:
     
     def __init__(self,
                 doc: DocumentService,
-                model: SkipGramModel,
-                trainer: Word2VecTrainer,
-                dataset: MemoryWord2vecDataset,
-                data_loader: MemoryDataLoader):
+                model: SkipGramModel = None,
+                trainer: Word2VecTrainer = None,
+                dataset: MemoryWord2vecDataset = None,
+                data_loader: MemoryDataLoader = None):
         
         self.doc = doc
         self.model = model
@@ -35,9 +35,24 @@ class Word2VecService:
         """기본 설정으로 Word2Vec 서비스 생성"""
         
         # 문서 서비스에서 필요한 데이터 추출
-        word_data = doc_service.get_word2vec_data()
-        sentences_with_indices = doc_service.get_sentences_with_word2id()
+        word_data = doc_service.get_word2vec_data() # 이제 0-indexed ID를 반환
         
+        # DocumentService에서 원래 문장 인덱스를 가져오는 대신,
+        # 직접 단어 콘텐츠를 사용하여 새로운 0-indexed ID로 매핑
+        # 이렇게 하면 DocumentService의 원본 ID와 Word2Vec 모델의 0-indexed ID 간의 불일치 문제 해결
+        preprocessed_sentences = doc_service.get_preprocessed_sentences() # 단어 텍스트 리스트
+        new_word2id_map = word_data['word2id'] # DocumentService에서 0-indexed로 생성된 맵
+
+        sentences_with_indices = []
+        for sentence_words in preprocessed_sentences:
+            remapped_sentence = []
+            for word_content in sentence_words:
+                # 단어 콘텐츠를 사용하여 새로운 0-indexed ID로 변환
+                if word_content in new_word2id_map:
+                    remapped_sentence.append(new_word2id_map[word_content])
+            if remapped_sentence: # 빈 문장은 제외
+                sentences_with_indices.append(remapped_sentence)
+
         print(f"Creating Word2Vec service with vocabulary size: {word_data['vocab_size']}")
         
         # 모델 생성
@@ -64,14 +79,25 @@ class Word2VecService:
                     doc_service: DocumentService,
                     embedding_dim: int = 100,
                     window_size: int = 5,
-                    iterations: int = 3,
+                    iterations: int = 30,
                     learning_rate: float = 0.001,
                     batch_size: int = 32,
                     min_count: int = 5) -> 'Word2VecService':
         """커스텀 설정으로 Word2Vec 서비스 생성"""
         
-        word_data = doc_service.get_word2vec_data(min_count=min_count)
-        sentences_with_indices = doc_service.get_sentences_with_word2id()
+        word_data = doc_service.get_word2vec_data(min_count=min_count) # 이제 0-indexed ID를 반환
+        
+        preprocessed_sentences = doc_service.get_preprocessed_sentences() # 단어 텍스트 리스트
+        new_word2id_map = word_data['word2id'] # DocumentService에서 0-indexed로 생성된 맵
+
+        sentences_with_indices = []
+        for sentence_words in preprocessed_sentences:
+            remapped_sentence = []
+            for word_content in sentence_words:
+                if word_content in new_word2id_map:
+                    remapped_sentence.append(new_word2id_map[word_content])
+            if remapped_sentence: # 빈 문장은 제외
+                sentences_with_indices.append(remapped_sentence)
         
         model = SkipGramModel(word_data['vocab_size'], emb_dimension=embedding_dim)
         
@@ -221,7 +247,7 @@ class Word2VecService:
     def save_model(self, filepath: str):
         """모델 저장"""
         if not self.is_trained:
-            print("Warning: Model is not trained yet.")
+            # print("Warning: Model is not trained yet.")
             return
         
         import torch
@@ -234,7 +260,7 @@ class Word2VecService:
             'embedding_dim': self.model.emb_dimension
         }, filepath)
         
-        print(f"Model saved to {filepath}")
+        # print(f"Model saved to {filepath}")
     
     def load_model(self, filepath: str):
         """모델 로드"""
@@ -245,7 +271,7 @@ class Word2VecService:
         
         # 데이터 로더 정보도 업데이트 (필요한 경우)
         self.is_trained = True
-        print(f"Model loaded from {filepath}")
+        # print(f"Model loaded from {filepath}")
     
     def __str__(self) -> str:
         """서비스 정보 문자열 표현"""
@@ -259,8 +285,3 @@ Word2VecService Status:
 - Trained: {info['is_trained']}
 - Most Frequent Words: {', '.join([word for word, _ in info['most_frequent_words'][:5]])}
 """
-
-
-
-
-# https://claude.ai/chat/8ff8d49e-9f4f-415f-8578-684448c52e68
