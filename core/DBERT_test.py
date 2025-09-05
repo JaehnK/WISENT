@@ -3,7 +3,9 @@ from transformers import DistilBertTokenizer, DistilBertModel
 import numpy as np
 import pandas as pd
 
-from preprocess import *
+from services import DocumentService
+from entities import Documents
+# from preprocess import *
 
 # 원하는 경로 지정
 cache_path = "./DistillBERT/model"
@@ -72,16 +74,18 @@ if __name__ == "__main__":
     text = df['body'][:15]
     
     print(text)
-    docs = Docs()
-    docs.rawdata = text
+    # docs = Documents()
+    # docs.rawdata = text
     # for sentence in docs.sentence_list:
     #     print(sentence._lemmatised)
         
-    
+    doc_serv = DocumentService()
+    doc_serv.create_sentence_list(documents=text)
+
     for i,sentence in enumerate(text):
         print(f"\n{'='*50}")
         print(f"원본 문장: {sentence}")
-        print(f"독스 문장: {docs.sentence_list[i]._lemmatised}")
+        print(f"독스 문장: {doc_serv.sentence_list[i]._lemmatised}")
         print(f"{'='*50}")
         
         # 토큰 임베딩 추출
