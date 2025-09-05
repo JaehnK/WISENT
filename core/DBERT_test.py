@@ -1,4 +1,4 @@
-from 
+import contractions
 import torch
 from transformers import DistilBertTokenizer, DistilBertModel
 import numpy as np
@@ -90,7 +90,8 @@ if __name__ == "__main__":
         print(f"{'='*50}")
         
         # 토큰 임베딩 추출
-        token_results = get_token_embeddings(sentence)
+        lemmatised_sentence = " ".join(doc_serv.sentence_list[i]._lemmatised)
+        token_results = get_token_embeddings(lemmatised_sentence)
         
         # 결과 출력
         print(f"총 토큰 수: {len(token_results)}")
