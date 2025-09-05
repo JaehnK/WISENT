@@ -1,7 +1,7 @@
 import re
 import time
 
-from Preprocess import *
+from .core import  
 
 def comparsion(docs):
     print("\n" + "="*60)
