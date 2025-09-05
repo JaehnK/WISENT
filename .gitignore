@@ -157,4 +157,5 @@ temp/
 # etc
 *.csv
 deprecated/
+DistillBERT/
 core/DistillBERT/
