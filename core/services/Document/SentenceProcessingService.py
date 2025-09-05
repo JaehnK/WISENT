@@ -22,7 +22,7 @@ class SentenceProcessingService:
     def create_sentence_list_parallel(self, batch_size: int = 100, n_process: int = None) -> None:
         """병렬 처리로 문장 리스트 생성"""
         rawdata = self._documents.rawdata
-        if not rawdata:
+        if rawdata is None or len(rawdata) == 0:
             self._documents.sentence_list = []
             return
         
