@@ -166,11 +166,6 @@ if __name__ == "__main__":
             # 임베딩 벡터의 처음 3개 값만 표시
             embedding_summary = f"[{result['embedding'][0]:.3f}, {result['embedding'][1]:.3f}, {result['embedding'][2]:.3f}, ...]"
             print(f"{result['position']:<4} {result['token']:<15} {str(result['embedding_shape']):<15} {embedding_summary}")
+            print(type(result['embedding']))
 
-
-## 자 재훈아 BERT의 입력값은 Contractions를 한번 진행한 값을 짚어넣자.
-## 근데 이건 sentence에서 전처리할 떄 저장하고 있으면 일을 두번하지 않겠지?
-## 그리고 아웃풋 값에서 특수문자와 구둣점들의 값은 다 삭제해
-## 그리고 ##으로 시작하거나 끝난 것들은 합쳐
-## Word에서는 가중 합으로 처리해 일단 다 더하고 마지막에 나눠
 

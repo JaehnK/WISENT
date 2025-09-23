@@ -1,6 +1,7 @@
 # cython: language_level=3
 # distutils: language=c++
 
+
 from typing import List, Optional, Dict
 from cython.operator cimport dereference, preincrement
 from libc.stdlib cimport malloc, free
@@ -22,6 +23,7 @@ cdef class TrieNode:
         dict    children
         object  word_obj  # Word 객체
         bint    is_end_of_word
+
     
     def __init__(self):
         self.children = {}
@@ -76,6 +78,17 @@ class WordTrie:
     #         node = node.children[c]
         
     #     return (node)
+
+
+    def search_word(self, word_content: str) -> Optional[Word]:
+        """특정 단어 검색 - Word 객체 반환"""
+        node = _find_node(self.root, word_content, None)
+        
+        if node.is_end_of_word:
+            return node.word_obj
+        else:
+            return None
+
 
     def insert_or_get_word(self, word_content: str, pos_tag: str = None) -> Word:
         

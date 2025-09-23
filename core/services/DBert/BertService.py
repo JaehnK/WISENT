@@ -11,8 +11,9 @@ class BERTService:
     BERT 서비스 - 파이프라인 관리
     """
 
-    def __init__(self, doc: DocumentService, model_path="./DistillBERT/model"):
+    def __init__(self, docs: DocumentService, model_path="./DistillBERT/model"):
         
+        self.docs = docs
         self.model_path = model_path
         self.cache_path = model_path  # cache_path 추가
         self.model_name = 'distilbert-base-uncased'
@@ -146,3 +147,22 @@ class BERTService:
         
         # [CLS] 토큰을 찾지 못한 경우 첫 번째 토큰 반환
         return token_results[0]['embedding'] if token_results else None
+
+    def update_at_wordtrie(embed: np.ndarray):
+        self.
+
+    def train(self):
+        # 여기서 독스에서 문장을 받아와서 한문장씩 get_sentence_embedding 실시
+        # 실시한 결과를 받아와서 독스의 트라이에 업데이트 진행
+        # 업데이트 로직은 가중치 연산을 수행함
+        sentences = self.docs.Sentence_list
+        count = 0
+        for sentence in sentences:
+            count += 1
+            embed = self.get_sentence_embedding(sentence)
+            self.update_at_wordtrie(embed)
+
+            if count % 10 == 0:
+                print(f"BERT Embedding {} completed")
+
+        return None
