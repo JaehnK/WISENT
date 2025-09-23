@@ -61,7 +61,7 @@ class Sentence:
                 print(f"spaCy processing failed, using fallback: {e}")
                 self._process_with_fallback()
     
-    # === 핵심 처리 메서드들 ===
+    # === 핵심 처리 메서드 ===
     
     def set_from_spacy_doc(self, spacy_doc, original_text: str):
         """기존 호환성을 위한 메서드 - spaCy 문서 객체로부터 직접 설정"""
@@ -113,7 +113,7 @@ class Sentence:
         
         return self.lemmatised
     
-    # === 데이터 처리 메서드들 ===
+    # === 데이터 처리 메서드 ===
     
     def set_processed_data(self, 
                             lemmatised: List[str],
@@ -150,7 +150,7 @@ class Sentence:
         """처리 오류 초기화"""
         self.processing_errors.clear()
     
-    # === Private 헬퍼 메서드들 ===
+    # === Private 헬퍼 메서드 ===
     
     def _expand_contractions(self, text: str) -> str:
         """축약형을 확장하는 함수"""

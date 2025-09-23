@@ -97,7 +97,6 @@ class SentenceProcessingService:
                 print(f"Processed {i}/{len(rawdata)} documents", file=sys.stderr)
             
             try:
-                # === Contractions 확장 추가 ===
                 import contractions # 함수 내에서 임포트하여 필요할 때만 로드
                 expanded_doc_text = contractions.fix(doc_text)
                 # 새로운 방식: 생성자에서 raw 텍스트 설정
