@@ -2,8 +2,16 @@ import torch
 import numpy as np
 from typing import List, Dict, Any
 from transformers import DistilBertTokenizer, DistilBertModel
+import sys
+import os
 
-from core.services.Document import DocumentService
+# 상대 임포트와 절대 임포트 모두 지원
+try:
+    from ..Document.DocumentService import DocumentService
+except ImportError:
+    # 절대 경로로 임포트 시도
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+    from services.Document.DocumentService import DocumentService
 
 
 class BERTService:
@@ -148,8 +156,19 @@ class BERTService:
         # [CLS] 토큰을 찾지 못한 경우 첫 번째 토큰 반환
         return token_results[0]['embedding'] if token_results else None
 
-    def update_at_wordtrie(embed: np.ndarray):
-        self.
+    def update_at_wordtrie(self, token_result:list):
+        # 특수 토큰들 필터링
+        special_tokens = {'[CLS]', '[SEP]', '[PAD]', '[UNK]', '[MASK]'}
+
+        for result in token_result:
+            token = result['token']
+            # 특수 토큰은 제외하고 업데이트
+            if token not in special_tokens:
+                self.docs._word_service.update_word_bert_embedding(
+                    word_content=token,
+                    embedding=result['embedding']
+                    )
+        
 
     def train(self):
         # 여기서 독스에서 문장을 받아와서 한문장씩 get_sentence_embedding 실시
@@ -160,9 +179,115 @@ class BERTService:
         for sentence in sentences:
             count += 1
             embed = self.get_sentence_embedding(sentence)
-            self.update_at_wordtrie(embed)
+            token_results = self.combine_subword_embeddings(embed)
+            self.update_at_wordtrie(token_results)
 
             if count % 10 == 0:
-                print(f"BERT Embedding {} completed")
+                print(f"BERT Embedding {count} completed")
 
         return None
+
+
+if __name__ == "__main__":
+    import pandas as pd
+
+    print("=== BERT Service Test ===")
+
+    # 실제 데이터 파일에서 테스트 문서 로드 (DBERT_test.py 참고)
+    try:
+        # CSV 파일 경로 설정 (현재 파일 기준으로 상대 경로)
+        csv_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'kaggle_RC_2019-05.csv')
+        df = pd.read_csv(csv_path)
+        test_documents = df['body'][:15].tolist()  # 처음 15개 문서 사용
+        print(f"✓ CSV 파일에서 테스트 문서 {len(test_documents)}개 로드 완료")
+    except Exception as e:
+        print(f"CSV 파일 로드 실패: {e}")
+        # 대안으로 더 많은 테스트 문서 생성
+        test_documents = [
+            "This is a simple test sentence.",
+            "BERT embeddings are very powerful for NLP tasks.",
+            "The preprocessing step is crucial for good results.",
+            "Natural language processing has many applications.",
+            "Machine learning models need training data.",
+            "Deep learning transforms how we process text.",
+            "Tokenization is an important preprocessing step.",
+            "Word embeddings capture semantic meaning.",
+            "Neural networks can learn complex patterns.",
+            "Text classification is a common NLP task.",
+            "Sentiment analysis helps understand opinions.",
+            "Language models are trained on large corpora."
+        ]
+        print(f"대안 테스트 문서 {len(test_documents)}개 준비")
+
+    # DocumentService 초기화
+    try:
+        doc_service = DocumentService()
+        print("✓ DocumentService 초기화 완료")
+
+        # 문장 처리
+        doc_service.create_sentence_list(documents=test_documents)
+        print(f"✓ 문장 처리 완료 - {doc_service.get_sentence_count()}개 문장")
+
+        # BERTService 초기화
+        bert_service = BERTService(doc_service)
+        print("✓ BERTService 초기화 완료")
+
+        # 테스트 1: 토큰 임베딩 추출
+        test_text = "This is a preprocessing test."
+        print(f"\n=== 테스트 1: 토큰 임베딩 추출 ===")
+        print(f"입력 텍스트: {test_text}")
+
+        token_results = bert_service.get_token_embeddings(test_text)
+        print(f"토큰 개수: {len(token_results)}")
+
+        print("\n토큰별 정보:")
+        print("-" * 60)
+        print(f"{'위치':<4} {'토큰':<15} {'임베딩 형태':<15} {'샘플'}")
+        print("-" * 60)
+
+        for result in token_results[:5]:  # 처음 5개만 출력
+            embedding_sample = f"[{result['embedding'][0]:.3f}, {result['embedding'][1]:.3f}, ...]"
+            print(f"{result['position']:<4} {result['token']:<15} {str(result['embedding_shape']):<15} {embedding_sample}")
+
+        # 테스트 2: 서브워드 결합 임베딩
+        print(f"\n=== 테스트 2: 서브워드 결합 임베딩 ===")
+        combined_results = bert_service.get_combined_embeddings(test_text)
+        print(f"결합된 토큰 개수: {len(combined_results)}")
+
+        print("\n결합된 토큰별 정보:")
+        print("-" * 60)
+        print(f"{'위치':<4} {'토큰':<15} {'임베딩 형태':<15} {'샘플'}")
+        print("-" * 60)
+
+        for result in combined_results:
+            embedding_sample = f"[{result['embedding'][0]:.3f}, {result['embedding'][1]:.3f}, ...]"
+            print(f"{result['position']:<4} {result['token']:<15} {str(result['embedding_shape']):<15} {embedding_sample}")
+
+        # 테스트 3: 문장 임베딩
+        print(f"\n=== 테스트 3: 문장 임베딩 ===")
+        sentence_embedding = bert_service.get_sentence_embedding(test_text)
+        print(f"문장 임베딩 형태: {sentence_embedding.shape}")
+        print(f"문장 임베딩 샘플: [{sentence_embedding[0]:.3f}, {sentence_embedding[1]:.3f}, {sentence_embedding[2]:.3f}, ...]")
+
+        # 테스트 4: 워드트라이 업데이트 테스트
+        print(f"\n=== 테스트 4: 워드트라이 업데이트 테스트 ===")
+        words_before = len(doc_service.words_list) if doc_service.words_list else 0
+        print("업데이트 전 단어 개수:", words_before)
+
+        # 토큰 결과로 테스트 (특수 토큰은 메서드에서 자동 필터링)
+        test_token_results = combined_results[:5]  # 처음 5개 토큰 사용
+
+        print(f"테스트할 토큰들: {[r['token'] for r in test_token_results]}")
+        bert_service.update_at_wordtrie(test_token_results)
+
+        words_after = len(doc_service.words_list) if doc_service.words_list else 0
+        print("업데이트 후 단어 개수:", words_after)
+        print("✓ 워드트라이 업데이트 완료")
+
+        print(f"\n=== 모든 테스트 완료 ===")
+        print("✓ BERTService가 정상적으로 작동합니다!")
+
+    except Exception as e:
+        print(f"❌ 테스트 실패: {str(e)}")
+        import traceback
+        traceback.print_exc()
