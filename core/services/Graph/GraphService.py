@@ -7,9 +7,10 @@ import networkx as nx
 import torch
 from torch_geometric.data import Data
 from torch_geometric.utils import to_undirected
+import dgl
 
 from ..Document.DocumentService import DocumentService
-from entities import Word, WordGraph
+from entities import Word, WordGraph, NodeFeatureType
 
 
 
@@ -100,7 +101,85 @@ class GraphService:
         self.set_co_occurrence_edges(word_graph, max_length)
         
         return word_graph
-    
+
+    def build_mae_enhanced_graph(self, top_n: int = 500, exclude_stopwords: bool = True,
+                               max_length: int = -1, embed_size: int = 64,
+                               input_method: str = 'bert', mae_config = None) -> 'WordGraph':
+        """
+        GraphMAE 사전훈련이 포함된 완전한 그래프 생성
+
+        Args:
+            top_n: 상위 몇 개 단어를 노드로 사용할지
+            exclude_stopwords: 불용어 제외 여부
+            max_length: 문장당 최대 단어 수 제한
+            embed_size: 임베딩 크기 (입출력 차원 통일)
+            input_method: GraphMAE 입력 특성 방법 ('bert', 'w2v', 'concat')
+            mae_config: GraphMAE 설정 (None이면 기본값)
+
+        Returns:
+            GraphMAE로 향상된 WordGraph 객체
+        """
+        # 1. 기본 그래프 생성
+        word_graph = self.build_complete_graph(top_n, exclude_stopwords, max_length)
+
+        # 2. GraphMAE 서비스 초기화
+        from ..GraphMAE import GraphMAEService, GraphMAEConfig
+        config = mae_config or GraphMAEConfig.create_default(embed_size)
+        mae_service = GraphMAEService(self, config)
+
+        # 3. GraphMAE 사전훈련 및 임베딩 추출
+        mae_embeddings = mae_service.pretrain_and_extract(
+            word_graph, embed_size, input_method
+        )
+
+        # 4. GraphMAE 임베딩을 WordGraph에 설정
+        word_graph.set_node_features_custom(mae_embeddings, NodeFeatureType.GRAPHMAE)
+
+        print(f"GraphMAE enhanced graph created with {embed_size}D embeddings")
+        return word_graph
+
+    def wordgraph_to_dgl(self, word_graph: 'WordGraph', node_features: Optional[torch.Tensor] = None) -> dgl.DGLGraph:
+        """
+        WordGraph를 DGL 그래프로 변환
+
+        Args:
+            word_graph: 변환할 WordGraph 객체
+            node_features: 노드 특성 텐서 [num_nodes, feature_dim]
+                          None이면 빈도 기반 특성 사용
+
+        Returns:
+            DGL 그래프 객체
+        """
+        if word_graph.edge_index is None:
+            raise ValueError("WordGraph has no edges. Call set_co_occurrence_edges() first.")
+
+        # 엣지 인덱스에서 source, target 노드 추출
+        edge_index = word_graph.edge_index
+        src_nodes = edge_index[0].numpy()
+        dst_nodes = edge_index[1].numpy()
+
+        # DGL 그래프 생성 (무방향 그래프)
+        dgl_graph = dgl.graph((src_nodes, dst_nodes), num_nodes=word_graph.num_nodes)
+        dgl_graph = dgl.to_bidirected(dgl_graph, copy_ndata=True)
+
+        # 노드 특성 설정
+        if node_features is not None:
+            dgl_graph.ndata['feat'] = node_features
+        else:
+            # 기본적으로 빈도 기반 특성 사용
+            freq_features = torch.tensor([[word.freq] for word in word_graph.words], dtype=torch.float32)
+            dgl_graph.ndata['feat'] = freq_features
+
+        # 엣지 가중치 설정 (있는 경우)
+        if word_graph.edge_attr is not None:
+            # bidirected로 변환했으므로 엣지 가중치도 복제
+            edge_weights = word_graph.edge_attr.squeeze()
+            # 양방향 엣지이므로 가중치도 복제
+            bidirected_weights = torch.cat([edge_weights, edge_weights])
+            dgl_graph.edata['weight'] = bidirected_weights
+
+        return dgl_graph
+
     def build_pytorch_geometric_data(self) -> Data:
         """PyTorch Geometric Data 객체 생성"""
         if self.node_words is None or self.edges is None:

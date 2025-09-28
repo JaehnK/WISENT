@@ -12,6 +12,7 @@ class NodeFeatureType(Enum):
     FREQUENCY = "frequency"           # 단어 빈도 (스칼라)
     BERT_EMBEDDING = "bert_embedding" # BERT 임베딩 (768차원)
     WORD2VEC = "word2vec"            # Word2Vec 임베딩
+    GRAPHMAE = "graphmae"            # GraphMAE 사전훈련 임베딩
     CUSTOM = "custom"                # 사용자 정의
 
 
