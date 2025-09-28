@@ -161,7 +161,7 @@ if __name__ == "__main__":
         print("-" * 70)
         print(f"{'위치':<4} {'토큰':<15} {'임베딩 형태':<15} {'임베딩 요약'}")
         print("-" * 70)
-        
+        # print(type(token_results))
         for result in token_results:
             # 임베딩 벡터의 처음 3개 값만 표시
             embedding_summary = f"[{result['embedding'][0]:.3f}, {result['embedding'][1]:.3f}, {result['embedding'][2]:.3f}, ...]"

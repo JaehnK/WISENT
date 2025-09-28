@@ -38,11 +38,11 @@ class WordManagementService:
         id2word = {w.idx: w.content for w in words}
         return word2id, id2word
     
-    def update_word_bert_embedding(self, word_content: str, sentence_embedding: np.ndarray) -> None:
+    def update_word_bert_embedding(self, word_content: str, embedding: np.ndarray) -> None:
         """특정 단어의 BERT 임베딩을 업데이트 (스레드 안전)"""
         with self._lock:
             word_obj = self._documents.add_word(word_content)  # 없으면 생성, 있으면 반환
-            word_obj.update_bert_embedding(sentence_embedding)
+            word_obj.update_bert_embedding(embedding)
     
     def get_word_bert_embedding(self, word_content: str) -> Optional[np.ndarray]:
         """특정 단어의 BERT 임베딩 반환"""
