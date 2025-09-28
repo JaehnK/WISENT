@@ -1,6 +1,9 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Dict, Any
 
+import numpy as np
+
+
 @dataclass
 class Word:
     """단어 엔티티 - 순수한 데이터 모델
@@ -28,6 +31,11 @@ class Word:
     # 노드 정보 (그래프에서 사용)
     isnode: Optional[bool] = None  # 그래프 노드로 사용되는지 여부
     
+    # 임베딩 정보
+    bert_embedding: Optional[np.ndarray] = None
+    bert_count: int = 0  # 임베딩이 누적된 횟수
+    w2v_embedding: Optional[np.ndarray] = None
+
     def __post_init__(self):
         """초기화 후 검증만 수행 - 순수한 데이터 검증"""
         if not self.content:
@@ -73,17 +81,20 @@ class Word:
         """
         return self.is_stopword if self.is_stopword is not None else False
     
+    def update_bert_embedding(self, sentence_embedding: np.ndarray):
+        """BERT 임베딩을 가중평균으로 업데이트"""
+        if self.bert_embedding is None:
+            self.bert_embedding = sentence_embedding.copy()
+            self.bert_count = 1
+        else:
+            # 가중평균
+            old_weight = self.bert_count
+            self.bert_embedding = (self.bert_embedding * old_weight + sentence_embedding) / (old_weight + 1)
+            self.bert_count += 1
+
     @property
     def dominant_pos(self) -> Optional[str]:
         """dominant_pos getter - 외부에서 접근 가능한 인터페이스"""
         return self._dominant_pos
-    
-    # 🚫 제거된 메서드들 (비즈니스 로직):
-    # - is_noun(), is_verb(), is_adjective(), is_adverb(), is_pronoun()
-    #   → WordAnalysisService로 이동
-    # - get_pos_distribution() 
-    #   → WordStatisticsService로 이동
-    # - copy() 
-    #   → 필요시 다시 추가 (데이터 복사는 엔티티의 책임일 수 있음)
     
     

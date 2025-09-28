@@ -9,6 +9,7 @@ from torch_geometric.data import Data
 from torch_geometric.utils import to_undirected
 
 from ..Document.DocumentService import DocumentService
+from .NodeFeatureHandler import NodeFeatureHandler
 from entities import Word, WordGraph
 
 
@@ -22,16 +23,17 @@ class GraphService:
             document_service: 전처리된 문서 데이터를 제공하는 서비스
         """
         self.doc_service = document_service
-        
+        self.node_feature_handler = NodeFeatureHandler(document_service)
+
         # 그래프 데이터
         self.nodes: Optional[torch.Tensor] = None
         self.edges: Optional[torch.Tensor] = None
         self.edges_weight: Optional[torch.Tensor] = None
-        
+
         # 단어-노드 매핑
         self.node_words: Optional[List[Word]] = None
         self.word_to_node: Optional[Dict[str, int]] = None
-        
+
         # PyTorch Geometric Data 객체
         self.graph_data: Optional[Data] = None
     
@@ -79,26 +81,60 @@ class GraphService:
         word_graph.set_edges_from_co_occurrence(edges, weights)
         
         print(f"Set {len(edges)} co-occurrence edges")
-    
-    def build_complete_graph(self, top_n: int = 500, exclude_stopwords: bool = True, 
-                            max_length: int = -1) -> 'WordGraph':
+
+    def set_node_features(self, word_graph: 'WordGraph', method: str = 'concat', embed_size: int = 64) -> None:
         """
-        완전한 WordGraph 생성 (노드 + 공출현 엣지)
-        
+        WordGraph에 노드 특성 벡터 설정
+
+        Args:
+            word_graph: 특성을 설정할 WordGraph 객체
+            method: 특성 계산 방법 ('concat', 'w2v', 'bert')
+            embed_size: 임베딩 벡터 크기
+        """
+        if method not in ['concat', 'w2v', 'bert']:
+            raise ValueError(f"Unsupported node feature method: {method}")
+
+        # NodeFeatureHandler를 통해 임베딩 계산
+        node_features = self.node_feature_handler.calculate_embeddings(word_graph.words, method, embed_size)
+
+        # WordGraph에 노드 특성 설정 (기존 WordGraph 인터페이스 활용)
+        from entities import NodeFeatureType
+        if method == 'bert':
+            # BERT의 경우 768차원이므로 전용 메서드 사용 가능
+            word_graph.set_node_features_from_bert(node_features)
+        else:
+            # w2v, concat의 경우 custom 메서드 사용
+            feature_type = NodeFeatureType.WORD2VEC if method == 'w2v' else NodeFeatureType.CUSTOM
+            word_graph.set_node_features_custom(node_features, feature_type)
+
+        print(f"Set node features using method '{method}' with embed_size {embed_size}")
+
+    def build_complete_graph(self, top_n: int = 500, exclude_stopwords: bool = True,
+                            max_length: int = -1, node_feature_method: str = 'freq',
+                            embed_size: int = 64) -> 'WordGraph':
+        """
+        완전한 WordGraph 생성 (노드 + 공출현 엣지 + 노드 특성)
+
         Args:
             top_n: 상위 몇 개 단어를 노드로 사용할지
             exclude_stopwords: 불용어 제외 여부
             max_length: 문장당 최대 단어 수 제한
-            
+            node_feature_method: 노드 특성 계산 방법 ('freq', 'concat', 'w2v', 'bert')
+            embed_size: 임베딩 벡터 크기 (node_feature_method가 'freq'가 아닐 때 사용)
+
         Returns:
             완전히 구성된 WordGraph 객체
         """
         # 1. WordGraph 객체 생성 (빈도 기반 노드 특성)
         word_graph = self.create_word_graph(top_n, exclude_stopwords)
-        
+
         # 2. 공출현 엣지 설정 (기존 Cython 함수 활용)
         self.set_co_occurrence_edges(word_graph, max_length)
-        
+
+        # 3. 노드 특성 설정
+        if node_feature_method != 'freq':
+            self.set_node_features(word_graph, node_feature_method, embed_size)
+
         return word_graph
     
     def build_pytorch_geometric_data(self) -> Data:

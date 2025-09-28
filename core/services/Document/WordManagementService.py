@@ -3,6 +3,7 @@ from typing import List, Optional, Dict
 import threading
 
 import spacy
+import numpy as np
 
 from entities import *
 
@@ -36,3 +37,23 @@ class WordManagementService:
         word2id = {w.content: w.idx for w in words}
         id2word = {w.idx: w.content for w in words}
         return word2id, id2word
+    
+    def update_word_bert_embedding(self, word_content: str, embedding: np.ndarray) -> None:
+        """특정 단어의 BERT 임베딩을 업데이트 (스레드 안전)"""
+        with self._lock:
+            word_obj = self._documents.add_word(word_content)  # 없으면 생성, 있으면 반환
+            word_obj.update_bert_embedding(embedding)
+    
+    def get_word_bert_embedding(self, word_content: str) -> Optional[np.ndarray]:
+        """특정 단어의 BERT 임베딩 반환"""
+        words = self.get_all_words()
+        for word in words:
+            if word.content == word_content:
+                return word.bert_embedding
+        return None
+    
+    def update_word_w2v_embedding(self, word_content: str, embedding: np.ndarray) -> None:
+        """특정 단어의 Word2Vec 임베딩을 업데이트 (스레드 안전)"""
+        with self._lock:
+            word_obj = self._documents.add_word(word_content)
+            word_obj.set_w2v_embedding(embedding)
