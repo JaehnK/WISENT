@@ -7,10 +7,17 @@ import networkx as nx
 import torch
 from torch_geometric.data import Data
 from torch_geometric.utils import to_undirected
-import dgl
 
 from ..Document.DocumentService import DocumentService
 from entities import Word, WordGraph, NodeFeatureType
+
+# DGL은 필요할 때만 import
+try:
+    import dgl
+    DGL_AVAILABLE = True
+except ImportError:
+    DGL_AVAILABLE = False
+    print("Warning: DGL not available. GraphMAE features will be disabled.")
 
 
 
@@ -138,7 +145,7 @@ class GraphService:
         print(f"GraphMAE enhanced graph created with {embed_size}D embeddings")
         return word_graph
 
-    def wordgraph_to_dgl(self, word_graph: 'WordGraph', node_features: Optional[torch.Tensor] = None) -> dgl.DGLGraph:
+    def wordgraph_to_dgl(self, word_graph: 'WordGraph', node_features: Optional[torch.Tensor] = None):
         """
         WordGraph를 DGL 그래프로 변환
 
@@ -150,6 +157,9 @@ class GraphService:
         Returns:
             DGL 그래프 객체
         """
+        if not DGL_AVAILABLE:
+            raise ImportError("DGL is not available. Please install DGL to use GraphMAE features.")
+
         if word_graph.edge_index is None:
             raise ValueError("WordGraph has no edges. Call set_co_occurrence_edges() first.")
 
@@ -162,6 +172,9 @@ class GraphService:
         dgl_graph = dgl.graph((src_nodes, dst_nodes), num_nodes=word_graph.num_nodes)
         dgl_graph = dgl.to_bidirected(dgl_graph, copy_ndata=True)
 
+        # Self-loop 추가 (0-in-degree 노드 방지)
+        dgl_graph = dgl.add_self_loop(dgl_graph)
+
         # 노드 특성 설정
         if node_features is not None:
             dgl_graph.ndata['feat'] = node_features
@@ -170,13 +183,8 @@ class GraphService:
             freq_features = torch.tensor([[word.freq] for word in word_graph.words], dtype=torch.float32)
             dgl_graph.ndata['feat'] = freq_features
 
-        # 엣지 가중치 설정 (있는 경우)
-        if word_graph.edge_attr is not None:
-            # bidirected로 변환했으므로 엣지 가중치도 복제
-            edge_weights = word_graph.edge_attr.squeeze()
-            # 양방향 엣지이므로 가중치도 복제
-            bidirected_weights = torch.cat([edge_weights, edge_weights])
-            dgl_graph.edata['weight'] = bidirected_weights
+        # 엣지 가중치는 self-loop 추가 후 크기가 맞지 않으므로 설정하지 않음
+        # GraphMAE는 엣지 가중치를 사용하지 않음
 
         return dgl_graph
 

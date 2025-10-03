@@ -77,13 +77,50 @@ class Word:
     def dominant_pos(self) -> Optional[str]:
         """dominant_pos getter - 외부에서 접근 가능한 인터페이스"""
         return self._dominant_pos
-    
-    # 🚫 제거된 메서드들 (비즈니스 로직):
-    # - is_noun(), is_verb(), is_adjective(), is_adverb(), is_pronoun()
-    #   → WordAnalysisService로 이동
-    # - get_pos_distribution() 
-    #   → WordStatisticsService로 이동
-    # - copy() 
-    #   → 필요시 다시 추가 (데이터 복사는 엔티티의 책임일 수 있음)
-    
-    
+
+    # POS 체크 메서드 (Cython 코드와의 호환성을 위해 재추가)
+    # Penn Treebank 태그 기준
+    def is_noun(self) -> bool:
+        """명사 여부 확인 (NN, NNS, NNP, NNPS)"""
+        if not self._dominant_pos:
+            return False
+        pos = self._dominant_pos.upper()
+        # Universal POS (NOUN, PROPN) 또는 Penn Treebank (NN*)
+        return pos in ['NOUN', 'PROPN'] or pos.startswith('NN')
+
+    def is_verb(self) -> bool:
+        """동사 여부 확인 (VB, VBD, VBG, VBN, VBP, VBZ)
+
+        주의: be동사, 조동사(can, will, would 등) 제외
+        """
+        if not self._dominant_pos:
+            return False
+        pos = self._dominant_pos.upper()
+
+        # MD(modal)와 AUX는 제외
+        if pos in ['MD', 'AUX']:
+            return False
+
+        # VB 계열이지만 조동사/be동사는 제외
+        if pos.startswith('VB'):
+            # be동사, 조동사는 명시적으로 제외
+            auxiliaries = {'be', 'am', 'is', 'are', 'was', 'were', 'been', 'being',
+                          'have', 'has', 'had', 'having',
+                          'do', 'does', 'did', 'doing',
+                          'can', 'could', 'will', 'would', 'shall', 'should',
+                          'may', 'might', 'must'}
+            if self.content.lower() in auxiliaries:
+                return False
+            return True
+
+        # Universal POS (VERB)
+        return pos == 'VERB'
+
+    def is_adjective(self) -> bool:
+        """형용사 여부 확인 (JJ, JJR, JJS)"""
+        if not self._dominant_pos:
+            return False
+        pos = self._dominant_pos.upper()
+        # Universal POS (ADJ) 또는 Penn Treebank (JJ*)
+        return pos == 'ADJ' or pos.startswith('JJ')
+

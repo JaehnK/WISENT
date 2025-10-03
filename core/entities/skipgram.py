@@ -28,6 +28,11 @@ class SkipGramModel(nn.Module):
 
         neg_score = torch.bmm(emb_neg_v, emb_u.unsqueeze(2)).squeeze()
         neg_score = torch.clamp(neg_score, max=10, min=-10)
-        neg_score = -torch.sum(F.logsigmoid(-neg_score), dim=1)
+
+        # Handle both 1D and 2D tensors
+        if neg_score.dim() == 1:
+            neg_score = -F.logsigmoid(-neg_score)
+        else:
+            neg_score = -torch.sum(F.logsigmoid(-neg_score), dim=1)
 
         return torch.mean(score + neg_score)

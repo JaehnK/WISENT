@@ -5,12 +5,12 @@
     "distutils": {
         "depends": [],
         "language": "c++",
-        "name": "trie",
+        "name": "entities.trie",
         "sources": [
-            "trie.pyx"
+            "/home/jaehun/lab/SENTIMENT/core/entities/trie.pyx"
         ]
     },
-    "module_name": "trie"
+    "module_name": "entities.trie"
 }
 END: Cython Metadata */
 
@@ -1130,8 +1130,8 @@ static CYTHON_INLINE float __PYX_NAN() {
     #define __PYX_EXTERN_C extern "C++"
 #endif
 
-#define __PYX_HAVE__trie
-#define __PYX_HAVE_API__trie
+#define __PYX_HAVE__entities__trie
+#define __PYX_HAVE_API__entities__trie
 /* Early includes */
 #include <string.h>
 #include <stdlib.h>
@@ -1529,23 +1529,23 @@ static const char* const __pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_4trie_TrieNode;
-struct __pyx_obj_4trie___pyx_scope_struct__genexpr;
-struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr;
-struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr;
-struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr;
-struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr;
-struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr;
-struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr;
+struct __pyx_obj_8entities_4trie_TrieNode;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr;
 
-/* "trie.pyx":19
+/* "entities/trie.pyx":19
  * 
  * 
  * cdef class TrieNode:             # <<<<<<<<<<<<<<
  *     """  """
  *     cdef:
 */
-struct __pyx_obj_4trie_TrieNode {
+struct __pyx_obj_8entities_4trie_TrieNode {
   PyObject_HEAD
   PyObject *children;
   PyObject *word_obj;
@@ -1553,14 +1553,14 @@ struct __pyx_obj_4trie_TrieNode {
 };
 
 
-/* "trie.pyx":182
+/* "entities/trie.pyx":181
  * 
  *         #
  *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())             # <<<<<<<<<<<<<<
  *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())
  *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())
 */
-struct __pyx_obj_4trie___pyx_scope_struct__genexpr {
+struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v_w;
@@ -1570,14 +1570,14 @@ struct __pyx_obj_4trie___pyx_scope_struct__genexpr {
 };
 
 
-/* "trie.pyx":183
+/* "entities/trie.pyx":182
  *         #
  *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
  *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())             # <<<<<<<<<<<<<<
  *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())
  * 
 */
-struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr {
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v_w;
@@ -1587,14 +1587,14 @@ struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr {
 };
 
 
-/* "trie.pyx":184
+/* "entities/trie.pyx":183
  *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
  *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())
  *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())             # <<<<<<<<<<<<<<
  * 
  *         #
 */
-struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr {
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v_w;
@@ -1604,14 +1604,14 @@ struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr {
 };
 
 
-/* "trie.pyx":187
+/* "entities/trie.pyx":186
  * 
  *         #
  *         stopword_count = sum(1 for w in all_words if w.is_stopword)             # <<<<<<<<<<<<<<
  *         content_word_count = len(all_words) - stopword_count
  * 
 */
-struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr {
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v_w;
@@ -1621,14 +1621,14 @@ struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr {
 };
 
 
-/* "trie.pyx":191
+/* "entities/trie.pyx":190
  * 
  *         #
  *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)             # <<<<<<<<<<<<<<
  *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)
  *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)
 */
-struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr {
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v_w;
@@ -1638,14 +1638,14 @@ struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr {
 };
 
 
-/* "trie.pyx":192
+/* "entities/trie.pyx":191
  *         #
  *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)
  *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)             # <<<<<<<<<<<<<<
  *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)
  * 
 */
-struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr {
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v_w;
@@ -1655,14 +1655,14 @@ struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr {
 };
 
 
-/* "trie.pyx":193
+/* "entities/trie.pyx":192
  *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)
  *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)
  *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)             # <<<<<<<<<<<<<<
  * 
  *         return {
 */
-struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr {
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v_w;
@@ -2724,17 +2724,17 @@ static int __Pyx_State_RemoveModule(void*);
 
 /* Module declarations from "libcpp.string" */
 
-/* Module declarations from "trie" */
-static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *, PyObject *); /*proto*/
-static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_obj_4trie_TrieNode *, PyObject *, PyObject *); /*proto*/
-static PyObject *__pyx_f_4trie___pyx_unpickle_TrieNode__set_state(struct __pyx_obj_4trie_TrieNode *, PyObject *); /*proto*/
+/* Module declarations from "entities.trie" */
+static void __pyx_f_8entities_4trie__dfs_collect_words(struct __pyx_obj_8entities_4trie_TrieNode *, PyObject *); /*proto*/
+static struct __pyx_obj_8entities_4trie_TrieNode *__pyx_f_8entities_4trie__find_node(struct __pyx_obj_8entities_4trie_TrieNode *, PyObject *, PyObject *); /*proto*/
+static PyObject *__pyx_f_8entities_4trie___pyx_unpickle_TrieNode__set_state(struct __pyx_obj_8entities_4trie_TrieNode *, PyObject *); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "trie"
-extern int __pyx_module_is_main_trie;
-int __pyx_module_is_main_trie = 0;
+#define __Pyx_MODULE_NAME "entities.trie"
+extern int __pyx_module_is_main_entities__trie;
+int __pyx_module_is_main_entities__trie = 0;
 
-/* Implementation of "trie" */
+/* Implementation of "entities.trie" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_print;
 static PyObject *__pyx_builtin_sorted;
@@ -2776,7 +2776,6 @@ static const char __pyx_k_root[] = "root";
 static const char __pyx_k_self[] = "self";
 static const char __pyx_k_send[] = "send";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_trie[] = "trie";
 static const char __pyx_k_word[] = "word";
 static const char __pyx_k_HHA_a[] = "\320\004\032\230!\330\010\014\210H\220H\230A\330\010\014\320\014\036\230a";
 static const char __pyx_k_close[] = "close";
@@ -2851,6 +2850,7 @@ static const char __pyx_k_word_content[] = "word_content";
 static const char __pyx_k_content_nouns[] = "content_nouns";
 static const char __pyx_k_content_verbs[] = "content_verbs";
 static const char __pyx_k_content_words[] = "content_words";
+static const char __pyx_k_entities_trie[] = "entities.trie";
 static const char __pyx_k_filtered_word[] = "filtered word: ";
 static const char __pyx_k_get_all_words[] = "get_all_words";
 static const char __pyx_k_get_stopwords[] = "get_stopwords";
@@ -2881,7 +2881,7 @@ static const char __pyx_k_WordTrie_get_content_words[] = "WordTrie.get_content_w
 static const char __pyx_k_WordTrie_insert_or_get_word[] = "WordTrie.insert_or_get_word";
 static const char __pyx_k_hk_A_1_N_N_P_P_Q_881A_7_nA_1[] = "\200\001\360\006\000\005\010\200\220h\230k\250\033\260A\330\010\r\210^\2301\330\010\016\320\016!\360\000\000\"N\002\360\000\000N\002P\002\360\000\000P\002Q\002\330\004\023\2208\2308\2401\240A\330\004\007\200|\2207\230!\330\010*\250!\250;\260n\300A\330\004\013\2101";
 static const char __pyx_k_WordTrie_get_top_words_by_pos[] = "WordTrie.get_top_words_by_pos";
-static const char __pyx_k_7_5HHXXY_D_a_HA_T_HCs_hc_D_Q_gQ[] = "\320\004#\2407\250+\3205H\320HX\320XY\360\026\000\t\025\220D\230\016\240a\360\006\000\t\032\230\021\330\010\014\210H\220A\340\014\017\320\017!\240\024\240T\250\021\330\020\021\360\006\000\r\021\220\004\220H\230C\230s\240$\240h\250c\260\023\260D\270\r\300Q\330\020\036\230g\240Q\240a\360\006\000\t\016\210Q\320\016!\240\023\240A\240Q\330\010\017\210v\220Q\320\026&\240d\320*<\270H\300E\310\022\3101";
+static const char __pyx_k_7_5HHXXY_D_a_HA_T_t_t83c_XS_4_g[] = "\320\004#\2407\250+\3205H\320HX\320XY\360\026\000\t\025\220D\230\016\240a\360\006\000\t\032\230\021\330\010\014\210H\220A\340\014\017\320\017!\240\024\240T\250\021\330\020\021\340\014\017\210t\220?\240%\240t\2508\2603\260c\270\024\270X\300S\310\003\3104\310}\320\\]\330\020\036\230g\240Q\240a\360\006\000\t\016\210Q\320\016!\240\023\240A\240Q\330\010\017\210v\220Q\320\026&\240d\320*<\270H\300E\310\022\3101";
 static const char __pyx_k_D_a_S_S_Cq_AQ_S_Ba_1A_1A_s_1_3a[] = "\320\004 \240\001\340\010\024\220D\230\016\240a\360\006\000\t\026\220S\230\001\230\021\330\010\025\220S\230\001\230\021\330\010\024\220C\220q\230\001\360\006\000\t\032\230\023\230A\230Q\330\010\035\230S\240\001\240\033\250B\250a\360\006\000\t\031\230\003\2301\230A\330\010\030\230\003\2301\230A\330\010\027\220s\230!\2301\340\010\t\330\014\033\2303\230a\230q\330\014\031\230\021\330\014\035\230Q\330\014\025\220Q\330\014\025\220Q\330\014\032\230!\330\014\035\230Q\330\014\035\230Q\330\014\"\240!\330\014\031\230\023\230A\230[\250\002\250+\260R\260{\300\"\300A";
 static const char __pyx_k_T_D_1_Q_G1F_a_vWA_q_t_WE_D_q_Qg[] = "\200\001\360\010\000\005\016\210T\220\033\230D\320 1\260\024\260Q\330\004\014\210G\2201\220F\230,\240a\330\004\007\200v\210W\220A\330\010\022\220!\330\010\027\220q\340\010\027\220t\230:\240W\250E\260\023\260D\270\n\300'\310\021\330\004\007\200q\330\010\017\320\017)\250\024\250Q\250g\260[\300\007\300q\340\010\017\320\017)\250\024\250Q\250g\260[\300\001";
 static const char __pyx_k_uI_A_z_g_1_4q_D_t1A_G4q_O1A_A_q[] = "\320\004/\250u\260I\270_\310A\340\010\017\210z\230\021\230$\230g\240^\2601\340\010\013\2104\210q\330\014\020\220\t\230\037\250\001\250\021\330\014\024\220D\230\001\340\014\027\220t\2301\230A\330\014\024\220G\2304\230q\330\014\024\220O\2401\240A\340\014\020\220\014\230A\330\014\020\320\020\"\240!\330\014\020\220\017\230q\340\014\024\220A";
@@ -2890,33 +2890,33 @@ static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython
 static const char __pyx_k_WordTrie_get_top_words_by_pos_lo[] = "WordTrie.get_top_words_by_pos.<locals>.<lambda>";
 static const char __pyx_k_WordTrie_get_word_stats_locals_g[] = "WordTrie.get_word_stats.<locals>.genexpr";
 /* #### Code section: decls ### */
-static int __pyx_pf_4trie_8TrieNode___init__(struct __pyx_obj_4trie_TrieNode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4trie_8TrieNode_2__reduce_cython__(struct __pyx_obj_4trie_TrieNode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4trie_8TrieNode_4__setstate_cython__(struct __pyx_obj_4trie_TrieNode *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_word_content, PyObject *__pyx_v_pos_tag); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static int __pyx_pf_8entities_4trie_8TrieNode___init__(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8TrieNode_2__reduce_cython__(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8TrieNode_4__setstate_cython__(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_word_content, PyObject *__pyx_v_pos_tag); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_w); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_top_n, PyObject *__pyx_v_exclude_stopwords); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_3genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_6genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_9genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_12genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_15genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_18genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4trie___pyx_unpickle_TrieNode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_4trie_TrieNode(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct__genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_2_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_3_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_4_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_5_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_6_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_top_n, PyObject *__pyx_v_exclude_stopwords); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_3genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_6genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_9genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_12genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_15genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_18genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8entities_4trie___pyx_unpickle_TrieNode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_8entities_4trie_TrieNode(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct__genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_2_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_3_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_4_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_5_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_6_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2955,22 +2955,22 @@ typedef struct {
   #ifdef __Pyx_Coroutine_USED
   PyTypeObject *__pyx_CoroutineType;
   #endif
-  PyObject *__pyx_type_4trie_TrieNode;
-  PyObject *__pyx_type_4trie___pyx_scope_struct__genexpr;
-  PyObject *__pyx_type_4trie___pyx_scope_struct_1_genexpr;
-  PyObject *__pyx_type_4trie___pyx_scope_struct_2_genexpr;
-  PyObject *__pyx_type_4trie___pyx_scope_struct_3_genexpr;
-  PyObject *__pyx_type_4trie___pyx_scope_struct_4_genexpr;
-  PyObject *__pyx_type_4trie___pyx_scope_struct_5_genexpr;
-  PyObject *__pyx_type_4trie___pyx_scope_struct_6_genexpr;
-  PyTypeObject *__pyx_ptype_4trie_TrieNode;
-  PyTypeObject *__pyx_ptype_4trie___pyx_scope_struct__genexpr;
-  PyTypeObject *__pyx_ptype_4trie___pyx_scope_struct_1_genexpr;
-  PyTypeObject *__pyx_ptype_4trie___pyx_scope_struct_2_genexpr;
-  PyTypeObject *__pyx_ptype_4trie___pyx_scope_struct_3_genexpr;
-  PyTypeObject *__pyx_ptype_4trie___pyx_scope_struct_4_genexpr;
-  PyTypeObject *__pyx_ptype_4trie___pyx_scope_struct_5_genexpr;
-  PyTypeObject *__pyx_ptype_4trie___pyx_scope_struct_6_genexpr;
+  PyObject *__pyx_type_8entities_4trie_TrieNode;
+  PyObject *__pyx_type_8entities_4trie___pyx_scope_struct__genexpr;
+  PyObject *__pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr;
+  PyObject *__pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr;
+  PyObject *__pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr;
+  PyObject *__pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr;
+  PyObject *__pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr;
+  PyObject *__pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr;
+  PyTypeObject *__pyx_ptype_8entities_4trie_TrieNode;
+  PyTypeObject *__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr;
+  PyTypeObject *__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr;
+  PyTypeObject *__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr;
+  PyTypeObject *__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr;
+  PyTypeObject *__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr;
+  PyTypeObject *__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr;
+  PyTypeObject *__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   PyObject *__pyx_tuple[3];
   PyObject *__pyx_codeobj_tab[18];
@@ -2989,38 +2989,38 @@ PyObject *__Pyx_CachedMethodType;
 
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_4trie___pyx_scope_struct__genexpr *__pyx_freelist_4trie___pyx_scope_struct__genexpr[8];
-int __pyx_freecount_4trie___pyx_scope_struct__genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *__pyx_freelist_8entities_4trie___pyx_scope_struct__genexpr[8];
+int __pyx_freecount_8entities_4trie___pyx_scope_struct__genexpr;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *__pyx_freelist_4trie___pyx_scope_struct_1_genexpr[8];
-int __pyx_freecount_4trie___pyx_scope_struct_1_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *__pyx_freelist_8entities_4trie___pyx_scope_struct_1_genexpr[8];
+int __pyx_freecount_8entities_4trie___pyx_scope_struct_1_genexpr;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *__pyx_freelist_4trie___pyx_scope_struct_2_genexpr[8];
-int __pyx_freecount_4trie___pyx_scope_struct_2_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *__pyx_freelist_8entities_4trie___pyx_scope_struct_2_genexpr[8];
+int __pyx_freecount_8entities_4trie___pyx_scope_struct_2_genexpr;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *__pyx_freelist_4trie___pyx_scope_struct_3_genexpr[8];
-int __pyx_freecount_4trie___pyx_scope_struct_3_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *__pyx_freelist_8entities_4trie___pyx_scope_struct_3_genexpr[8];
+int __pyx_freecount_8entities_4trie___pyx_scope_struct_3_genexpr;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *__pyx_freelist_4trie___pyx_scope_struct_4_genexpr[8];
-int __pyx_freecount_4trie___pyx_scope_struct_4_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *__pyx_freelist_8entities_4trie___pyx_scope_struct_4_genexpr[8];
+int __pyx_freecount_8entities_4trie___pyx_scope_struct_4_genexpr;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *__pyx_freelist_4trie___pyx_scope_struct_5_genexpr[8];
-int __pyx_freecount_4trie___pyx_scope_struct_5_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *__pyx_freelist_8entities_4trie___pyx_scope_struct_5_genexpr[8];
+int __pyx_freecount_8entities_4trie___pyx_scope_struct_5_genexpr;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *__pyx_freelist_4trie___pyx_scope_struct_6_genexpr[8];
-int __pyx_freecount_4trie___pyx_scope_struct_6_genexpr;
+struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *__pyx_freelist_8entities_4trie___pyx_scope_struct_6_genexpr[8];
+int __pyx_freecount_8entities_4trie___pyx_scope_struct_6_genexpr;
 #endif
 /* CodeObjectCache.module_state_decls */
 struct __Pyx_CodeObjectCache __pyx_code_cache;
@@ -3101,78 +3101,78 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_doc __pyx_string_tab[43]
 #define __pyx_n_u_dominant_pos __pyx_string_tab[44]
 #define __pyx_kp_u_enable __pyx_string_tab[45]
-#define __pyx_n_u_exclude_stopwords __pyx_string_tab[46]
-#define __pyx_kp_u_filtered_word __pyx_string_tab[47]
-#define __pyx_n_u_filtered_words __pyx_string_tab[48]
-#define __pyx_n_u_freq __pyx_string_tab[49]
-#define __pyx_n_u_func __pyx_string_tab[50]
-#define __pyx_kp_u_gc __pyx_string_tab[51]
-#define __pyx_n_u_genexpr __pyx_string_tab[52]
-#define __pyx_n_u_get_all_words __pyx_string_tab[53]
-#define __pyx_n_u_get_content_words __pyx_string_tab[54]
-#define __pyx_n_u_get_stopwords __pyx_string_tab[55]
-#define __pyx_n_u_get_top_words_by_pos __pyx_string_tab[56]
-#define __pyx_n_u_get_word_stats __pyx_string_tab[57]
-#define __pyx_n_u_getstate __pyx_string_tab[58]
-#define __pyx_n_u_idx __pyx_string_tab[59]
-#define __pyx_n_u_increment_freq __pyx_string_tab[60]
-#define __pyx_n_u_init __pyx_string_tab[61]
-#define __pyx_n_u_insert_or_get_word __pyx_string_tab[62]
-#define __pyx_n_u_int __pyx_string_tab[63]
-#define __pyx_n_u_is_adjective __pyx_string_tab[64]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[65]
-#define __pyx_n_u_is_noun __pyx_string_tab[66]
-#define __pyx_n_u_is_stopword __pyx_string_tab[67]
-#define __pyx_n_u_is_verb __pyx_string_tab[68]
-#define __pyx_kp_u_isenabled __pyx_string_tab[69]
-#define __pyx_n_u_key __pyx_string_tab[70]
-#define __pyx_n_u_lambda __pyx_string_tab[71]
-#define __pyx_n_u_main __pyx_string_tab[72]
-#define __pyx_n_u_metaclass __pyx_string_tab[73]
-#define __pyx_n_u_module __pyx_string_tab[74]
-#define __pyx_n_u_name __pyx_string_tab[75]
-#define __pyx_n_u_new __pyx_string_tab[76]
-#define __pyx_n_u_next __pyx_string_tab[77]
-#define __pyx_n_u_node __pyx_string_tab[78]
-#define __pyx_n_u_noun_count __pyx_string_tab[79]
-#define __pyx_n_u_nouns __pyx_string_tab[80]
-#define __pyx_n_u_other_pos __pyx_string_tab[81]
-#define __pyx_n_u_pickle __pyx_string_tab[82]
-#define __pyx_n_u_pop __pyx_string_tab[83]
-#define __pyx_n_u_pos_tag __pyx_string_tab[84]
-#define __pyx_n_u_prepare __pyx_string_tab[85]
-#define __pyx_n_u_print __pyx_string_tab[86]
-#define __pyx_n_u_pyx_PickleError __pyx_string_tab[87]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[88]
-#define __pyx_n_u_pyx_result __pyx_string_tab[89]
-#define __pyx_n_u_pyx_state __pyx_string_tab[90]
-#define __pyx_n_u_pyx_type __pyx_string_tab[91]
-#define __pyx_n_u_pyx_unpickle_TrieNode __pyx_string_tab[92]
-#define __pyx_n_u_qualname __pyx_string_tab[93]
-#define __pyx_n_u_reduce __pyx_string_tab[94]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[95]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[96]
-#define __pyx_n_u_return __pyx_string_tab[97]
-#define __pyx_n_u_reverse __pyx_string_tab[98]
-#define __pyx_n_u_root __pyx_string_tab[99]
-#define __pyx_n_u_self __pyx_string_tab[100]
-#define __pyx_n_u_send __pyx_string_tab[101]
-#define __pyx_n_u_sentence __pyx_string_tab[102]
-#define __pyx_n_u_set_name __pyx_string_tab[103]
-#define __pyx_n_u_setstate __pyx_string_tab[104]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[105]
-#define __pyx_n_u_sorted __pyx_string_tab[106]
-#define __pyx_n_u_state __pyx_string_tab[107]
-#define __pyx_n_u_stopword_count __pyx_string_tab[108]
-#define __pyx_n_u_stopwords __pyx_string_tab[109]
-#define __pyx_n_u_str __pyx_string_tab[110]
-#define __pyx_kp_u_stringsource __pyx_string_tab[111]
-#define __pyx_n_u_sum __pyx_string_tab[112]
-#define __pyx_n_u_test __pyx_string_tab[113]
-#define __pyx_n_u_throw __pyx_string_tab[114]
-#define __pyx_n_u_top_n __pyx_string_tab[115]
-#define __pyx_n_u_total_words __pyx_string_tab[116]
-#define __pyx_n_u_trie __pyx_string_tab[117]
+#define __pyx_n_u_entities_trie __pyx_string_tab[46]
+#define __pyx_n_u_exclude_stopwords __pyx_string_tab[47]
+#define __pyx_kp_u_filtered_word __pyx_string_tab[48]
+#define __pyx_n_u_filtered_words __pyx_string_tab[49]
+#define __pyx_n_u_freq __pyx_string_tab[50]
+#define __pyx_n_u_func __pyx_string_tab[51]
+#define __pyx_kp_u_gc __pyx_string_tab[52]
+#define __pyx_n_u_genexpr __pyx_string_tab[53]
+#define __pyx_n_u_get_all_words __pyx_string_tab[54]
+#define __pyx_n_u_get_content_words __pyx_string_tab[55]
+#define __pyx_n_u_get_stopwords __pyx_string_tab[56]
+#define __pyx_n_u_get_top_words_by_pos __pyx_string_tab[57]
+#define __pyx_n_u_get_word_stats __pyx_string_tab[58]
+#define __pyx_n_u_getstate __pyx_string_tab[59]
+#define __pyx_n_u_idx __pyx_string_tab[60]
+#define __pyx_n_u_increment_freq __pyx_string_tab[61]
+#define __pyx_n_u_init __pyx_string_tab[62]
+#define __pyx_n_u_insert_or_get_word __pyx_string_tab[63]
+#define __pyx_n_u_int __pyx_string_tab[64]
+#define __pyx_n_u_is_adjective __pyx_string_tab[65]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[66]
+#define __pyx_n_u_is_noun __pyx_string_tab[67]
+#define __pyx_n_u_is_stopword __pyx_string_tab[68]
+#define __pyx_n_u_is_verb __pyx_string_tab[69]
+#define __pyx_kp_u_isenabled __pyx_string_tab[70]
+#define __pyx_n_u_key __pyx_string_tab[71]
+#define __pyx_n_u_lambda __pyx_string_tab[72]
+#define __pyx_n_u_main __pyx_string_tab[73]
+#define __pyx_n_u_metaclass __pyx_string_tab[74]
+#define __pyx_n_u_module __pyx_string_tab[75]
+#define __pyx_n_u_name __pyx_string_tab[76]
+#define __pyx_n_u_new __pyx_string_tab[77]
+#define __pyx_n_u_next __pyx_string_tab[78]
+#define __pyx_n_u_node __pyx_string_tab[79]
+#define __pyx_n_u_noun_count __pyx_string_tab[80]
+#define __pyx_n_u_nouns __pyx_string_tab[81]
+#define __pyx_n_u_other_pos __pyx_string_tab[82]
+#define __pyx_n_u_pickle __pyx_string_tab[83]
+#define __pyx_n_u_pop __pyx_string_tab[84]
+#define __pyx_n_u_pos_tag __pyx_string_tab[85]
+#define __pyx_n_u_prepare __pyx_string_tab[86]
+#define __pyx_n_u_print __pyx_string_tab[87]
+#define __pyx_n_u_pyx_PickleError __pyx_string_tab[88]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[89]
+#define __pyx_n_u_pyx_result __pyx_string_tab[90]
+#define __pyx_n_u_pyx_state __pyx_string_tab[91]
+#define __pyx_n_u_pyx_type __pyx_string_tab[92]
+#define __pyx_n_u_pyx_unpickle_TrieNode __pyx_string_tab[93]
+#define __pyx_n_u_qualname __pyx_string_tab[94]
+#define __pyx_n_u_reduce __pyx_string_tab[95]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[96]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[97]
+#define __pyx_n_u_return __pyx_string_tab[98]
+#define __pyx_n_u_reverse __pyx_string_tab[99]
+#define __pyx_n_u_root __pyx_string_tab[100]
+#define __pyx_n_u_self __pyx_string_tab[101]
+#define __pyx_n_u_send __pyx_string_tab[102]
+#define __pyx_n_u_sentence __pyx_string_tab[103]
+#define __pyx_n_u_set_name __pyx_string_tab[104]
+#define __pyx_n_u_setstate __pyx_string_tab[105]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[106]
+#define __pyx_n_u_sorted __pyx_string_tab[107]
+#define __pyx_n_u_state __pyx_string_tab[108]
+#define __pyx_n_u_stopword_count __pyx_string_tab[109]
+#define __pyx_n_u_stopwords __pyx_string_tab[110]
+#define __pyx_n_u_str __pyx_string_tab[111]
+#define __pyx_kp_u_stringsource __pyx_string_tab[112]
+#define __pyx_n_u_sum __pyx_string_tab[113]
+#define __pyx_n_u_test __pyx_string_tab[114]
+#define __pyx_n_u_throw __pyx_string_tab[115]
+#define __pyx_n_u_top_n __pyx_string_tab[116]
+#define __pyx_n_u_total_words __pyx_string_tab[117]
 #define __pyx_kp_u_trie_pyx __pyx_string_tab[118]
 #define __pyx_n_u_typing __pyx_string_tab[119]
 #define __pyx_n_u_update __pyx_string_tab[120]
@@ -3208,22 +3208,22 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_4trie_TrieNode);
-  Py_CLEAR(clear_module_state->__pyx_type_4trie_TrieNode);
-  Py_CLEAR(clear_module_state->__pyx_ptype_4trie___pyx_scope_struct__genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_4trie___pyx_scope_struct__genexpr);
-  Py_CLEAR(clear_module_state->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_4trie___pyx_scope_struct_1_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_4trie___pyx_scope_struct_2_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_4trie___pyx_scope_struct_3_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_4trie___pyx_scope_struct_4_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_4trie___pyx_scope_struct_5_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_4trie___pyx_scope_struct_6_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8entities_4trie_TrieNode);
+  Py_CLEAR(clear_module_state->__pyx_type_8entities_4trie_TrieNode);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_8entities_4trie___pyx_scope_struct__genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr);
   for (int i=0; i<3; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<18; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
   for (int i=0; i<133; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
@@ -3253,22 +3253,22 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
-  Py_VISIT(traverse_module_state->__pyx_ptype_4trie_TrieNode);
-  Py_VISIT(traverse_module_state->__pyx_type_4trie_TrieNode);
-  Py_VISIT(traverse_module_state->__pyx_ptype_4trie___pyx_scope_struct__genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_4trie___pyx_scope_struct__genexpr);
-  Py_VISIT(traverse_module_state->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_4trie___pyx_scope_struct_1_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_4trie___pyx_scope_struct_2_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_4trie___pyx_scope_struct_3_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_4trie___pyx_scope_struct_4_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_4trie___pyx_scope_struct_5_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_4trie___pyx_scope_struct_6_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8entities_4trie_TrieNode);
+  Py_VISIT(traverse_module_state->__pyx_type_8entities_4trie_TrieNode);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_8entities_4trie___pyx_scope_struct__genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr);
   for (int i=0; i<3; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<18; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
   for (int i=0; i<133; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
@@ -3283,7 +3283,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
 #endif
 /* #### Code section: module_code ### */
 
-/* "trie.pyx":26
+/* "entities/trie.pyx":26
  *         bint    is_end_of_word
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -3292,8 +3292,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
 */
 
 /* Python wrapper */
-static int __pyx_pw_4trie_8TrieNode_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_4trie_8TrieNode_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_8entities_4trie_8TrieNode_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_8entities_4trie_8TrieNode_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
@@ -3309,14 +3309,14 @@ static int __pyx_pw_4trie_8TrieNode_1__init__(PyObject *__pyx_v_self, PyObject *
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return -1;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__init__", __pyx_kwds); return -1;}
-  __pyx_r = __pyx_pf_4trie_8TrieNode___init__(((struct __pyx_obj_4trie_TrieNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8entities_4trie_8TrieNode___init__(((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_4trie_8TrieNode___init__(struct __pyx_obj_4trie_TrieNode *__pyx_v_self) {
+static int __pyx_pf_8entities_4trie_8TrieNode___init__(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3325,7 +3325,7 @@ static int __pyx_pf_4trie_8TrieNode___init__(struct __pyx_obj_4trie_TrieNode *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "trie.pyx":27
+  /* "entities/trie.pyx":27
  * 
  *     def __init__(self):
  *         self.children = {}             # <<<<<<<<<<<<<<
@@ -3340,7 +3340,7 @@ static int __pyx_pf_4trie_8TrieNode___init__(struct __pyx_obj_4trie_TrieNode *__
   __pyx_v_self->children = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":28
+  /* "entities/trie.pyx":28
  *     def __init__(self):
  *         self.children = {}
  *         self.word_obj = None             # <<<<<<<<<<<<<<
@@ -3353,7 +3353,7 @@ static int __pyx_pf_4trie_8TrieNode___init__(struct __pyx_obj_4trie_TrieNode *__
   __Pyx_DECREF(__pyx_v_self->word_obj);
   __pyx_v_self->word_obj = Py_None;
 
-  /* "trie.pyx":29
+  /* "entities/trie.pyx":29
  *         self.children = {}
  *         self.word_obj = None
  *         self.is_end_of_word = False             # <<<<<<<<<<<<<<
@@ -3362,7 +3362,7 @@ static int __pyx_pf_4trie_8TrieNode___init__(struct __pyx_obj_4trie_TrieNode *__
 */
   __pyx_v_self->is_end_of_word = 0;
 
-  /* "trie.pyx":26
+  /* "entities/trie.pyx":26
  *         bint    is_end_of_word
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -3375,7 +3375,7 @@ static int __pyx_pf_4trie_8TrieNode___init__(struct __pyx_obj_4trie_TrieNode *__
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("trie.TrieNode.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.TrieNode.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3389,15 +3389,15 @@ static int __pyx_pf_4trie_8TrieNode___init__(struct __pyx_obj_4trie_TrieNode *__
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8TrieNode_3__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_8entities_4trie_8TrieNode_3__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4trie_8TrieNode_3__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8TrieNode_3__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4trie_8TrieNode_3__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_8entities_4trie_8TrieNode_3__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8TrieNode_3__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8entities_4trie_8TrieNode_3__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3423,14 +3423,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_4trie_8TrieNode_2__reduce_cython__(((struct __pyx_obj_4trie_TrieNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8entities_4trie_8TrieNode_2__reduce_cython__(((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4trie_8TrieNode_2__reduce_cython__(struct __pyx_obj_4trie_TrieNode *__pyx_v_self) {
+static PyObject *__pyx_pf_8entities_4trie_8TrieNode_2__reduce_cython__(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_self) {
   PyObject *__pyx_v_state = 0;
   PyObject *__pyx_v__dict = 0;
   int __pyx_v_use_setstate;
@@ -3649,7 +3649,7 @@ static PyObject *__pyx_pf_4trie_8TrieNode_2__reduce_cython__(struct __pyx_obj_4t
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("trie.TrieNode.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.TrieNode.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_state);
@@ -3667,15 +3667,15 @@ static PyObject *__pyx_pf_4trie_8TrieNode_2__reduce_cython__(struct __pyx_obj_4t
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8TrieNode_5__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_8entities_4trie_8TrieNode_5__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4trie_8TrieNode_5__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8TrieNode_5__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4trie_8TrieNode_5__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_8entities_4trie_8TrieNode_5__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8TrieNode_5__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8entities_4trie_8TrieNode_5__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3737,11 +3737,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.TrieNode.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.TrieNode.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4trie_8TrieNode_4__setstate_cython__(((struct __pyx_obj_4trie_TrieNode *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_8entities_4trie_8TrieNode_4__setstate_cython__(((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -3751,7 +3751,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4trie_8TrieNode_4__setstate_cython__(struct __pyx_obj_4trie_TrieNode *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_8entities_4trie_8TrieNode_4__setstate_cython__(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3766,7 +3766,7 @@ static PyObject *__pyx_pf_4trie_8TrieNode_4__setstate_cython__(struct __pyx_obj_
  *     __pyx_unpickle_TrieNode__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
 */
   if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_v___pyx_state))) __PYX_ERR(1, 17, __pyx_L1_error)
-  __pyx_t_1 = __pyx_f_4trie___pyx_unpickle_TrieNode__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 17, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8entities_4trie___pyx_unpickle_TrieNode__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
@@ -3782,7 +3782,7 @@ static PyObject *__pyx_pf_4trie_8TrieNode_4__setstate_cython__(struct __pyx_obj_
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("trie.TrieNode.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.TrieNode.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3790,7 +3790,7 @@ static PyObject *__pyx_pf_4trie_8TrieNode_4__setstate_cython__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "trie.pyx":31
+/* "entities/trie.pyx":31
  *         self.is_end_of_word = False
  * 
  * cdef void _dfs_collect_words(TrieNode node, list words):             # <<<<<<<<<<<<<<
@@ -3798,7 +3798,7 @@ static PyObject *__pyx_pf_4trie_8TrieNode_4__setstate_cython__(struct __pyx_obj_
  *     if node.is_end_of_word:
 */
 
-static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *__pyx_v_node, PyObject *__pyx_v_words) {
+static void __pyx_f_8entities_4trie__dfs_collect_words(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_node, PyObject *__pyx_v_words) {
   PyObject *__pyx_v_child_node = 0;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3813,7 +3813,7 @@ static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_dfs_collect_words", 0);
 
-  /* "trie.pyx":33
+  /* "entities/trie.pyx":33
  * cdef void _dfs_collect_words(TrieNode node, list words):
  *     """ DFS """
  *     if node.is_end_of_word:             # <<<<<<<<<<<<<<
@@ -3822,7 +3822,7 @@ static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *__
 */
   if (__pyx_v_node->is_end_of_word) {
 
-    /* "trie.pyx":34
+    /* "entities/trie.pyx":34
  *     """ DFS """
  *     if node.is_end_of_word:
  *         words.append(node.word_obj)             # <<<<<<<<<<<<<<
@@ -3838,7 +3838,7 @@ static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *__
     __pyx_t_2 = __Pyx_PyList_Append(__pyx_v_words, __pyx_t_1); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 34, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "trie.pyx":33
+    /* "entities/trie.pyx":33
  * cdef void _dfs_collect_words(TrieNode node, list words):
  *     """ DFS """
  *     if node.is_end_of_word:             # <<<<<<<<<<<<<<
@@ -3847,7 +3847,7 @@ static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *__
 */
   }
 
-  /* "trie.pyx":40
+  /* "entities/trie.pyx":40
  *         object child_node
  * 
  *     for child_node in node.children.values():             # <<<<<<<<<<<<<<
@@ -3872,19 +3872,19 @@ static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *__
     __Pyx_XDECREF_SET(__pyx_v_child_node, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "trie.pyx":41
+    /* "entities/trie.pyx":41
  * 
  *     for child_node in node.children.values():
  *         _dfs_collect_words(child_node, words)             # <<<<<<<<<<<<<<
  * 
  * cdef TrieNode _find_node(TrieNode node, str word_content, str pos_tag):
 */
-    if (!(likely(((__pyx_v_child_node) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_child_node, __pyx_mstate_global->__pyx_ptype_4trie_TrieNode))))) __PYX_ERR(0, 41, __pyx_L1_error)
-    __pyx_f_4trie__dfs_collect_words(((struct __pyx_obj_4trie_TrieNode *)__pyx_v_child_node), __pyx_v_words); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L1_error)
+    if (!(likely(((__pyx_v_child_node) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_child_node, __pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode))))) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_f_8entities_4trie__dfs_collect_words(((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_v_child_node), __pyx_v_words); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "trie.pyx":31
+  /* "entities/trie.pyx":31
  *         self.is_end_of_word = False
  * 
  * cdef void _dfs_collect_words(TrieNode node, list words):             # <<<<<<<<<<<<<<
@@ -3897,13 +3897,13 @@ static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *__
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("trie._dfs_collect_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie._dfs_collect_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_child_node);
   __Pyx_RefNannyFinishContext();
 }
 
-/* "trie.pyx":43
+/* "entities/trie.pyx":43
  *         _dfs_collect_words(child_node, words)
  * 
  * cdef TrieNode _find_node(TrieNode node, str word_content, str pos_tag):             # <<<<<<<<<<<<<<
@@ -3911,10 +3911,10 @@ static void __pyx_f_4trie__dfs_collect_words(struct __pyx_obj_4trie_TrieNode *__
  *         char c
 */
 
-static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_obj_4trie_TrieNode *__pyx_v_node, PyObject *__pyx_v_word_content, CYTHON_UNUSED PyObject *__pyx_v_pos_tag) {
+static struct __pyx_obj_8entities_4trie_TrieNode *__pyx_f_8entities_4trie__find_node(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_node, PyObject *__pyx_v_word_content, CYTHON_UNUSED PyObject *__pyx_v_pos_tag) {
   char __pyx_v_c;
   Py_UCS4 __pyx_v_char;
-  struct __pyx_obj_4trie_TrieNode *__pyx_r = NULL;
+  struct __pyx_obj_8entities_4trie_TrieNode *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -3934,7 +3934,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
   __Pyx_RefNannySetupContext("_find_node", 0);
   __Pyx_INCREF((PyObject *)__pyx_v_node);
 
-  /* "trie.pyx":47
+  /* "entities/trie.pyx":47
  *         char c
  * 
  *     for char in word_content:             # <<<<<<<<<<<<<<
@@ -3952,7 +3952,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
     __pyx_t_2 = __pyx_t_7;
     __pyx_v_char = __Pyx_PyUnicode_READ(__pyx_t_5, __pyx_t_4, __pyx_t_2);
 
-    /* "trie.pyx":48
+    /* "entities/trie.pyx":48
  * 
  *     for char in word_content:
  *         c = ord(char)             # <<<<<<<<<<<<<<
@@ -3961,7 +3961,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
 */
     __pyx_v_c = __Pyx_long_cast(__pyx_v_char);
 
-    /* "trie.pyx":49
+    /* "entities/trie.pyx":49
  *     for char in word_content:
  *         c = ord(char)
  *         if c not in node.children:             # <<<<<<<<<<<<<<
@@ -3978,7 +3978,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_9) {
 
-      /* "trie.pyx":50
+      /* "entities/trie.pyx":50
  *         c = ord(char)
  *         if c not in node.children:
  *             node.children[c] = TrieNode()             # <<<<<<<<<<<<<<
@@ -3986,8 +3986,8 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
  * 
 */
       __pyx_t_10 = NULL;
-      __Pyx_INCREF((PyObject *)__pyx_mstate_global->__pyx_ptype_4trie_TrieNode);
-      __pyx_t_11 = ((PyObject *)__pyx_mstate_global->__pyx_ptype_4trie_TrieNode); 
+      __Pyx_INCREF((PyObject *)__pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode);
+      __pyx_t_11 = ((PyObject *)__pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode); 
       __pyx_t_12 = 1;
       {
         PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
@@ -4007,7 +4007,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF((PyObject *)__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "trie.pyx":49
+      /* "entities/trie.pyx":49
  *     for char in word_content:
  *         c = ord(char)
  *         if c not in node.children:             # <<<<<<<<<<<<<<
@@ -4016,7 +4016,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
 */
     }
 
-    /* "trie.pyx":51
+    /* "entities/trie.pyx":51
  *         if c not in node.children:
  *             node.children[c] = TrieNode()
  *         node = node.children[c]             # <<<<<<<<<<<<<<
@@ -4032,13 +4032,13 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
     __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_node->children, __pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (!(likely(((__pyx_t_11) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_11, __pyx_mstate_global->__pyx_ptype_4trie_TrieNode))))) __PYX_ERR(0, 51, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_node, ((struct __pyx_obj_4trie_TrieNode *)__pyx_t_11));
+    if (!(likely(((__pyx_t_11) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_11, __pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode))))) __PYX_ERR(0, 51, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_node, ((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_t_11));
     __pyx_t_11 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "trie.pyx":53
+  /* "entities/trie.pyx":53
  *         node = node.children[c]
  * 
  *     return (node)             # <<<<<<<<<<<<<<
@@ -4050,7 +4050,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
   __pyx_r = __pyx_v_node;
   goto __pyx_L0;
 
-  /* "trie.pyx":43
+  /* "entities/trie.pyx":43
  *         _dfs_collect_words(child_node, words)
  * 
  * cdef TrieNode _find_node(TrieNode node, str word_content, str pos_tag):             # <<<<<<<<<<<<<<
@@ -4064,7 +4064,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("trie._find_node", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie._find_node", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_node);
@@ -4073,7 +4073,7 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "trie.pyx":64
+/* "entities/trie.pyx":64
  *     #     int         word_count
  * 
  *     def __init__(self) -> None:             # <<<<<<<<<<<<<<
@@ -4082,15 +4082,15 @@ static struct __pyx_obj_4trie_TrieNode *__pyx_f_4trie__find_node(struct __pyx_ob
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8WordTrie_1__init__(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_1__init__(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4trie_8WordTrie_1__init__ = {"__init__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8WordTrie_1__init__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4trie_8WordTrie_1__init__(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8entities_4trie_8WordTrie_1__init__ = {"__init__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8WordTrie_1__init__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_1__init__(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4152,11 +4152,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.WordTrie.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4trie_8WordTrie___init__(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_8entities_4trie_8WordTrie___init__(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -4166,7 +4166,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4178,7 +4178,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "trie.pyx":65
+  /* "entities/trie.pyx":65
  * 
  *     def __init__(self) -> None:
  *         self.root = TrieNode()             # <<<<<<<<<<<<<<
@@ -4186,8 +4186,8 @@ static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_INCREF((PyObject *)__pyx_mstate_global->__pyx_ptype_4trie_TrieNode);
-  __pyx_t_3 = ((PyObject *)__pyx_mstate_global->__pyx_ptype_4trie_TrieNode); 
+  __Pyx_INCREF((PyObject *)__pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode);
+  __pyx_t_3 = ((PyObject *)__pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode); 
   __pyx_t_4 = 1;
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
@@ -4200,7 +4200,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_root, ((PyObject *)__pyx_t_1)) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_DECREF((PyObject *)__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "trie.pyx":66
+  /* "entities/trie.pyx":66
  *     def __init__(self) -> None:
  *         self.root = TrieNode()
  *         self.word_count:int = 0 # idx count             # <<<<<<<<<<<<<<
@@ -4209,7 +4209,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx
 */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_word_count, __pyx_mstate_global->__pyx_int_0) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
 
-  /* "trie.pyx":64
+  /* "entities/trie.pyx":64
  *     #     int         word_count
  * 
  *     def __init__(self) -> None:             # <<<<<<<<<<<<<<
@@ -4224,7 +4224,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("trie.WordTrie.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4232,7 +4232,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "trie.pyx":80
+/* "entities/trie.pyx":80
  *     #     return (node)
  * 
  *     def insert_or_get_word(self, word_content: str, pos_tag: str = None) -> Word:             # <<<<<<<<<<<<<<
@@ -4241,15 +4241,15 @@ static PyObject *__pyx_pf_4trie_8WordTrie___init__(CYTHON_UNUSED PyObject *__pyx
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8WordTrie_3insert_or_get_word(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_3insert_or_get_word(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4trie_8WordTrie_3insert_or_get_word = {"insert_or_get_word", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8WordTrie_3insert_or_get_word, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4trie_8WordTrie_3insert_or_get_word(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8entities_4trie_8WordTrie_3insert_or_get_word = {"insert_or_get_word", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8WordTrie_3insert_or_get_word, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_3insert_or_get_word(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4334,13 +4334,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.WordTrie.insert_or_get_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.insert_or_get_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_word_content), (&PyUnicode_Type), 0, "word_content", 2))) __PYX_ERR(0, 80, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pos_tag), (&PyUnicode_Type), 1, "pos_tag", 2))) __PYX_ERR(0, 80, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4trie_8WordTrie_2insert_or_get_word(__pyx_self, __pyx_v_self, __pyx_v_word_content, __pyx_v_pos_tag);
+  __pyx_r = __pyx_pf_8entities_4trie_8WordTrie_2insert_or_get_word(__pyx_self, __pyx_v_self, __pyx_v_word_content, __pyx_v_pos_tag);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4359,8 +4359,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_word_content, PyObject *__pyx_v_pos_tag) {
-  struct __pyx_obj_4trie_TrieNode *__pyx_v_node = NULL;
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_word_content, PyObject *__pyx_v_pos_tag) {
+  struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v_node = NULL;
   PyObject *__pyx_v_word_obj = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4373,7 +4373,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert_or_get_word", 0);
 
-  /* "trie.pyx":82
+  /* "entities/trie.pyx":82
  *     def insert_or_get_word(self, word_content: str, pos_tag: str = None) -> Word:
  * 
  *         node = _find_node(self.root, word_content, pos_tag)             # <<<<<<<<<<<<<<
@@ -4382,14 +4382,14 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
 */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_root); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_4trie_TrieNode))))) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_t_2 = ((PyObject *)__pyx_f_4trie__find_node(((struct __pyx_obj_4trie_TrieNode *)__pyx_t_1), __pyx_v_word_content, __pyx_v_pos_tag)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode))))) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)__pyx_f_8entities_4trie__find_node(((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_t_1), __pyx_v_word_content, __pyx_v_pos_tag)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_node = ((struct __pyx_obj_4trie_TrieNode *)__pyx_t_2);
+  __pyx_v_node = ((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "trie.pyx":84
+  /* "entities/trie.pyx":84
  *         node = _find_node(self.root, word_content, pos_tag)
  * 
  *         if node.is_end_of_word:             # <<<<<<<<<<<<<<
@@ -4398,7 +4398,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
 */
   if (__pyx_v_node->is_end_of_word) {
 
-    /* "trie.pyx":85
+    /* "entities/trie.pyx":85
  * 
  *         if node.is_end_of_word:
  *             node.word_obj.increment_freq(pos_tag)             # <<<<<<<<<<<<<<
@@ -4417,7 +4417,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "trie.pyx":86
+    /* "entities/trie.pyx":86
  *         if node.is_end_of_word:
  *             node.word_obj.increment_freq(pos_tag)
  *             return (node.word_obj)             # <<<<<<<<<<<<<<
@@ -4429,7 +4429,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
     __pyx_r = __pyx_v_node->word_obj;
     goto __pyx_L0;
 
-    /* "trie.pyx":84
+    /* "entities/trie.pyx":84
  *         node = _find_node(self.root, word_content, pos_tag)
  * 
  *         if node.is_end_of_word:             # <<<<<<<<<<<<<<
@@ -4438,7 +4438,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
 */
   }
 
-  /* "trie.pyx":88
+  /* "entities/trie.pyx":88
  *             return (node.word_obj)
  *         else:
  *             word_obj = Word(word_content)             # <<<<<<<<<<<<<<
@@ -4472,7 +4472,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
     __pyx_v_word_obj = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "trie.pyx":89
+    /* "entities/trie.pyx":89
  *         else:
  *             word_obj = Word(word_content)
  *             word_obj.idx = self.word_count             # <<<<<<<<<<<<<<
@@ -4484,7 +4484,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
     if (__Pyx_PyObject_SetAttrStr(__pyx_v_word_obj, __pyx_mstate_global->__pyx_n_u_idx, __pyx_t_2) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "trie.pyx":90
+    /* "entities/trie.pyx":90
  *             word_obj = Word(word_content)
  *             word_obj.idx = self.word_count
  *             word_obj.increment_freq(pos_tag)             # <<<<<<<<<<<<<<
@@ -4503,7 +4503,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "trie.pyx":92
+    /* "entities/trie.pyx":92
  *             word_obj.increment_freq(pos_tag)
  * 
  *             node.word_obj = word_obj             # <<<<<<<<<<<<<<
@@ -4516,7 +4516,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
     __Pyx_DECREF(__pyx_v_node->word_obj);
     __pyx_v_node->word_obj = __pyx_v_word_obj;
 
-    /* "trie.pyx":93
+    /* "entities/trie.pyx":93
  * 
  *             node.word_obj = word_obj
  *             node.is_end_of_word = True             # <<<<<<<<<<<<<<
@@ -4525,7 +4525,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
 */
     __pyx_v_node->is_end_of_word = 1;
 
-    /* "trie.pyx":94
+    /* "entities/trie.pyx":94
  *             node.word_obj = word_obj
  *             node.is_end_of_word = True
  *             self.word_count += 1             # <<<<<<<<<<<<<<
@@ -4540,7 +4540,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
     if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_word_count, __pyx_t_4) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "trie.pyx":96
+    /* "entities/trie.pyx":96
  *             self.word_count += 1
  * 
  *             return (word_obj)             # <<<<<<<<<<<<<<
@@ -4553,7 +4553,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
     goto __pyx_L0;
   }
 
-  /* "trie.pyx":80
+  /* "entities/trie.pyx":80
  *     #     return (node)
  * 
  *     def insert_or_get_word(self, word_content: str, pos_tag: str = None) -> Word:             # <<<<<<<<<<<<<<
@@ -4566,7 +4566,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("trie.WordTrie.insert_or_get_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.insert_or_get_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_node);
@@ -4576,7 +4576,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "trie.pyx":98
+/* "entities/trie.pyx":98
  *             return (word_obj)
  * 
  *     def get_all_words(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -4585,16 +4585,16 @@ static PyObject *__pyx_pf_4trie_8WordTrie_2insert_or_get_word(CYTHON_UNUSED PyOb
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8WordTrie_5get_all_words(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_5get_all_words(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_4trie_8WordTrie_4get_all_words, "\353\252\250\353\223\240 Word \352\260\235\354\262\264 \353\260\230\355\231\230");
-static PyMethodDef __pyx_mdef_4trie_8WordTrie_5get_all_words = {"get_all_words", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8WordTrie_5get_all_words, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_4trie_8WordTrie_4get_all_words};
-static PyObject *__pyx_pw_4trie_8WordTrie_5get_all_words(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8entities_4trie_8WordTrie_4get_all_words, "\353\252\250\353\223\240 Word \352\260\235\354\262\264 \353\260\230\355\231\230");
+static PyMethodDef __pyx_mdef_8entities_4trie_8WordTrie_5get_all_words = {"get_all_words", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8WordTrie_5get_all_words, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8entities_4trie_8WordTrie_4get_all_words};
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_5get_all_words(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4656,11 +4656,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.WordTrie.get_all_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_all_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4trie_8WordTrie_4get_all_words(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_8entities_4trie_8WordTrie_4get_all_words(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -4670,7 +4670,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_v_words = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4680,7 +4680,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_all_words", 0);
 
-  /* "trie.pyx":101
+  /* "entities/trie.pyx":101
  *         """ Word  """
  * 
  *         words = []             # <<<<<<<<<<<<<<
@@ -4692,7 +4692,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject 
   __pyx_v_words = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":102
+  /* "entities/trie.pyx":102
  * 
  *         words = []
  *         _dfs_collect_words(self.root, words)             # <<<<<<<<<<<<<<
@@ -4701,11 +4701,11 @@ static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject 
 */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_root); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_4trie_TrieNode))))) __PYX_ERR(0, 102, __pyx_L1_error)
-  __pyx_f_4trie__dfs_collect_words(((struct __pyx_obj_4trie_TrieNode *)__pyx_t_1), __pyx_v_words); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode))))) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_f_8entities_4trie__dfs_collect_words(((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_t_1), __pyx_v_words); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "trie.pyx":103
+  /* "entities/trie.pyx":103
  *         words = []
  *         _dfs_collect_words(self.root, words)
  *         return (words)             # <<<<<<<<<<<<<<
@@ -4717,7 +4717,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject 
   __pyx_r = __pyx_v_words;
   goto __pyx_L0;
 
-  /* "trie.pyx":98
+  /* "entities/trie.pyx":98
  *             return (word_obj)
  * 
  *     def get_all_words(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -4728,7 +4728,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("trie.WordTrie.get_all_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_all_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_words);
@@ -4737,7 +4737,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "trie.pyx":120
+/* "entities/trie.pyx":120
  *     #         preincrement(it)
  * 
  *     def get_content_words(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -4746,16 +4746,16 @@ static PyObject *__pyx_pf_4trie_8WordTrie_4get_all_words(CYTHON_UNUSED PyObject 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8WordTrie_7get_content_words(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_7get_content_words(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_4trie_8WordTrie_6get_content_words, "\353\202\264\354\232\251\354\226\264(content words)\353\247\214 \353\260\230\355\231\230 - \353\266\210\354\232\251\354\226\264 \354\240\234\354\231\270");
-static PyMethodDef __pyx_mdef_4trie_8WordTrie_7get_content_words = {"get_content_words", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8WordTrie_7get_content_words, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_4trie_8WordTrie_6get_content_words};
-static PyObject *__pyx_pw_4trie_8WordTrie_7get_content_words(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8entities_4trie_8WordTrie_6get_content_words, "\353\202\264\354\232\251\354\226\264(content words)\353\247\214 \353\260\230\355\231\230 - \353\266\210\354\232\251\354\226\264 \354\240\234\354\231\270");
+static PyMethodDef __pyx_mdef_8entities_4trie_8WordTrie_7get_content_words = {"get_content_words", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8WordTrie_7get_content_words, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8entities_4trie_8WordTrie_6get_content_words};
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_7get_content_words(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4817,11 +4817,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.WordTrie.get_content_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_content_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4trie_8WordTrie_6get_content_words(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_8entities_4trie_8WordTrie_6get_content_words(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -4831,7 +4831,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_v_all_words = NULL;
   PyObject *__pyx_7genexpr__pyx_v_word = NULL;
   PyObject *__pyx_r = NULL;
@@ -4849,7 +4849,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_content_words", 0);
 
-  /* "trie.pyx":122
+  /* "entities/trie.pyx":122
  *     def get_content_words(self) -> List[Word]:
  *         """(content words)  -  """
  *         all_words = self.get_all_words()             # <<<<<<<<<<<<<<
@@ -4869,7 +4869,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObj
   __pyx_v_all_words = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":123
+  /* "entities/trie.pyx":123
  *         """(content words)  -  """
  *         all_words = self.get_all_words()
  *         return [word for word in all_words if not word.is_stopword]             # <<<<<<<<<<<<<<
@@ -4952,7 +4952,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObj
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "trie.pyx":120
+  /* "entities/trie.pyx":120
  *     #         preincrement(it)
  * 
  *     def get_content_words(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -4965,7 +4965,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObj
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("trie.WordTrie.get_content_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_content_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_all_words);
@@ -4975,7 +4975,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "trie.pyx":125
+/* "entities/trie.pyx":125
  *         return [word for word in all_words if not word.is_stopword]
  * 
  *     def get_stopwords(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -4984,16 +4984,16 @@ static PyObject *__pyx_pf_4trie_8WordTrie_6get_content_words(CYTHON_UNUSED PyObj
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8WordTrie_9get_stopwords(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_9get_stopwords(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_4trie_8WordTrie_8get_stopwords, "\353\266\210\354\232\251\354\226\264\353\247\214 \353\260\230\355\231\230");
-static PyMethodDef __pyx_mdef_4trie_8WordTrie_9get_stopwords = {"get_stopwords", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8WordTrie_9get_stopwords, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_4trie_8WordTrie_8get_stopwords};
-static PyObject *__pyx_pw_4trie_8WordTrie_9get_stopwords(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8entities_4trie_8WordTrie_8get_stopwords, "\353\266\210\354\232\251\354\226\264\353\247\214 \353\260\230\355\231\230");
+static PyMethodDef __pyx_mdef_8entities_4trie_8WordTrie_9get_stopwords = {"get_stopwords", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8WordTrie_9get_stopwords, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8entities_4trie_8WordTrie_8get_stopwords};
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_9get_stopwords(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5055,11 +5055,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.WordTrie.get_stopwords", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_stopwords", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4trie_8WordTrie_8get_stopwords(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_8entities_4trie_8WordTrie_8get_stopwords(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -5069,7 +5069,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_v_all_words = NULL;
   PyObject *__pyx_8genexpr1__pyx_v_word = NULL;
   PyObject *__pyx_r = NULL;
@@ -5086,7 +5086,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_stopwords", 0);
 
-  /* "trie.pyx":127
+  /* "entities/trie.pyx":127
  *     def get_stopwords(self) -> List[Word]:
  *         """ """
  *         all_words = self.get_all_words()             # <<<<<<<<<<<<<<
@@ -5106,7 +5106,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject 
   __pyx_v_all_words = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":128
+  /* "entities/trie.pyx":128
  *         """ """
  *         all_words = self.get_all_words()
  *         return [word for word in all_words if word.is_stopword]             # <<<<<<<<<<<<<<
@@ -5188,7 +5188,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "trie.pyx":125
+  /* "entities/trie.pyx":125
  *         return [word for word in all_words if not word.is_stopword]
  * 
  *     def get_stopwords(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -5201,7 +5201,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject 
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("trie.WordTrie.get_stopwords", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_stopwords", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_all_words);
@@ -5211,7 +5211,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "trie.pyx":148
+/* "entities/trie.pyx":148
  *     #     return (filtered_words)
  * 
  *     def get_top_words_by_pos(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -5220,16 +5220,16 @@ static PyObject *__pyx_pf_4trie_8WordTrie_8get_stopwords(CYTHON_UNUSED PyObject 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8WordTrie_11get_top_words_by_pos(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_11get_top_words_by_pos(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_4trie_8WordTrie_10get_top_words_by_pos, "\353\252\205\354\202\254, \353\217\231\354\202\254, \355\230\225\354\232\251\354\202\254\353\247\214 \355\225\204\355\204\260\353\247\201 \355\233\204 \353\271\210\353\217\204\354\210\230 \352\270\260\354\244\200 \354\203\201\354\234\204 N\352\260\234 \353\213\250\354\226\264 \353\260\230\355\231\230\n        \n        Args:\n            top_n: \354\203\201\354\234\204 \353\252\207 \352\260\234\352\271\214\354\247\200 \352\260\200\354\240\270\354\230\254\354\247\200 (\352\270\260\353\263\270\352\260\222: 500)\n            exclude_stopwords: \353\266\210\354\232\251\354\226\264 \354\240\234\354\231\270 \354\227\254\353\266\200 (\352\270\260\353\263\270\352\260\222: True)\n        \n        Returns:\n            \353\271\210\353\217\204\354\210\230 \353\202\264\353\246\274\354\260\250\354\210\234\354\234\274\353\241\234 \354\240\225\353\240\254\353\220\234 Word \352\260\235\354\262\264 \353\246\254\354\212\244\355\212\270 (\354\265\234\353\214\200 top_n\352\260\234)\n        ");
-static PyMethodDef __pyx_mdef_4trie_8WordTrie_11get_top_words_by_pos = {"get_top_words_by_pos", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8WordTrie_11get_top_words_by_pos, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_4trie_8WordTrie_10get_top_words_by_pos};
-static PyObject *__pyx_pw_4trie_8WordTrie_11get_top_words_by_pos(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8entities_4trie_8WordTrie_10get_top_words_by_pos, "\353\252\205\354\202\254, \353\217\231\354\202\254, \355\230\225\354\232\251\354\202\254\353\247\214 \355\225\204\355\204\260\353\247\201 \355\233\204 \353\271\210\353\217\204\354\210\230 \352\270\260\354\244\200 \354\203\201\354\234\204 N\352\260\234 \353\213\250\354\226\264 \353\260\230\355\231\230\n        \n        Args:\n            top_n: \354\203\201\354\234\204 \353\252\207 \352\260\234\352\271\214\354\247\200 \352\260\200\354\240\270\354\230\254\354\247\200 (\352\270\260\353\263\270\352\260\222: 500)\n            exclude_stopwords: \353\266\210\354\232\251\354\226\264 \354\240\234\354\231\270 \354\227\254\353\266\200 (\352\270\260\353\263\270\352\260\222: True)\n        \n        Returns:\n            \353\271\210\353\217\204\354\210\230 \353\202\264\353\246\274\354\260\250\354\210\234\354\234\274\353\241\234 \354\240\225\353\240\254\353\220\234 Word \352\260\235\354\262\264 \353\246\254\354\212\244\355\212\270 (\354\265\234\353\214\200 top_n\352\260\234)\n        ");
+static PyMethodDef __pyx_mdef_8entities_4trie_8WordTrie_11get_top_words_by_pos = {"get_top_words_by_pos", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8WordTrie_11get_top_words_by_pos, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8entities_4trie_8WordTrie_10get_top_words_by_pos};
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_11get_top_words_by_pos(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5318,12 +5318,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.WordTrie.get_top_words_by_pos", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_top_words_by_pos", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_top_n), (&PyLong_Type), 0, "top_n", 2))) __PYX_ERR(0, 148, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(__pyx_self, __pyx_v_self, __pyx_v_top_n, __pyx_v_exclude_stopwords);
+  __pyx_r = __pyx_pf_8entities_4trie_8WordTrie_10get_top_words_by_pos(__pyx_self, __pyx_v_self, __pyx_v_top_n, __pyx_v_exclude_stopwords);
 
   /* function exit code */
   goto __pyx_L0;
@@ -5342,7 +5342,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "trie.pyx":174
+/* "entities/trie.pyx":173
  *         #       N
  *         print("filtered word: ", len(filtered_words))
  *         return sorted(filtered_words, key=lambda w: w.freq, reverse=True)[:top_n]             # <<<<<<<<<<<<<<
@@ -5351,15 +5351,15 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8WordTrie_20get_top_words_by_pos_lambda(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_20get_top_words_by_pos_lambda(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4trie_8WordTrie_20get_top_words_by_pos_lambda = {"lambda", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8WordTrie_20get_top_words_by_pos_lambda, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4trie_8WordTrie_20get_top_words_by_pos_lambda(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8entities_4trie_8WordTrie_20get_top_words_by_pos_lambda = {"lambda", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8WordTrie_20get_top_words_by_pos_lambda, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_20get_top_words_by_pos_lambda(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5389,39 +5389,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_w,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 174, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 173, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 174, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 173, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lambda", 0) < 0) __PYX_ERR(0, 174, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lambda", 0) < 0) __PYX_ERR(0, 173, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, i); __PYX_ERR(0, 174, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, i); __PYX_ERR(0, 173, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 174, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 173, __pyx_L3_error)
     }
     __pyx_v_w = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 174, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 173, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.WordTrie.get_top_words_by_pos.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_top_words_by_pos.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -5444,7 +5444,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_w, __pyx_mstate_global->__pyx_n_u_freq); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_w, __pyx_mstate_global->__pyx_n_u_freq); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5453,7 +5453,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("trie.WordTrie.get_top_words_by_pos.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_top_words_by_pos.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5461,7 +5461,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   return __pyx_r;
 }
 
-/* "trie.pyx":148
+/* "entities/trie.pyx":148
  *     #     return (filtered_words)
  * 
  *     def get_top_words_by_pos(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -5469,7 +5469,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
  * 
 */
 
-static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_top_n, PyObject *__pyx_v_exclude_stopwords) {
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_top_n, PyObject *__pyx_v_exclude_stopwords) {
   PyObject *__pyx_v_all_words = NULL;
   PyObject *__pyx_v_filtered_words = NULL;
   PyObject *__pyx_v_word = NULL;
@@ -5491,7 +5491,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_top_words_by_pos", 0);
 
-  /* "trie.pyx":159
+  /* "entities/trie.pyx":159
  *         """
  *         #
  *         all_words = self.get_all_words()             # <<<<<<<<<<<<<<
@@ -5511,7 +5511,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
   __pyx_v_all_words = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":162
+  /* "entities/trie.pyx":162
  *         # print("All Words: ", len(all_words))
  *         # , ,
  *         filtered_words = []             # <<<<<<<<<<<<<<
@@ -5523,7 +5523,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
   __pyx_v_filtered_words = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":163
+  /* "entities/trie.pyx":163
  *         # , ,
  *         filtered_words = []
  *         for word in all_words:             # <<<<<<<<<<<<<<
@@ -5582,7 +5582,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
     __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "trie.pyx":165
+    /* "entities/trie.pyx":165
  *         for word in all_words:
  *             #
  *             if exclude_stopwords and word.is_stopword:             # <<<<<<<<<<<<<<
@@ -5603,16 +5603,16 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_6) {
 
-      /* "trie.pyx":166
+      /* "entities/trie.pyx":166
  *             #
  *             if exclude_stopwords and word.is_stopword:
  *                 continue             # <<<<<<<<<<<<<<
  *             # print(f"{word.content} : {word._dominant_pos} {word.is_noun()} {word.is_verb()} {word.is_adjective()}")
- *             # if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
+ *             if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
 */
       goto __pyx_L3_continue;
 
-      /* "trie.pyx":165
+      /* "entities/trie.pyx":165
  *         for word in all_words:
  *             #
  *             if exclude_stopwords and word.is_stopword:             # <<<<<<<<<<<<<<
@@ -5621,13 +5621,22 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
 */
     }
 
-    /* "trie.pyx":169
+    /* "entities/trie.pyx":168
+ *                 continue
  *             # print(f"{word.content} : {word._dominant_pos} {word.is_noun()} {word.is_verb()} {word.is_adjective()}")
- *             # if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
- *             if (word.is_noun() or word.is_verb() or word.is_adjective()):             # <<<<<<<<<<<<<<
+ *             if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):             # <<<<<<<<<<<<<<
  *                 filtered_words.append(word)
  * 
 */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_mstate_global->__pyx_n_u_dominant_pos); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (__pyx_t_7) {
+    } else {
+      __pyx_t_6 = __pyx_t_7;
+      goto __pyx_L9_bool_binop_done;
+    }
     __pyx_t_8 = __pyx_v_word;
     __Pyx_INCREF(__pyx_t_8);
     __pyx_t_3 = 0;
@@ -5635,10 +5644,10 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
       PyObject *__pyx_callargs[2] = {__pyx_t_8, NULL};
       __pyx_t_2 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_noun, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (!__pyx_t_7) {
     } else {
@@ -5652,10 +5661,10 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
       PyObject *__pyx_callargs[2] = {__pyx_t_8, NULL};
       __pyx_t_2 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_verb, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (!__pyx_t_7) {
     } else {
@@ -5669,34 +5678,34 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
       PyObject *__pyx_callargs[2] = {__pyx_t_8, NULL};
       __pyx_t_2 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_adjective, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = __pyx_t_7;
     __pyx_L9_bool_binop_done:;
     if (__pyx_t_6) {
 
-      /* "trie.pyx":170
- *             # if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
- *             if (word.is_noun() or word.is_verb() or word.is_adjective()):
+      /* "entities/trie.pyx":169
+ *             # print(f"{word.content} : {word._dominant_pos} {word.is_noun()} {word.is_verb()} {word.is_adjective()}")
+ *             if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
  *                 filtered_words.append(word)             # <<<<<<<<<<<<<<
  * 
  *         #       N
 */
-      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_filtered_words, __pyx_v_word); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 170, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_filtered_words, __pyx_v_word); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 169, __pyx_L1_error)
 
-      /* "trie.pyx":169
+      /* "entities/trie.pyx":168
+ *                 continue
  *             # print(f"{word.content} : {word._dominant_pos} {word.is_noun()} {word.is_verb()} {word.is_adjective()}")
- *             # if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
- *             if (word.is_noun() or word.is_verb() or word.is_adjective()):             # <<<<<<<<<<<<<<
+ *             if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):             # <<<<<<<<<<<<<<
  *                 filtered_words.append(word)
  * 
 */
     }
 
-    /* "trie.pyx":163
+    /* "entities/trie.pyx":163
  *         # , ,
  *         filtered_words = []
  *         for word in all_words:             # <<<<<<<<<<<<<<
@@ -5707,7 +5716,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "trie.pyx":173
+  /* "entities/trie.pyx":172
  * 
  *         #       N
  *         print("filtered word: ", len(filtered_words))             # <<<<<<<<<<<<<<
@@ -5717,8 +5726,8 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
   __pyx_t_2 = NULL;
   __Pyx_INCREF(__pyx_builtin_print);
   __pyx_t_8 = __pyx_builtin_print; 
-  __pyx_t_4 = __Pyx_PyList_GET_SIZE(__pyx_v_filtered_words); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 173, __pyx_L1_error)
-  __pyx_t_10 = PyLong_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyList_GET_SIZE(__pyx_v_filtered_words); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_10 = PyLong_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_3 = 1;
   {
@@ -5727,12 +5736,12 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "trie.pyx":174
+  /* "entities/trie.pyx":173
  *         #       N
  *         print("filtered word: ", len(filtered_words))
  *         return sorted(filtered_words, key=lambda w: w.freq, reverse=True)[:top_n]             # <<<<<<<<<<<<<<
@@ -5743,32 +5752,32 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
   __pyx_t_8 = NULL;
   __Pyx_INCREF(__pyx_builtin_sorted);
   __pyx_t_10 = __pyx_builtin_sorted; 
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8WordTrie_20get_top_words_by_pos_lambda, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_top_words_by_pos_lo, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8WordTrie_20get_top_words_by_pos_lambda, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_top_words_by_pos_lo, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = 1;
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_8, __pyx_v_filtered_words};
-    __pyx_t_11 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_key, __pyx_t_2, __pyx_t_11, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_reverse, Py_True, __pyx_t_11, __pyx_callargs+2, 1) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_key, __pyx_t_2, __pyx_t_11, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 173, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_reverse, Py_True, __pyx_t_11, __pyx_callargs+2, 1) < 0) __PYX_ERR(0, 173, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_10, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_11);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, 0, NULL, &__pyx_v_top_n, NULL, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, 0, NULL, &__pyx_v_top_n, NULL, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_10))) __PYX_ERR(0, 174, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_10))) __PYX_ERR(0, 173, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_10);
   __pyx_t_10 = 0;
   goto __pyx_L0;
 
-  /* "trie.pyx":148
+  /* "entities/trie.pyx":148
  *     #     return (filtered_words)
  * 
  *     def get_top_words_by_pos(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -5783,7 +5792,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("trie.WordTrie.get_top_words_by_pos", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_top_words_by_pos", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_all_words);
@@ -5794,7 +5803,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "trie.pyx":177
+/* "entities/trie.pyx":176
  * 
  * 
  *     def get_word_stats(self) -> Dict[str, int]:             # <<<<<<<<<<<<<<
@@ -5803,16 +5812,16 @@ static PyObject *__pyx_pf_4trie_8WordTrie_10get_top_words_by_pos(CYTHON_UNUSED P
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_8WordTrie_13get_word_stats(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_13get_word_stats(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_4trie_8WordTrie_12get_word_stats, "\355\222\210\354\202\254\353\263\204 \353\213\250\354\226\264 \355\206\265\352\263\204 \353\260\230\355\231\230 (\353\266\210\354\232\251\354\226\264 \354\240\225\353\263\264 \355\217\254\355\225\250)");
-static PyMethodDef __pyx_mdef_4trie_8WordTrie_13get_word_stats = {"get_word_stats", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8WordTrie_13get_word_stats, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_4trie_8WordTrie_12get_word_stats};
-static PyObject *__pyx_pw_4trie_8WordTrie_13get_word_stats(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8entities_4trie_8WordTrie_12get_word_stats, "\355\222\210\354\202\254\353\263\204 \353\213\250\354\226\264 \355\206\265\352\263\204 \353\260\230\355\231\230 (\353\266\210\354\232\251\354\226\264 \354\240\225\353\263\264 \355\217\254\355\225\250)");
+static PyMethodDef __pyx_mdef_8entities_4trie_8WordTrie_13get_word_stats = {"get_word_stats", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8WordTrie_13get_word_stats, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8entities_4trie_8WordTrie_12get_word_stats};
+static PyObject *__pyx_pw_8entities_4trie_8WordTrie_13get_word_stats(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5842,43 +5851,43 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_self,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 177, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 176, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 177, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 176, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_word_stats", 0) < 0) __PYX_ERR(0, 177, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_word_stats", 0) < 0) __PYX_ERR(0, 176, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_word_stats", 1, 1, 1, i); __PYX_ERR(0, 177, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_word_stats", 1, 1, 1, i); __PYX_ERR(0, 176, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 177, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 176, __pyx_L3_error)
     }
     __pyx_v_self = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_word_stats", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 177, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_word_stats", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 176, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4trie_8WordTrie_12get_word_stats(__pyx_self, __pyx_v_self);
+  __pyx_r = __pyx_pf_8entities_4trie_8WordTrie_12get_word_stats(__pyx_self, __pyx_v_self);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -5887,9 +5896,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "trie.pyx":182
+/* "entities/trie.pyx":181
  * 
  *         #
  *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())             # <<<<<<<<<<<<<<
@@ -5897,17 +5906,215 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_2generator(__pyx_Coro
  *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())
 */
 
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_4trie___pyx_scope_struct__genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_4trie___pyx_scope_struct__genexpr *)__pyx_tp_new_4trie___pyx_scope_struct__genexpr(__pyx_mstate_global->__pyx_ptype_4trie___pyx_scope_struct__genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *)__pyx_tp_new_8entities_4trie___pyx_scope_struct__genexpr(__pyx_mstate_global->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct__genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *)Py_None);
+    __Pyx_INCREF(Py_None);
+    __PYX_ERR(0, 181, __pyx_L1_error)
+  } else {
+    __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
+  }
+  __pyx_cur_scope->__pyx_genexpr_arg_0 = __pyx_genexpr_arg_0;
+  __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
+  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
+  {
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_2generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_entities_trie); if (unlikely(!gen)) __PYX_ERR(0, 181, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_cur_scope);
+    __Pyx_RefNannyFinishContext();
+    return (PyObject *) gen;
+  }
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_DECREF((PyObject *)__pyx_cur_scope);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+{
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *__pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *)__pyx_generator->closure);
+  PyObject *__pyx_r = NULL;
+  PyObject *__pyx_t_1 = NULL;
+  Py_ssize_t __pyx_t_2;
+  PyObject *(*__pyx_t_3)(PyObject *);
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  size_t __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("genexpr", 0);
+  switch (__pyx_generator->resume_label) {
+    case 0: goto __pyx_L3_first_run;
+    case 1: goto __pyx_L9_resume_from_yield;
+    default: /* CPython raises the right error here */
+    __Pyx_RefNannyFinishContext();
+    return NULL;
+  }
+  __pyx_L3_first_run:;
+  if (unlikely(__pyx_sent_value != Py_None)) {
+    if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
+    __PYX_ERR(0, 181, __pyx_L1_error)
+  }
+  if (unlikely(!__pyx_cur_scope->__pyx_genexpr_arg_0)) { __Pyx_RaiseUnboundLocalError(".0"); __PYX_ERR(0, 181, __pyx_L1_error) }
+  if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) {
+    __pyx_t_1 = __pyx_cur_scope->__pyx_genexpr_arg_0; __Pyx_INCREF(__pyx_t_1);
+    __pyx_t_2 = 0;
+    __pyx_t_3 = NULL;
+  } else {
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_genexpr_arg_0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
+  }
+  for (;;) {
+    if (likely(!__pyx_t_3)) {
+      if (likely(PyList_CheckExact(__pyx_t_1))) {
+        {
+          Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
+          #if !CYTHON_ASSUME_SAFE_SIZE
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 181, __pyx_L1_error)
+          #endif
+          if (__pyx_t_2 >= __pyx_temp) break;
+        }
+        __pyx_t_4 = __Pyx_PyList_GetItemRef(__pyx_t_1, __pyx_t_2);
+        ++__pyx_t_2;
+      } else {
+        {
+          Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
+          #if !CYTHON_ASSUME_SAFE_SIZE
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 181, __pyx_L1_error)
+          #endif
+          if (__pyx_t_2 >= __pyx_temp) break;
+        }
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_4 = __Pyx_NewRef(PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2));
+        #else
+        __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_2);
+        #endif
+        ++__pyx_t_2;
+      }
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
+    } else {
+      __pyx_t_4 = __pyx_t_3(__pyx_t_1);
+      if (unlikely(!__pyx_t_4)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 181, __pyx_L1_error)
+          PyErr_Clear();
+        }
+        break;
+      }
+    }
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_w);
+    __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_w, __pyx_t_4);
+    __Pyx_GIVEREF(__pyx_t_4);
+    __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_w, __pyx_mstate_global->__pyx_n_u_dominant_pos); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 181, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (__pyx_t_6) {
+    } else {
+      __pyx_t_5 = __pyx_t_6;
+      goto __pyx_L7_bool_binop_done;
+    }
+    __pyx_t_7 = __pyx_cur_scope->__pyx_v_w;
+    __Pyx_INCREF(__pyx_t_7);
+    __pyx_t_8 = 0;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
+      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_noun, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+    }
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 181, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_5 = __pyx_t_6;
+    __pyx_L7_bool_binop_done:;
+    if (__pyx_t_5) {
+      __Pyx_INCREF(__pyx_mstate_global->__pyx_int_1);
+      __pyx_r = __pyx_mstate_global->__pyx_int_1;
+      __Pyx_XGIVEREF(__pyx_t_1);
+      __pyx_cur_scope->__pyx_t_0 = __pyx_t_1;
+      __pyx_cur_scope->__pyx_t_1 = __pyx_t_2;
+      __pyx_cur_scope->__pyx_t_2 = __pyx_t_3;
+      __Pyx_XGIVEREF(__pyx_r);
+      __Pyx_RefNannyFinishContext();
+      __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
+      /* return from generator, yielding value */
+      __pyx_generator->resume_label = 1;
+      return __pyx_r;
+      __pyx_L9_resume_from_yield:;
+      __pyx_t_1 = __pyx_cur_scope->__pyx_t_0;
+      __pyx_cur_scope->__pyx_t_0 = 0;
+      __Pyx_XGOTREF(__pyx_t_1);
+      __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
+      __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 181, __pyx_L1_error)
+    }
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_7);
+  if (__Pyx_PyErr_Occurred()) {
+    __Pyx_Generator_Replace_StopIteration(0);
+    __Pyx_AddTraceback("genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  }
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  #if !CYTHON_USE_EXC_INFO_STACK
+  __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
+  #endif
+  __pyx_generator->resume_label = -1;
+  __Pyx_Coroutine_clear((PyObject*)__pyx_generator);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_5generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+
+/* "entities/trie.pyx":182
+ *         #
+ *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
+ *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())             # <<<<<<<<<<<<<<
+ *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())
+ * 
+*/
+
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_3genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *__pyx_cur_scope;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("genexpr", 0);
+  __pyx_cur_scope = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_1_genexpr(__pyx_mstate_global->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  if (unlikely(!__pyx_cur_scope)) {
+    __pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 182, __pyx_L1_error)
   } else {
@@ -5917,7 +6124,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_genexpr(CYTHON_UNUSED
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_4trie_8WordTrie_14get_word_stats_2generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_trie); if (unlikely(!gen)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_5generator1, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_entities_trie); if (unlikely(!gen)) __PYX_ERR(0, 182, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -5925,7 +6132,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_genexpr(CYTHON_UNUSED
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -5933,9 +6140,9 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_genexpr(CYTHON_UNUSED
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_5generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_4trie___pyx_scope_struct__genexpr *__pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct__genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *__pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -6030,7 +6237,7 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_2generator(__pyx_Coro
     __pyx_t_8 = 0;
     {
       PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
-      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_noun, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_verb, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
@@ -6085,27 +6292,27 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_2generator(__pyx_Coro
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_5generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "trie.pyx":183
- *         #
+/* "entities/trie.pyx":183
  *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
- *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())             # <<<<<<<<<<<<<<
- *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())
+ *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())
+ *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())             # <<<<<<<<<<<<<<
  * 
+ *         #
 */
 
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_3genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_6genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *)__pyx_tp_new_4trie___pyx_scope_struct_1_genexpr(__pyx_mstate_global->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_2_genexpr(__pyx_mstate_global->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 183, __pyx_L1_error)
   } else {
@@ -6115,7 +6322,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_3genexpr(CYTHON_UNUSE
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_4trie_8WordTrie_14get_word_stats_5generator1, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_trie); if (unlikely(!gen)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_8generator2, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_entities_trie); if (unlikely(!gen)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6123,7 +6330,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_3genexpr(CYTHON_UNUSE
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -6131,9 +6338,9 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_3genexpr(CYTHON_UNUSE
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_5generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *__pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *__pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -6228,7 +6435,7 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_5generator1(__pyx_Cor
     __pyx_t_8 = 0;
     {
       PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
-      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_verb, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_adjective, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
@@ -6283,29 +6490,29 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_5generator1(__pyx_Cor
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_11generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "trie.pyx":184
- *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
- *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())
- *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())             # <<<<<<<<<<<<<<
+/* "entities/trie.pyx":186
  * 
  *         #
+ *         stopword_count = sum(1 for w in all_words if w.is_stopword)             # <<<<<<<<<<<<<<
+ *         content_word_count = len(all_words) - stopword_count
+ * 
 */
 
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_6genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_9genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *)__pyx_tp_new_4trie___pyx_scope_struct_2_genexpr(__pyx_mstate_global->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_3_genexpr(__pyx_mstate_global->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 184, __pyx_L1_error)
+    __PYX_ERR(0, 186, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -6313,7 +6520,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_6genexpr(CYTHON_UNUSE
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_trie); if (unlikely(!gen)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_11generator3, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_entities_trie); if (unlikely(!gen)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6321,7 +6528,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_6genexpr(CYTHON_UNUSE
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -6329,18 +6536,15 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_6genexpr(CYTHON_UNUSE
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_11generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *__pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *__pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
   PyObject *(*__pyx_t_3)(PyObject *);
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
-  int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  size_t __pyx_t_8;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6348,7 +6552,7 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
   __Pyx_RefNannySetupContext("genexpr", 0);
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
-    case 1: goto __pyx_L9_resume_from_yield;
+    case 1: goto __pyx_L7_resume_from_yield;
     default: /* CPython raises the right error here */
     __Pyx_RefNannyFinishContext();
     return NULL;
@@ -6356,17 +6560,17 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 184, __pyx_L1_error)
+    __PYX_ERR(0, 186, __pyx_L1_error)
   }
-  if (unlikely(!__pyx_cur_scope->__pyx_genexpr_arg_0)) { __Pyx_RaiseUnboundLocalError(".0"); __PYX_ERR(0, 184, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_genexpr_arg_0)) { __Pyx_RaiseUnboundLocalError(".0"); __PYX_ERR(0, 186, __pyx_L1_error) }
   if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) {
     __pyx_t_1 = __pyx_cur_scope->__pyx_genexpr_arg_0; __Pyx_INCREF(__pyx_t_1);
     __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_genexpr_arg_0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_genexpr_arg_0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
@@ -6374,7 +6578,7 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 184, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 186, __pyx_L1_error)
           #endif
           if (__pyx_t_2 >= __pyx_temp) break;
         }
@@ -6384,7 +6588,7 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 184, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 186, __pyx_L1_error)
           #endif
           if (__pyx_t_2 >= __pyx_temp) break;
         }
@@ -6395,13 +6599,13 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
         #endif
         ++__pyx_t_2;
       }
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
     } else {
       __pyx_t_4 = __pyx_t_3(__pyx_t_1);
       if (unlikely(!__pyx_t_4)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 184, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 186, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -6412,9 +6616,188 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_w, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_w, __pyx_mstate_global->__pyx_n_u_dominant_pos); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_w, __pyx_mstate_global->__pyx_n_u_is_stopword); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 186, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (__pyx_t_5) {
+      __Pyx_INCREF(__pyx_mstate_global->__pyx_int_1);
+      __pyx_r = __pyx_mstate_global->__pyx_int_1;
+      __Pyx_XGIVEREF(__pyx_t_1);
+      __pyx_cur_scope->__pyx_t_0 = __pyx_t_1;
+      __pyx_cur_scope->__pyx_t_1 = __pyx_t_2;
+      __pyx_cur_scope->__pyx_t_2 = __pyx_t_3;
+      __Pyx_XGIVEREF(__pyx_r);
+      __Pyx_RefNannyFinishContext();
+      __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
+      /* return from generator, yielding value */
+      __pyx_generator->resume_label = 1;
+      return __pyx_r;
+      __pyx_L7_resume_from_yield:;
+      __pyx_t_1 = __pyx_cur_scope->__pyx_t_0;
+      __pyx_cur_scope->__pyx_t_0 = 0;
+      __Pyx_XGOTREF(__pyx_t_1);
+      __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
+      __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 186, __pyx_L1_error)
+    }
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
+  if (__Pyx_PyErr_Occurred()) {
+    __Pyx_Generator_Replace_StopIteration(0);
+    __Pyx_AddTraceback("genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  }
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  #if !CYTHON_USE_EXC_INFO_STACK
+  __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
+  #endif
+  __pyx_generator->resume_label = -1;
+  __Pyx_Coroutine_clear((PyObject*)__pyx_generator);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_14generator4(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+
+/* "entities/trie.pyx":190
+ * 
+ *         #
+ *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)             # <<<<<<<<<<<<<<
+ *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)
+ *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)
+*/
+
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_12genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *__pyx_cur_scope;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("genexpr", 0);
+  __pyx_cur_scope = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_4_genexpr(__pyx_mstate_global->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  if (unlikely(!__pyx_cur_scope)) {
+    __pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *)Py_None);
+    __Pyx_INCREF(Py_None);
+    __PYX_ERR(0, 190, __pyx_L1_error)
+  } else {
+    __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
+  }
+  __pyx_cur_scope->__pyx_genexpr_arg_0 = __pyx_genexpr_arg_0;
+  __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
+  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
+  {
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_14generator4, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_entities_trie); if (unlikely(!gen)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_cur_scope);
+    __Pyx_RefNannyFinishContext();
+    return (PyObject *) gen;
+  }
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_DECREF((PyObject *)__pyx_cur_scope);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_14generator4(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+{
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *__pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *)__pyx_generator->closure);
+  PyObject *__pyx_r = NULL;
+  PyObject *__pyx_t_1 = NULL;
+  Py_ssize_t __pyx_t_2;
+  PyObject *(*__pyx_t_3)(PyObject *);
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  size_t __pyx_t_8;
+  int __pyx_t_9;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("genexpr", 0);
+  switch (__pyx_generator->resume_label) {
+    case 0: goto __pyx_L3_first_run;
+    case 1: goto __pyx_L10_resume_from_yield;
+    default: /* CPython raises the right error here */
+    __Pyx_RefNannyFinishContext();
+    return NULL;
+  }
+  __pyx_L3_first_run:;
+  if (unlikely(__pyx_sent_value != Py_None)) {
+    if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
+    __PYX_ERR(0, 190, __pyx_L1_error)
+  }
+  if (unlikely(!__pyx_cur_scope->__pyx_genexpr_arg_0)) { __Pyx_RaiseUnboundLocalError(".0"); __PYX_ERR(0, 190, __pyx_L1_error) }
+  if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) {
+    __pyx_t_1 = __pyx_cur_scope->__pyx_genexpr_arg_0; __Pyx_INCREF(__pyx_t_1);
+    __pyx_t_2 = 0;
+    __pyx_t_3 = NULL;
+  } else {
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_genexpr_arg_0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 190, __pyx_L1_error)
+  }
+  for (;;) {
+    if (likely(!__pyx_t_3)) {
+      if (likely(PyList_CheckExact(__pyx_t_1))) {
+        {
+          Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
+          #if !CYTHON_ASSUME_SAFE_SIZE
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 190, __pyx_L1_error)
+          #endif
+          if (__pyx_t_2 >= __pyx_temp) break;
+        }
+        __pyx_t_4 = __Pyx_PyList_GetItemRef(__pyx_t_1, __pyx_t_2);
+        ++__pyx_t_2;
+      } else {
+        {
+          Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
+          #if !CYTHON_ASSUME_SAFE_SIZE
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 190, __pyx_L1_error)
+          #endif
+          if (__pyx_t_2 >= __pyx_temp) break;
+        }
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_4 = __Pyx_NewRef(PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2));
+        #else
+        __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_2);
+        #endif
+        ++__pyx_t_2;
+      }
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+    } else {
+      __pyx_t_4 = __pyx_t_3(__pyx_t_1);
+      if (unlikely(!__pyx_t_4)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 190, __pyx_L1_error)
+          PyErr_Clear();
+        }
+        break;
+      }
+    }
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_w);
+    __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_w, __pyx_t_4);
+    __Pyx_GIVEREF(__pyx_t_4);
+    __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_w, __pyx_mstate_global->__pyx_n_u_dominant_pos); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_6) {
     } else {
@@ -6426,14 +6809,24 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
     __pyx_t_8 = 0;
     {
       PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
-      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_adjective, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_noun, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_5 = __pyx_t_6;
+    if (__pyx_t_6) {
+    } else {
+      __pyx_t_5 = __pyx_t_6;
+      goto __pyx_L7_bool_binop_done;
+    }
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_w, __pyx_mstate_global->__pyx_n_u_is_stopword); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 190, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_9 = (!__pyx_t_6);
+    __pyx_t_5 = __pyx_t_9;
     __pyx_L7_bool_binop_done:;
     if (__pyx_t_5) {
       __Pyx_INCREF(__pyx_mstate_global->__pyx_int_1);
@@ -6448,13 +6841,13 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
       /* return from generator, yielding value */
       __pyx_generator->resume_label = 1;
       return __pyx_r;
-      __pyx_L9_resume_from_yield:;
+      __pyx_L10_resume_from_yield:;
       __pyx_t_1 = __pyx_cur_scope->__pyx_t_0;
       __pyx_cur_scope->__pyx_t_0 = 0;
       __Pyx_XGOTREF(__pyx_t_1);
       __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
       __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 184, __pyx_L1_error)
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 190, __pyx_L1_error)
     }
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6481,202 +6874,27 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2(__pyx_Cor
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_11generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_17generator5(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "trie.pyx":187
- * 
+/* "entities/trie.pyx":191
  *         #
- *         stopword_count = sum(1 for w in all_words if w.is_stopword)             # <<<<<<<<<<<<<<
- *         content_word_count = len(all_words) - stopword_count
- * 
-*/
-
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_9genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *__pyx_cur_scope;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *)__pyx_tp_new_4trie___pyx_scope_struct_3_genexpr(__pyx_mstate_global->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
-  if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *)Py_None);
-    __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 187, __pyx_L1_error)
-  } else {
-    __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
-  }
-  __pyx_cur_scope->__pyx_genexpr_arg_0 = __pyx_genexpr_arg_0;
-  __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
-  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
-  {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_4trie_8WordTrie_14get_word_stats_11generator3, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_trie); if (unlikely(!gen)) __PYX_ERR(0, 187, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_cur_scope);
-    __Pyx_RefNannyFinishContext();
-    return (PyObject *) gen;
-  }
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __Pyx_DECREF((PyObject *)__pyx_cur_scope);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_11generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
-{
-  struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *__pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *)__pyx_generator->closure);
-  PyObject *__pyx_r = NULL;
-  PyObject *__pyx_t_1 = NULL;
-  Py_ssize_t __pyx_t_2;
-  PyObject *(*__pyx_t_3)(PyObject *);
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("genexpr", 0);
-  switch (__pyx_generator->resume_label) {
-    case 0: goto __pyx_L3_first_run;
-    case 1: goto __pyx_L7_resume_from_yield;
-    default: /* CPython raises the right error here */
-    __Pyx_RefNannyFinishContext();
-    return NULL;
-  }
-  __pyx_L3_first_run:;
-  if (unlikely(__pyx_sent_value != Py_None)) {
-    if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 187, __pyx_L1_error)
-  }
-  if (unlikely(!__pyx_cur_scope->__pyx_genexpr_arg_0)) { __Pyx_RaiseUnboundLocalError(".0"); __PYX_ERR(0, 187, __pyx_L1_error) }
-  if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) {
-    __pyx_t_1 = __pyx_cur_scope->__pyx_genexpr_arg_0; __Pyx_INCREF(__pyx_t_1);
-    __pyx_t_2 = 0;
-    __pyx_t_3 = NULL;
-  } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_genexpr_arg_0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
-  }
-  for (;;) {
-    if (likely(!__pyx_t_3)) {
-      if (likely(PyList_CheckExact(__pyx_t_1))) {
-        {
-          Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
-          #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 187, __pyx_L1_error)
-          #endif
-          if (__pyx_t_2 >= __pyx_temp) break;
-        }
-        __pyx_t_4 = __Pyx_PyList_GetItemRef(__pyx_t_1, __pyx_t_2);
-        ++__pyx_t_2;
-      } else {
-        {
-          Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
-          #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 187, __pyx_L1_error)
-          #endif
-          if (__pyx_t_2 >= __pyx_temp) break;
-        }
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = __Pyx_NewRef(PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2));
-        #else
-        __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_2);
-        #endif
-        ++__pyx_t_2;
-      }
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 187, __pyx_L1_error)
-    } else {
-      __pyx_t_4 = __pyx_t_3(__pyx_t_1);
-      if (unlikely(!__pyx_t_4)) {
-        PyObject* exc_type = PyErr_Occurred();
-        if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 187, __pyx_L1_error)
-          PyErr_Clear();
-        }
-        break;
-      }
-    }
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_w);
-    __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_w, __pyx_t_4);
-    __Pyx_GIVEREF(__pyx_t_4);
-    __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_w, __pyx_mstate_global->__pyx_n_u_is_stopword); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 187, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 187, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (__pyx_t_5) {
-      __Pyx_INCREF(__pyx_mstate_global->__pyx_int_1);
-      __pyx_r = __pyx_mstate_global->__pyx_int_1;
-      __Pyx_XGIVEREF(__pyx_t_1);
-      __pyx_cur_scope->__pyx_t_0 = __pyx_t_1;
-      __pyx_cur_scope->__pyx_t_1 = __pyx_t_2;
-      __pyx_cur_scope->__pyx_t_2 = __pyx_t_3;
-      __Pyx_XGIVEREF(__pyx_r);
-      __Pyx_RefNannyFinishContext();
-      __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
-      /* return from generator, yielding value */
-      __pyx_generator->resume_label = 1;
-      return __pyx_r;
-      __pyx_L7_resume_from_yield:;
-      __pyx_t_1 = __pyx_cur_scope->__pyx_t_0;
-      __pyx_cur_scope->__pyx_t_0 = 0;
-      __Pyx_XGOTREF(__pyx_t_1);
-      __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
-      __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 187, __pyx_L1_error)
-    }
-  }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_4);
-  if (__Pyx_PyErr_Occurred()) {
-    __Pyx_Generator_Replace_StopIteration(0);
-    __Pyx_AddTraceback("genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  }
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  #if !CYTHON_USE_EXC_INFO_STACK
-  __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
-  #endif
-  __pyx_generator->resume_label = -1;
-  __Pyx_Coroutine_clear((PyObject*)__pyx_generator);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_14generator4(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
-
-/* "trie.pyx":191
- * 
- *         #
- *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)             # <<<<<<<<<<<<<<
- *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)
+ *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)
+ *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)             # <<<<<<<<<<<<<<
  *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)
+ * 
 */
 
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_12genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_15genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *)__pyx_tp_new_4trie___pyx_scope_struct_4_genexpr(__pyx_mstate_global->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_5_genexpr(__pyx_mstate_global->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 191, __pyx_L1_error)
   } else {
@@ -6686,7 +6904,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_12genexpr(CYTHON_UNUS
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_4trie_8WordTrie_14get_word_stats_14generator4, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_trie); if (unlikely(!gen)) __PYX_ERR(0, 191, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_17generator5, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_entities_trie); if (unlikely(!gen)) __PYX_ERR(0, 191, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6694,7 +6912,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_12genexpr(CYTHON_UNUS
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -6702,9 +6920,9 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_12genexpr(CYTHON_UNUS
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_14generator4(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_17generator5(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *__pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *__pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -6800,7 +7018,7 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_14generator4(__pyx_Co
     __pyx_t_8 = 0;
     {
       PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
-      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_noun, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_verb, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
@@ -6865,27 +7083,27 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_14generator4(__pyx_Co
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_17generator5(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_20generator6(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "trie.pyx":192
- *         #
+/* "entities/trie.pyx":192
  *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)
- *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)             # <<<<<<<<<<<<<<
- *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)
+ *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)
+ *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)             # <<<<<<<<<<<<<<
  * 
+ *         return {
 */
 
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_15genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_18genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *)__pyx_tp_new_4trie___pyx_scope_struct_5_genexpr(__pyx_mstate_global->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_6_genexpr(__pyx_mstate_global->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 192, __pyx_L1_error)
   } else {
@@ -6895,7 +7113,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_15genexpr(CYTHON_UNUS
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_4trie_8WordTrie_14get_word_stats_17generator5, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_trie); if (unlikely(!gen)) __PYX_ERR(0, 192, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_20generator6, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_entities_trie); if (unlikely(!gen)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6903,7 +7121,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_15genexpr(CYTHON_UNUS
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -6911,9 +7129,9 @@ static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_15genexpr(CYTHON_UNUS
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_17generator5(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_20generator6(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *__pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *__pyx_cur_scope = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -7009,7 +7227,7 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_17generator5(__pyx_Co
     __pyx_t_8 = 0;
     {
       PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
-      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_verb, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_adjective, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
@@ -7074,217 +7292,8 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_17generator5(__pyx_Co
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_20generator6(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "trie.pyx":193
- *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)
- *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)
- *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)             # <<<<<<<<<<<<<<
- * 
- *         return {
-*/
-
-static PyObject *__pyx_pf_4trie_8WordTrie_14get_word_stats_18genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *__pyx_cur_scope;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *)__pyx_tp_new_4trie___pyx_scope_struct_6_genexpr(__pyx_mstate_global->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
-  if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *)Py_None);
-    __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 193, __pyx_L1_error)
-  } else {
-    __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
-  }
-  __pyx_cur_scope->__pyx_genexpr_arg_0 = __pyx_genexpr_arg_0;
-  __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
-  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
-  {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_4trie_8WordTrie_14get_word_stats_20generator6, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats_locals_g, __pyx_mstate_global->__pyx_n_u_trie); if (unlikely(!gen)) __PYX_ERR(0, 193, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_cur_scope);
-    __Pyx_RefNannyFinishContext();
-    return (PyObject *) gen;
-  }
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __Pyx_DECREF((PyObject *)__pyx_cur_scope);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_20generator6(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
-{
-  struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *__pyx_cur_scope = ((struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *)__pyx_generator->closure);
-  PyObject *__pyx_r = NULL;
-  PyObject *__pyx_t_1 = NULL;
-  Py_ssize_t __pyx_t_2;
-  PyObject *(*__pyx_t_3)(PyObject *);
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
-  int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  size_t __pyx_t_8;
-  int __pyx_t_9;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("genexpr", 0);
-  switch (__pyx_generator->resume_label) {
-    case 0: goto __pyx_L3_first_run;
-    case 1: goto __pyx_L10_resume_from_yield;
-    default: /* CPython raises the right error here */
-    __Pyx_RefNannyFinishContext();
-    return NULL;
-  }
-  __pyx_L3_first_run:;
-  if (unlikely(__pyx_sent_value != Py_None)) {
-    if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 193, __pyx_L1_error)
-  }
-  if (unlikely(!__pyx_cur_scope->__pyx_genexpr_arg_0)) { __Pyx_RaiseUnboundLocalError(".0"); __PYX_ERR(0, 193, __pyx_L1_error) }
-  if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_genexpr_arg_0)) {
-    __pyx_t_1 = __pyx_cur_scope->__pyx_genexpr_arg_0; __Pyx_INCREF(__pyx_t_1);
-    __pyx_t_2 = 0;
-    __pyx_t_3 = NULL;
-  } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_genexpr_arg_0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 193, __pyx_L1_error)
-  }
-  for (;;) {
-    if (likely(!__pyx_t_3)) {
-      if (likely(PyList_CheckExact(__pyx_t_1))) {
-        {
-          Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
-          #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 193, __pyx_L1_error)
-          #endif
-          if (__pyx_t_2 >= __pyx_temp) break;
-        }
-        __pyx_t_4 = __Pyx_PyList_GetItemRef(__pyx_t_1, __pyx_t_2);
-        ++__pyx_t_2;
-      } else {
-        {
-          Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
-          #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 193, __pyx_L1_error)
-          #endif
-          if (__pyx_t_2 >= __pyx_temp) break;
-        }
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = __Pyx_NewRef(PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2));
-        #else
-        __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_2);
-        #endif
-        ++__pyx_t_2;
-      }
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
-    } else {
-      __pyx_t_4 = __pyx_t_3(__pyx_t_1);
-      if (unlikely(!__pyx_t_4)) {
-        PyObject* exc_type = PyErr_Occurred();
-        if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 193, __pyx_L1_error)
-          PyErr_Clear();
-        }
-        break;
-      }
-    }
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_w);
-    __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_w, __pyx_t_4);
-    __Pyx_GIVEREF(__pyx_t_4);
-    __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_w, __pyx_mstate_global->__pyx_n_u_dominant_pos); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 193, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (__pyx_t_6) {
-    } else {
-      __pyx_t_5 = __pyx_t_6;
-      goto __pyx_L7_bool_binop_done;
-    }
-    __pyx_t_7 = __pyx_cur_scope->__pyx_v_w;
-    __Pyx_INCREF(__pyx_t_7);
-    __pyx_t_8 = 0;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
-      __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_is_adjective, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-    }
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 193, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (__pyx_t_6) {
-    } else {
-      __pyx_t_5 = __pyx_t_6;
-      goto __pyx_L7_bool_binop_done;
-    }
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_w, __pyx_mstate_global->__pyx_n_u_is_stopword); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 193, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = (!__pyx_t_6);
-    __pyx_t_5 = __pyx_t_9;
-    __pyx_L7_bool_binop_done:;
-    if (__pyx_t_5) {
-      __Pyx_INCREF(__pyx_mstate_global->__pyx_int_1);
-      __pyx_r = __pyx_mstate_global->__pyx_int_1;
-      __Pyx_XGIVEREF(__pyx_t_1);
-      __pyx_cur_scope->__pyx_t_0 = __pyx_t_1;
-      __pyx_cur_scope->__pyx_t_1 = __pyx_t_2;
-      __pyx_cur_scope->__pyx_t_2 = __pyx_t_3;
-      __Pyx_XGIVEREF(__pyx_r);
-      __Pyx_RefNannyFinishContext();
-      __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
-      /* return from generator, yielding value */
-      __pyx_generator->resume_label = 1;
-      return __pyx_r;
-      __pyx_L10_resume_from_yield:;
-      __pyx_t_1 = __pyx_cur_scope->__pyx_t_0;
-      __pyx_cur_scope->__pyx_t_0 = 0;
-      __Pyx_XGOTREF(__pyx_t_1);
-      __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
-      __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 193, __pyx_L1_error)
-    }
-  }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_7);
-  if (__Pyx_PyErr_Occurred()) {
-    __Pyx_Generator_Replace_StopIteration(0);
-    __Pyx_AddTraceback("genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  }
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  #if !CYTHON_USE_EXC_INFO_STACK
-  __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
-  #endif
-  __pyx_generator->resume_label = -1;
-  __Pyx_Coroutine_clear((PyObject*)__pyx_generator);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "trie.pyx":177
+/* "entities/trie.pyx":176
  * 
  * 
  *     def get_word_stats(self) -> Dict[str, int]:             # <<<<<<<<<<<<<<
@@ -7292,7 +7301,7 @@ static PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_20generator6(__pyx_Co
  *         all_words = self.get_all_words()
 */
 
-static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_8entities_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_v_all_words = NULL;
   PyObject *__pyx_v_noun_count = NULL;
   PyObject *__pyx_v_verb_count = NULL;
@@ -7302,13 +7311,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   PyObject *__pyx_v_content_nouns = NULL;
   PyObject *__pyx_v_content_verbs = NULL;
   PyObject *__pyx_v_content_adjs = NULL;
-  PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_2generator = 0;
-  PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_5generator1 = 0;
-  PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2 = 0;
-  PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_11generator3 = 0;
-  PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_14generator4 = 0;
-  PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_17generator5 = 0;
-  PyObject *__pyx_gb_4trie_8WordTrie_14get_word_stats_20generator6 = 0;
+  PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_2generator = 0;
+  PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_5generator1 = 0;
+  PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_8generator2 = 0;
+  PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_11generator3 = 0;
+  PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_14generator4 = 0;
+  PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_17generator5 = 0;
+  PyObject *__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_20generator6 = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7322,7 +7331,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_word_stats", 0);
 
-  /* "trie.pyx":179
+  /* "entities/trie.pyx":178
  *     def get_word_stats(self) -> Dict[str, int]:
  *         """    (  )"""
  *         all_words = self.get_all_words()             # <<<<<<<<<<<<<<
@@ -7336,13 +7345,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_get_all_words, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_all_words = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":182
+  /* "entities/trie.pyx":181
  * 
  *         #
  *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())             # <<<<<<<<<<<<<<
@@ -7352,7 +7361,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __pyx_t_2 = NULL;
   __Pyx_INCREF(__pyx_builtin_sum);
   __pyx_t_4 = __pyx_builtin_sum; 
-  __pyx_t_5 = __pyx_pf_4trie_8WordTrie_14get_word_stats_genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_5 = __pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = 1;
   {
@@ -7361,13 +7370,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_noun_count = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":183
+  /* "entities/trie.pyx":182
  *         #
  *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
  *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())             # <<<<<<<<<<<<<<
@@ -7377,7 +7386,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __pyx_t_4 = NULL;
   __Pyx_INCREF(__pyx_builtin_sum);
   __pyx_t_5 = __pyx_builtin_sum; 
-  __pyx_t_2 = __pyx_pf_4trie_8WordTrie_14get_word_stats_3genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_2 = __pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_3genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = 1;
   {
@@ -7386,13 +7395,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_verb_count = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":184
+  /* "entities/trie.pyx":183
  *         noun_count = sum(1 for w in all_words if w._dominant_pos and w.is_noun())
  *         verb_count = sum(1 for w in all_words if w._dominant_pos and w.is_verb())
  *         adj_count = sum(1 for w in all_words if w._dominant_pos and w.is_adjective())             # <<<<<<<<<<<<<<
@@ -7402,7 +7411,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __pyx_t_5 = NULL;
   __Pyx_INCREF(__pyx_builtin_sum);
   __pyx_t_2 = __pyx_builtin_sum; 
-  __pyx_t_4 = __pyx_pf_4trie_8WordTrie_14get_word_stats_6genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_4 = __pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_6genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = 1;
   {
@@ -7411,13 +7420,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_adj_count = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":187
+  /* "entities/trie.pyx":186
  * 
  *         #
  *         stopword_count = sum(1 for w in all_words if w.is_stopword)             # <<<<<<<<<<<<<<
@@ -7427,7 +7436,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __pyx_t_2 = NULL;
   __Pyx_INCREF(__pyx_builtin_sum);
   __pyx_t_4 = __pyx_builtin_sum; 
-  __pyx_t_5 = __pyx_pf_4trie_8WordTrie_14get_word_stats_9genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_5 = __pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_9genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = 1;
   {
@@ -7436,29 +7445,29 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_stopword_count = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "trie.pyx":188
+  /* "entities/trie.pyx":187
  *         #
  *         stopword_count = sum(1 for w in all_words if w.is_stopword)
  *         content_word_count = len(all_words) - stopword_count             # <<<<<<<<<<<<<<
  * 
  *         #
 */
-  __pyx_t_6 = PyObject_Length(__pyx_v_all_words); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 188, __pyx_L1_error)
-  __pyx_t_1 = PyLong_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_all_words); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_1 = PyLong_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyNumber_Subtract(__pyx_t_1, __pyx_v_stopword_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Subtract(__pyx_t_1, __pyx_v_stopword_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_content_word_count = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "trie.pyx":191
+  /* "entities/trie.pyx":190
  * 
  *         #
  *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)             # <<<<<<<<<<<<<<
@@ -7468,7 +7477,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __pyx_t_1 = NULL;
   __Pyx_INCREF(__pyx_builtin_sum);
   __pyx_t_5 = __pyx_builtin_sum; 
-  __pyx_t_2 = __pyx_pf_4trie_8WordTrie_14get_word_stats_12genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_2 = __pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_12genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = 1;
   {
@@ -7477,13 +7486,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_content_nouns = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "trie.pyx":192
+  /* "entities/trie.pyx":191
  *         #
  *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)
  *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)             # <<<<<<<<<<<<<<
@@ -7493,7 +7502,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __pyx_t_5 = NULL;
   __Pyx_INCREF(__pyx_builtin_sum);
   __pyx_t_2 = __pyx_builtin_sum; 
-  __pyx_t_1 = __pyx_pf_4trie_8WordTrie_14get_word_stats_15genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_1 = __pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_15genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = 1;
   {
@@ -7502,13 +7511,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_content_verbs = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "trie.pyx":193
+  /* "entities/trie.pyx":192
  *         content_nouns = sum(1 for w in all_words if w._dominant_pos and w.is_noun() and not w.is_stopword)
  *         content_verbs = sum(1 for w in all_words if w._dominant_pos and w.is_verb() and not w.is_stopword)
  *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)             # <<<<<<<<<<<<<<
@@ -7518,7 +7527,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __pyx_t_2 = NULL;
   __Pyx_INCREF(__pyx_builtin_sum);
   __pyx_t_1 = __pyx_builtin_sum; 
-  __pyx_t_5 = __pyx_pf_4trie_8WordTrie_14get_word_stats_18genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_t_5 = __pyx_pf_8entities_4trie_8WordTrie_14get_word_stats_18genexpr(NULL, __pyx_v_all_words); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = 1;
   {
@@ -7527,13 +7536,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_content_adjs = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "trie.pyx":195
+  /* "entities/trie.pyx":194
  *         content_adjs = sum(1 for w in all_words if w._dominant_pos and w.is_adjective() and not w.is_stopword)
  * 
  *         return {             # <<<<<<<<<<<<<<
@@ -7542,118 +7551,118 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
 */
   __Pyx_XDECREF(__pyx_r);
 
-  /* "trie.pyx":196
+  /* "entities/trie.pyx":195
  * 
  *         return {
  *             'total_words': len(all_words),             # <<<<<<<<<<<<<<
  *             'stopwords': stopword_count,
  *             'content_words': content_word_count,
 */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = PyObject_Length(__pyx_v_all_words); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 196, __pyx_L1_error)
-  __pyx_t_1 = PyLong_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_all_words); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_1 = PyLong_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_total_words, __pyx_t_1) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_total_words, __pyx_t_1) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "trie.pyx":197
+  /* "entities/trie.pyx":196
  *         return {
  *             'total_words': len(all_words),
  *             'stopwords': stopword_count,             # <<<<<<<<<<<<<<
  *             'content_words': content_word_count,
  *             'nouns': noun_count,
 */
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_stopwords, __pyx_v_stopword_count) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_stopwords, __pyx_v_stopword_count) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "trie.pyx":198
+  /* "entities/trie.pyx":197
  *             'total_words': len(all_words),
  *             'stopwords': stopword_count,
  *             'content_words': content_word_count,             # <<<<<<<<<<<<<<
  *             'nouns': noun_count,
  *             'verbs': verb_count,
 */
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_content_words, __pyx_v_content_word_count) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_content_words, __pyx_v_content_word_count) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "trie.pyx":199
+  /* "entities/trie.pyx":198
  *             'stopwords': stopword_count,
  *             'content_words': content_word_count,
  *             'nouns': noun_count,             # <<<<<<<<<<<<<<
  *             'verbs': verb_count,
  *             'adjectives': adj_count,
 */
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_nouns, __pyx_v_noun_count) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_nouns, __pyx_v_noun_count) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "trie.pyx":200
+  /* "entities/trie.pyx":199
  *             'content_words': content_word_count,
  *             'nouns': noun_count,
  *             'verbs': verb_count,             # <<<<<<<<<<<<<<
  *             'adjectives': adj_count,
  *             'content_nouns': content_nouns,
 */
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_verbs, __pyx_v_verb_count) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_verbs, __pyx_v_verb_count) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "trie.pyx":201
+  /* "entities/trie.pyx":200
  *             'nouns': noun_count,
  *             'verbs': verb_count,
  *             'adjectives': adj_count,             # <<<<<<<<<<<<<<
  *             'content_nouns': content_nouns,
  *             'content_verbs': content_verbs,
 */
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_adjectives, __pyx_v_adj_count) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_adjectives, __pyx_v_adj_count) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "trie.pyx":202
+  /* "entities/trie.pyx":201
  *             'verbs': verb_count,
  *             'adjectives': adj_count,
  *             'content_nouns': content_nouns,             # <<<<<<<<<<<<<<
  *             'content_verbs': content_verbs,
  *             'content_adjectives': content_adjs,
 */
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_content_nouns, __pyx_v_content_nouns) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_content_nouns, __pyx_v_content_nouns) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "trie.pyx":203
+  /* "entities/trie.pyx":202
  *             'adjectives': adj_count,
  *             'content_nouns': content_nouns,
  *             'content_verbs': content_verbs,             # <<<<<<<<<<<<<<
  *             'content_adjectives': content_adjs,
  *             'other_pos': len(all_words) - noun_count - verb_count - adj_count
 */
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_content_verbs, __pyx_v_content_verbs) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_content_verbs, __pyx_v_content_verbs) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "trie.pyx":204
+  /* "entities/trie.pyx":203
  *             'content_nouns': content_nouns,
  *             'content_verbs': content_verbs,
  *             'content_adjectives': content_adjs,             # <<<<<<<<<<<<<<
  *             'other_pos': len(all_words) - noun_count - verb_count - adj_count
  *         }
 */
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_content_adjectives, __pyx_v_content_adjs) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_content_adjectives, __pyx_v_content_adjs) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "trie.pyx":205
+  /* "entities/trie.pyx":204
  *             'content_verbs': content_verbs,
  *             'content_adjectives': content_adjs,
  *             'other_pos': len(all_words) - noun_count - verb_count - adj_count             # <<<<<<<<<<<<<<
  *         }
 */
-  __pyx_t_6 = PyObject_Length(__pyx_v_all_words); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 205, __pyx_L1_error)
-  __pyx_t_1 = PyLong_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_all_words); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_1 = PyLong_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_v_noun_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_v_noun_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Subtract(__pyx_t_5, __pyx_v_verb_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_t_5, __pyx_v_verb_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_v_adj_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_v_adj_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_other_pos, __pyx_t_5) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_other_pos, __pyx_t_5) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "trie.pyx":177
+  /* "entities/trie.pyx":176
  * 
  * 
  *     def get_word_stats(self) -> Dict[str, int]:             # <<<<<<<<<<<<<<
@@ -7667,7 +7676,7 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("trie.WordTrie.get_word_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.WordTrie.get_word_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_all_words);
@@ -7679,13 +7688,13 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
   __Pyx_XDECREF(__pyx_v_content_nouns);
   __Pyx_XDECREF(__pyx_v_content_verbs);
   __Pyx_XDECREF(__pyx_v_content_adjs);
-  __Pyx_XDECREF(__pyx_gb_4trie_8WordTrie_14get_word_stats_2generator);
-  __Pyx_XDECREF(__pyx_gb_4trie_8WordTrie_14get_word_stats_5generator1);
-  __Pyx_XDECREF(__pyx_gb_4trie_8WordTrie_14get_word_stats_8generator2);
-  __Pyx_XDECREF(__pyx_gb_4trie_8WordTrie_14get_word_stats_11generator3);
-  __Pyx_XDECREF(__pyx_gb_4trie_8WordTrie_14get_word_stats_14generator4);
-  __Pyx_XDECREF(__pyx_gb_4trie_8WordTrie_14get_word_stats_17generator5);
-  __Pyx_XDECREF(__pyx_gb_4trie_8WordTrie_14get_word_stats_20generator6);
+  __Pyx_XDECREF(__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_2generator);
+  __Pyx_XDECREF(__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_5generator1);
+  __Pyx_XDECREF(__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_8generator2);
+  __Pyx_XDECREF(__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_11generator3);
+  __Pyx_XDECREF(__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_14generator4);
+  __Pyx_XDECREF(__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_17generator5);
+  __Pyx_XDECREF(__pyx_gb_8entities_4trie_8WordTrie_14get_word_stats_20generator6);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -7698,15 +7707,15 @@ static PyObject *__pyx_pf_4trie_8WordTrie_12get_word_stats(CYTHON_UNUSED PyObjec
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4trie_1__pyx_unpickle_TrieNode(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8entities_4trie_1__pyx_unpickle_TrieNode(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4trie_1__pyx_unpickle_TrieNode = {"__pyx_unpickle_TrieNode", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_1__pyx_unpickle_TrieNode, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4trie_1__pyx_unpickle_TrieNode(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8entities_4trie_1__pyx_unpickle_TrieNode = {"__pyx_unpickle_TrieNode", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_1__pyx_unpickle_TrieNode, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8entities_4trie_1__pyx_unpickle_TrieNode(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -7784,11 +7793,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("trie.__pyx_unpickle_TrieNode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.__pyx_unpickle_TrieNode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4trie___pyx_unpickle_TrieNode(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_8entities_4trie___pyx_unpickle_TrieNode(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -7798,7 +7807,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4trie___pyx_unpickle_TrieNode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_8entities_4trie___pyx_unpickle_TrieNode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_v___pyx_PickleError = 0;
   PyObject *__pyx_v___pyx_result = 0;
   PyObject *__pyx_r = NULL;
@@ -7879,7 +7888,7 @@ static PyObject *__pyx_pf_4trie___pyx_unpickle_TrieNode(CYTHON_UNUSED PyObject *
  *     if __pyx_state is not None:
  *         __pyx_unpickle_TrieNode__set_state(<TrieNode> __pyx_result, __pyx_state)
 */
-  __pyx_t_3 = ((PyObject *)__pyx_mstate_global->__pyx_ptype_4trie_TrieNode);
+  __pyx_t_3 = ((PyObject *)__pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode);
   __Pyx_INCREF(__pyx_t_3);
   __pyx_t_4 = 0;
   {
@@ -7910,7 +7919,7 @@ static PyObject *__pyx_pf_4trie___pyx_unpickle_TrieNode(CYTHON_UNUSED PyObject *
  * cdef __pyx_unpickle_TrieNode__set_state(TrieNode __pyx_result, tuple __pyx_state):
 */
     if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_v___pyx_state))) __PYX_ERR(1, 9, __pyx_L1_error)
-    __pyx_t_1 = __pyx_f_4trie___pyx_unpickle_TrieNode__set_state(((struct __pyx_obj_4trie_TrieNode *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 9, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_8entities_4trie___pyx_unpickle_TrieNode__set_state(((struct __pyx_obj_8entities_4trie_TrieNode *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 9, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
@@ -7945,7 +7954,7 @@ static PyObject *__pyx_pf_4trie___pyx_unpickle_TrieNode(CYTHON_UNUSED PyObject *
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("trie.__pyx_unpickle_TrieNode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.__pyx_unpickle_TrieNode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v___pyx_PickleError);
@@ -7963,7 +7972,7 @@ static PyObject *__pyx_pf_4trie___pyx_unpickle_TrieNode(CYTHON_UNUSED PyObject *
  *     if len(__pyx_state) > 3 and hasattr(__pyx_result, '__dict__'):
 */
 
-static PyObject *__pyx_f_4trie___pyx_unpickle_TrieNode__set_state(struct __pyx_obj_4trie_TrieNode *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_f_8entities_4trie___pyx_unpickle_TrieNode__set_state(struct __pyx_obj_8entities_4trie_TrieNode *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8092,7 +8101,7 @@ static PyObject *__pyx_f_4trie___pyx_unpickle_TrieNode__set_state(struct __pyx_o
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("trie.__pyx_unpickle_TrieNode__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("entities.trie.__pyx_unpickle_TrieNode__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -8101,8 +8110,8 @@ static PyObject *__pyx_f_4trie___pyx_unpickle_TrieNode__set_state(struct __pyx_o
 }
 /* #### Code section: module_exttypes ### */
 
-static PyObject *__pyx_tp_new_4trie_TrieNode(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_4trie_TrieNode *p;
+static PyObject *__pyx_tp_new_8entities_4trie_TrieNode(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_8entities_4trie_TrieNode *p;
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
@@ -8115,17 +8124,17 @@ static PyObject *__pyx_tp_new_4trie_TrieNode(PyTypeObject *t, CYTHON_UNUSED PyOb
   }
   if (unlikely(!o)) return 0;
   #endif
-  p = ((struct __pyx_obj_4trie_TrieNode *)o);
+  p = ((struct __pyx_obj_8entities_4trie_TrieNode *)o);
   p->children = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->word_obj = Py_None; Py_INCREF(Py_None);
   return o;
 }
 
-static void __pyx_tp_dealloc_4trie_TrieNode(PyObject *o) {
-  struct __pyx_obj_4trie_TrieNode *p = (struct __pyx_obj_4trie_TrieNode *)o;
+static void __pyx_tp_dealloc_8entities_4trie_TrieNode(PyObject *o) {
+  struct __pyx_obj_8entities_4trie_TrieNode *p = (struct __pyx_obj_8entities_4trie_TrieNode *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4trie_TrieNode) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8entities_4trie_TrieNode) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -8143,9 +8152,9 @@ static void __pyx_tp_dealloc_4trie_TrieNode(PyObject *o) {
   #endif
 }
 
-static int __pyx_tp_traverse_4trie_TrieNode(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8entities_4trie_TrieNode(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4trie_TrieNode *p = (struct __pyx_obj_4trie_TrieNode *)o;
+  struct __pyx_obj_8entities_4trie_TrieNode *p = (struct __pyx_obj_8entities_4trie_TrieNode *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -8159,9 +8168,9 @@ static int __pyx_tp_traverse_4trie_TrieNode(PyObject *o, visitproc v, void *a) {
   return 0;
 }
 
-static int __pyx_tp_clear_4trie_TrieNode(PyObject *o) {
+static int __pyx_tp_clear_8entities_4trie_TrieNode(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_4trie_TrieNode *p = (struct __pyx_obj_4trie_TrieNode *)o;
+  struct __pyx_obj_8entities_4trie_TrieNode *p = (struct __pyx_obj_8entities_4trie_TrieNode *)o;
   tmp = ((PyObject*)p->children);
   p->children = ((PyObject*)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
@@ -8171,37 +8180,37 @@ static int __pyx_tp_clear_4trie_TrieNode(PyObject *o) {
   return 0;
 }
 
-static PyMethodDef __pyx_methods_4trie_TrieNode[] = {
-  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8TrieNode_3__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4trie_8TrieNode_5__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_8entities_4trie_TrieNode[] = {
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8TrieNode_3__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8entities_4trie_8TrieNode_5__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4trie_TrieNode_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4trie_TrieNode},
+static PyType_Slot __pyx_type_8entities_4trie_TrieNode_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8entities_4trie_TrieNode},
   {Py_tp_doc, (void *)PyDoc_STR("\354\240\221\353\221\220\354\202\254 \355\212\270\353\246\254 \353\205\270\353\223\234")},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4trie_TrieNode},
-  {Py_tp_clear, (void *)__pyx_tp_clear_4trie_TrieNode},
-  {Py_tp_methods, (void *)__pyx_methods_4trie_TrieNode},
-  {Py_tp_init, (void *)__pyx_pw_4trie_8TrieNode_1__init__},
-  {Py_tp_new, (void *)__pyx_tp_new_4trie_TrieNode},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8entities_4trie_TrieNode},
+  {Py_tp_clear, (void *)__pyx_tp_clear_8entities_4trie_TrieNode},
+  {Py_tp_methods, (void *)__pyx_methods_8entities_4trie_TrieNode},
+  {Py_tp_init, (void *)__pyx_pw_8entities_4trie_8TrieNode_1__init__},
+  {Py_tp_new, (void *)__pyx_tp_new_8entities_4trie_TrieNode},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4trie_TrieNode_spec = {
-  "trie.TrieNode",
-  sizeof(struct __pyx_obj_4trie_TrieNode),
+static PyType_Spec __pyx_type_8entities_4trie_TrieNode_spec = {
+  "entities.trie.TrieNode",
+  sizeof(struct __pyx_obj_8entities_4trie_TrieNode),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
-  __pyx_type_4trie_TrieNode_slots,
+  __pyx_type_8entities_4trie_TrieNode_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4trie_TrieNode = {
+static PyTypeObject __pyx_type_8entities_4trie_TrieNode = {
   PyVarObject_HEAD_INIT(0, 0)
-  "trie.""TrieNode", /*tp_name*/
-  sizeof(struct __pyx_obj_4trie_TrieNode), /*tp_basicsize*/
+  "entities.trie.""TrieNode", /*tp_name*/
+  sizeof(struct __pyx_obj_8entities_4trie_TrieNode), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4trie_TrieNode, /*tp_dealloc*/
+  __pyx_tp_dealloc_8entities_4trie_TrieNode, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -8223,13 +8232,13 @@ static PyTypeObject __pyx_type_4trie_TrieNode = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   PyDoc_STR("\354\240\221\353\221\220\354\202\254 \355\212\270\353\246\254 \353\205\270\353\223\234"), /*tp_doc*/
-  __pyx_tp_traverse_4trie_TrieNode, /*tp_traverse*/
-  __pyx_tp_clear_4trie_TrieNode, /*tp_clear*/
+  __pyx_tp_traverse_8entities_4trie_TrieNode, /*tp_traverse*/
+  __pyx_tp_clear_8entities_4trie_TrieNode, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_4trie_TrieNode, /*tp_methods*/
+  __pyx_methods_8entities_4trie_TrieNode, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -8239,9 +8248,9 @@ static PyTypeObject __pyx_type_4trie_TrieNode = {
   #if !CYTHON_USE_TYPE_SPECS
   0, /*tp_dictoffset*/
   #endif
-  __pyx_pw_4trie_8TrieNode_1__init__, /*tp_init*/
+  __pyx_pw_8entities_4trie_8TrieNode_1__init__, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4trie_TrieNode, /*tp_new*/
+  __pyx_tp_new_8entities_4trie_TrieNode, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8274,16 +8283,16 @@ static PyTypeObject __pyx_type_4trie_TrieNode = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct__genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct__genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct__genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct__genexpr)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct__genexpr[--__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct__genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_4trie___pyx_scope_struct__genexpr));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct__genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct__genexpr[--__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct__genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -8296,11 +8305,11 @@ static PyObject *__pyx_tp_new_4trie___pyx_scope_struct__genexpr(PyTypeObject *t,
   return o;
 }
 
-static void __pyx_tp_dealloc_4trie___pyx_scope_struct__genexpr(PyObject *o) {
-  struct __pyx_obj_4trie___pyx_scope_struct__genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct__genexpr *)o;
+static void __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct__genexpr(PyObject *o) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4trie___pyx_scope_struct__genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct__genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -8310,8 +8319,8 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct__genexpr(PyObject *o) {
   Py_CLEAR(p->__pyx_v_w);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct__genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct__genexpr)))) {
-    __pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct__genexpr[__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct__genexpr++] = ((struct __pyx_obj_4trie___pyx_scope_struct__genexpr *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct__genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr)))) {
+    __pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct__genexpr[__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct__genexpr++] = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *)o);
   } else
   #endif
   {
@@ -8326,9 +8335,9 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct__genexpr(PyObject *o) {
   }
 }
 
-static int __pyx_tp_traverse_4trie___pyx_scope_struct__genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8entities_4trie___pyx_scope_struct__genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4trie___pyx_scope_struct__genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct__genexpr *)o;
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -8345,27 +8354,27 @@ static int __pyx_tp_traverse_4trie___pyx_scope_struct__genexpr(PyObject *o, visi
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4trie___pyx_scope_struct__genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4trie___pyx_scope_struct__genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4trie___pyx_scope_struct__genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_4trie___pyx_scope_struct__genexpr},
+static PyType_Slot __pyx_type_8entities_4trie___pyx_scope_struct__genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8entities_4trie___pyx_scope_struct__genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8entities_4trie___pyx_scope_struct__genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_8entities_4trie___pyx_scope_struct__genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4trie___pyx_scope_struct__genexpr_spec = {
-  "trie.__pyx_scope_struct__genexpr",
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct__genexpr),
+static PyType_Spec __pyx_type_8entities_4trie___pyx_scope_struct__genexpr_spec = {
+  "entities.trie.__pyx_scope_struct__genexpr",
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_4trie___pyx_scope_struct__genexpr_slots,
+  __pyx_type_8entities_4trie___pyx_scope_struct__genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4trie___pyx_scope_struct__genexpr = {
+static PyTypeObject __pyx_type_8entities_4trie___pyx_scope_struct__genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "trie.""__pyx_scope_struct__genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct__genexpr), /*tp_basicsize*/
+  "entities.trie.""__pyx_scope_struct__genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct__genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4trie___pyx_scope_struct__genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct__genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -8387,7 +8396,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct__genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_4trie___pyx_scope_struct__genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_8entities_4trie___pyx_scope_struct__genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -8405,7 +8414,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct__genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4trie___pyx_scope_struct__genexpr, /*tp_new*/
+  __pyx_tp_new_8entities_4trie___pyx_scope_struct__genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8438,16 +8447,16 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct__genexpr = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_1_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_1_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_1_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_1_genexpr[--__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_1_genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_1_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_1_genexpr[--__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_1_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -8460,11 +8469,11 @@ static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_1_genexpr(PyTypeObject *t
   return o;
 }
 
-static void __pyx_tp_dealloc_4trie___pyx_scope_struct_1_genexpr(PyObject *o) {
-  struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *)o;
+static void __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_1_genexpr(PyObject *o) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4trie___pyx_scope_struct_1_genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_1_genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -8474,8 +8483,8 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_1_genexpr(PyObject *o) {
   Py_CLEAR(p->__pyx_v_w);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_1_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr)))) {
-    __pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_1_genexpr[__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_1_genexpr++] = ((struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_1_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr)))) {
+    __pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_1_genexpr[__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_1_genexpr++] = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *)o);
   } else
   #endif
   {
@@ -8490,9 +8499,9 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_1_genexpr(PyObject *o) {
   }
 }
 
-static int __pyx_tp_traverse_4trie___pyx_scope_struct_1_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_1_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr *)o;
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -8509,27 +8518,27 @@ static int __pyx_tp_traverse_4trie___pyx_scope_struct_1_genexpr(PyObject *o, vis
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4trie___pyx_scope_struct_1_genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4trie___pyx_scope_struct_1_genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4trie___pyx_scope_struct_1_genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_4trie___pyx_scope_struct_1_genexpr},
+static PyType_Slot __pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_1_genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8entities_4trie___pyx_scope_struct_1_genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_1_genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4trie___pyx_scope_struct_1_genexpr_spec = {
-  "trie.__pyx_scope_struct_1_genexpr",
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr),
+static PyType_Spec __pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr_spec = {
+  "entities.trie.__pyx_scope_struct_1_genexpr",
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_4trie___pyx_scope_struct_1_genexpr_slots,
+  __pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4trie___pyx_scope_struct_1_genexpr = {
+static PyTypeObject __pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "trie.""__pyx_scope_struct_1_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_1_genexpr), /*tp_basicsize*/
+  "entities.trie.""__pyx_scope_struct_1_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_1_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4trie___pyx_scope_struct_1_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_1_genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -8551,7 +8560,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_1_genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_4trie___pyx_scope_struct_1_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_1_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -8569,7 +8578,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_1_genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4trie___pyx_scope_struct_1_genexpr, /*tp_new*/
+  __pyx_tp_new_8entities_4trie___pyx_scope_struct_1_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8602,16 +8611,16 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_1_genexpr = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_2_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_2_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_2_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_2_genexpr[--__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_2_genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_2_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_2_genexpr[--__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_2_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -8624,11 +8633,11 @@ static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_2_genexpr(PyTypeObject *t
   return o;
 }
 
-static void __pyx_tp_dealloc_4trie___pyx_scope_struct_2_genexpr(PyObject *o) {
-  struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *)o;
+static void __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_2_genexpr(PyObject *o) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4trie___pyx_scope_struct_2_genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_2_genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -8638,8 +8647,8 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_2_genexpr(PyObject *o) {
   Py_CLEAR(p->__pyx_v_w);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_2_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr)))) {
-    __pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_2_genexpr[__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_2_genexpr++] = ((struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_2_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr)))) {
+    __pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_2_genexpr[__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_2_genexpr++] = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *)o);
   } else
   #endif
   {
@@ -8654,9 +8663,9 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_2_genexpr(PyObject *o) {
   }
 }
 
-static int __pyx_tp_traverse_4trie___pyx_scope_struct_2_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_2_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr *)o;
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -8673,27 +8682,27 @@ static int __pyx_tp_traverse_4trie___pyx_scope_struct_2_genexpr(PyObject *o, vis
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4trie___pyx_scope_struct_2_genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4trie___pyx_scope_struct_2_genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4trie___pyx_scope_struct_2_genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_4trie___pyx_scope_struct_2_genexpr},
+static PyType_Slot __pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_2_genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8entities_4trie___pyx_scope_struct_2_genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_2_genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4trie___pyx_scope_struct_2_genexpr_spec = {
-  "trie.__pyx_scope_struct_2_genexpr",
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr),
+static PyType_Spec __pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr_spec = {
+  "entities.trie.__pyx_scope_struct_2_genexpr",
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_4trie___pyx_scope_struct_2_genexpr_slots,
+  __pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4trie___pyx_scope_struct_2_genexpr = {
+static PyTypeObject __pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "trie.""__pyx_scope_struct_2_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_2_genexpr), /*tp_basicsize*/
+  "entities.trie.""__pyx_scope_struct_2_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_2_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4trie___pyx_scope_struct_2_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_2_genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -8715,7 +8724,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_2_genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_4trie___pyx_scope_struct_2_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_2_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -8733,7 +8742,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_2_genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4trie___pyx_scope_struct_2_genexpr, /*tp_new*/
+  __pyx_tp_new_8entities_4trie___pyx_scope_struct_2_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8766,16 +8775,16 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_2_genexpr = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_3_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_3_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_3_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_3_genexpr[--__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_3_genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_3_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_3_genexpr[--__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_3_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -8788,11 +8797,11 @@ static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_3_genexpr(PyTypeObject *t
   return o;
 }
 
-static void __pyx_tp_dealloc_4trie___pyx_scope_struct_3_genexpr(PyObject *o) {
-  struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *)o;
+static void __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_3_genexpr(PyObject *o) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4trie___pyx_scope_struct_3_genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_3_genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -8802,8 +8811,8 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_3_genexpr(PyObject *o) {
   Py_CLEAR(p->__pyx_v_w);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_3_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr)))) {
-    __pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_3_genexpr[__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_3_genexpr++] = ((struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_3_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr)))) {
+    __pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_3_genexpr[__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_3_genexpr++] = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *)o);
   } else
   #endif
   {
@@ -8818,9 +8827,9 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_3_genexpr(PyObject *o) {
   }
 }
 
-static int __pyx_tp_traverse_4trie___pyx_scope_struct_3_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_3_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr *)o;
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -8837,27 +8846,27 @@ static int __pyx_tp_traverse_4trie___pyx_scope_struct_3_genexpr(PyObject *o, vis
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4trie___pyx_scope_struct_3_genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4trie___pyx_scope_struct_3_genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4trie___pyx_scope_struct_3_genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_4trie___pyx_scope_struct_3_genexpr},
+static PyType_Slot __pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_3_genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8entities_4trie___pyx_scope_struct_3_genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_3_genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4trie___pyx_scope_struct_3_genexpr_spec = {
-  "trie.__pyx_scope_struct_3_genexpr",
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr),
+static PyType_Spec __pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr_spec = {
+  "entities.trie.__pyx_scope_struct_3_genexpr",
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_4trie___pyx_scope_struct_3_genexpr_slots,
+  __pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4trie___pyx_scope_struct_3_genexpr = {
+static PyTypeObject __pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "trie.""__pyx_scope_struct_3_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_3_genexpr), /*tp_basicsize*/
+  "entities.trie.""__pyx_scope_struct_3_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_3_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4trie___pyx_scope_struct_3_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_3_genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -8879,7 +8888,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_3_genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_4trie___pyx_scope_struct_3_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_3_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -8897,7 +8906,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_3_genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4trie___pyx_scope_struct_3_genexpr, /*tp_new*/
+  __pyx_tp_new_8entities_4trie___pyx_scope_struct_3_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8930,16 +8939,16 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_3_genexpr = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_4_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_4_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_4_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_4_genexpr[--__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_4_genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_4_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_4_genexpr[--__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_4_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -8952,11 +8961,11 @@ static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_4_genexpr(PyTypeObject *t
   return o;
 }
 
-static void __pyx_tp_dealloc_4trie___pyx_scope_struct_4_genexpr(PyObject *o) {
-  struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *)o;
+static void __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_4_genexpr(PyObject *o) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4trie___pyx_scope_struct_4_genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_4_genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -8966,8 +8975,8 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_4_genexpr(PyObject *o) {
   Py_CLEAR(p->__pyx_v_w);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_4_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr)))) {
-    __pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_4_genexpr[__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_4_genexpr++] = ((struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_4_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr)))) {
+    __pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_4_genexpr[__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_4_genexpr++] = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *)o);
   } else
   #endif
   {
@@ -8982,9 +8991,9 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_4_genexpr(PyObject *o) {
   }
 }
 
-static int __pyx_tp_traverse_4trie___pyx_scope_struct_4_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_4_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr *)o;
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -9001,27 +9010,27 @@ static int __pyx_tp_traverse_4trie___pyx_scope_struct_4_genexpr(PyObject *o, vis
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4trie___pyx_scope_struct_4_genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4trie___pyx_scope_struct_4_genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4trie___pyx_scope_struct_4_genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_4trie___pyx_scope_struct_4_genexpr},
+static PyType_Slot __pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_4_genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8entities_4trie___pyx_scope_struct_4_genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_4_genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4trie___pyx_scope_struct_4_genexpr_spec = {
-  "trie.__pyx_scope_struct_4_genexpr",
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr),
+static PyType_Spec __pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr_spec = {
+  "entities.trie.__pyx_scope_struct_4_genexpr",
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_4trie___pyx_scope_struct_4_genexpr_slots,
+  __pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4trie___pyx_scope_struct_4_genexpr = {
+static PyTypeObject __pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "trie.""__pyx_scope_struct_4_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_4_genexpr), /*tp_basicsize*/
+  "entities.trie.""__pyx_scope_struct_4_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_4_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4trie___pyx_scope_struct_4_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_4_genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -9043,7 +9052,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_4_genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_4trie___pyx_scope_struct_4_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_4_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -9061,7 +9070,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_4_genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4trie___pyx_scope_struct_4_genexpr, /*tp_new*/
+  __pyx_tp_new_8entities_4trie___pyx_scope_struct_4_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -9094,16 +9103,16 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_4_genexpr = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_5_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_5_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_5_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_5_genexpr[--__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_5_genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_5_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_5_genexpr[--__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_5_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -9116,11 +9125,11 @@ static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_5_genexpr(PyTypeObject *t
   return o;
 }
 
-static void __pyx_tp_dealloc_4trie___pyx_scope_struct_5_genexpr(PyObject *o) {
-  struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *)o;
+static void __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_5_genexpr(PyObject *o) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4trie___pyx_scope_struct_5_genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_5_genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -9130,8 +9139,8 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_5_genexpr(PyObject *o) {
   Py_CLEAR(p->__pyx_v_w);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_5_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr)))) {
-    __pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_5_genexpr[__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_5_genexpr++] = ((struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_5_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr)))) {
+    __pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_5_genexpr[__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_5_genexpr++] = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *)o);
   } else
   #endif
   {
@@ -9146,9 +9155,9 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_5_genexpr(PyObject *o) {
   }
 }
 
-static int __pyx_tp_traverse_4trie___pyx_scope_struct_5_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_5_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr *)o;
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -9165,27 +9174,27 @@ static int __pyx_tp_traverse_4trie___pyx_scope_struct_5_genexpr(PyObject *o, vis
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4trie___pyx_scope_struct_5_genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4trie___pyx_scope_struct_5_genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4trie___pyx_scope_struct_5_genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_4trie___pyx_scope_struct_5_genexpr},
+static PyType_Slot __pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_5_genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8entities_4trie___pyx_scope_struct_5_genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_5_genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4trie___pyx_scope_struct_5_genexpr_spec = {
-  "trie.__pyx_scope_struct_5_genexpr",
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr),
+static PyType_Spec __pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr_spec = {
+  "entities.trie.__pyx_scope_struct_5_genexpr",
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_4trie___pyx_scope_struct_5_genexpr_slots,
+  __pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4trie___pyx_scope_struct_5_genexpr = {
+static PyTypeObject __pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "trie.""__pyx_scope_struct_5_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_5_genexpr), /*tp_basicsize*/
+  "entities.trie.""__pyx_scope_struct_5_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_5_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4trie___pyx_scope_struct_5_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_5_genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -9207,7 +9216,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_5_genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_4trie___pyx_scope_struct_5_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_5_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -9225,7 +9234,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_5_genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4trie___pyx_scope_struct_5_genexpr, /*tp_new*/
+  __pyx_tp_new_8entities_4trie___pyx_scope_struct_5_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -9258,16 +9267,16 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_5_genexpr = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_6_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8entities_4trie___pyx_scope_struct_6_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_6_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_6_genexpr[--__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_6_genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_6_genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_6_genexpr[--__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_6_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -9280,11 +9289,11 @@ static PyObject *__pyx_tp_new_4trie___pyx_scope_struct_6_genexpr(PyTypeObject *t
   return o;
 }
 
-static void __pyx_tp_dealloc_4trie___pyx_scope_struct_6_genexpr(PyObject *o) {
-  struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *)o;
+static void __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_6_genexpr(PyObject *o) {
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4trie___pyx_scope_struct_6_genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_6_genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -9294,8 +9303,8 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_6_genexpr(PyObject *o) {
   Py_CLEAR(p->__pyx_v_w);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_6_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr)))) {
-    __pyx_mstate_global->__pyx_freelist_4trie___pyx_scope_struct_6_genexpr[__pyx_mstate_global->__pyx_freecount_4trie___pyx_scope_struct_6_genexpr++] = ((struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_6_genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr)))) {
+    __pyx_mstate_global->__pyx_freelist_8entities_4trie___pyx_scope_struct_6_genexpr[__pyx_mstate_global->__pyx_freecount_8entities_4trie___pyx_scope_struct_6_genexpr++] = ((struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *)o);
   } else
   #endif
   {
@@ -9310,9 +9319,9 @@ static void __pyx_tp_dealloc_4trie___pyx_scope_struct_6_genexpr(PyObject *o) {
   }
 }
 
-static int __pyx_tp_traverse_4trie___pyx_scope_struct_6_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_6_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *p = (struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr *)o;
+  struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *p = (struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -9329,27 +9338,27 @@ static int __pyx_tp_traverse_4trie___pyx_scope_struct_6_genexpr(PyObject *o, vis
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4trie___pyx_scope_struct_6_genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4trie___pyx_scope_struct_6_genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4trie___pyx_scope_struct_6_genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_4trie___pyx_scope_struct_6_genexpr},
+static PyType_Slot __pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_6_genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8entities_4trie___pyx_scope_struct_6_genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_8entities_4trie___pyx_scope_struct_6_genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4trie___pyx_scope_struct_6_genexpr_spec = {
-  "trie.__pyx_scope_struct_6_genexpr",
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr),
+static PyType_Spec __pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr_spec = {
+  "entities.trie.__pyx_scope_struct_6_genexpr",
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_4trie___pyx_scope_struct_6_genexpr_slots,
+  __pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4trie___pyx_scope_struct_6_genexpr = {
+static PyTypeObject __pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "trie.""__pyx_scope_struct_6_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_4trie___pyx_scope_struct_6_genexpr), /*tp_basicsize*/
+  "entities.trie.""__pyx_scope_struct_6_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_8entities_4trie___pyx_scope_struct_6_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4trie___pyx_scope_struct_6_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_8entities_4trie___pyx_scope_struct_6_genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -9371,7 +9380,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_6_genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_4trie___pyx_scope_struct_6_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_8entities_4trie___pyx_scope_struct_6_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -9389,7 +9398,7 @@ static PyTypeObject __pyx_type_4trie___pyx_scope_struct_6_genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4trie___pyx_scope_struct_6_genexpr, /*tp_new*/
+  __pyx_tp_new_8entities_4trie___pyx_scope_struct_6_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -9476,133 +9485,133 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4trie_TrieNode = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4trie_TrieNode_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4trie_TrieNode)) __PYX_ERR(0, 19, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4trie_TrieNode_spec, __pyx_mstate->__pyx_ptype_4trie_TrieNode) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8entities_4trie_TrieNode_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode)) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8entities_4trie_TrieNode_spec, __pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_4trie_TrieNode = &__pyx_type_4trie_TrieNode;
+  __pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode = &__pyx_type_8entities_4trie_TrieNode;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4trie_TrieNode) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4trie_TrieNode->tp_dictoffset && __pyx_mstate->__pyx_ptype_4trie_TrieNode->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4trie_TrieNode->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode->tp_dictoffset && __pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_TrieNode, (PyObject *) __pyx_mstate->__pyx_ptype_4trie_TrieNode) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_4trie_TrieNode) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_TrieNode, (PyObject *) __pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_8entities_4trie_TrieNode) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct__genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4trie___pyx_scope_struct__genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct__genexpr)) __PYX_ERR(0, 182, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4trie___pyx_scope_struct__genexpr_spec, __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct__genexpr) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8entities_4trie___pyx_scope_struct__genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr)) __PYX_ERR(0, 181, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8entities_4trie___pyx_scope_struct__genexpr_spec, __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct__genexpr = &__pyx_type_4trie___pyx_scope_struct__genexpr;
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr = &__pyx_type_8entities_4trie___pyx_scope_struct__genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct__genexpr) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct__genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct__genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct__genexpr->tp_getattro = PyObject_GenericGetAttr;
-  }
-  #endif
-  #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4trie___pyx_scope_struct_1_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr)) __PYX_ERR(0, 183, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4trie___pyx_scope_struct_1_genexpr_spec, __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
-  #else
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr = &__pyx_type_4trie___pyx_scope_struct_1_genexpr;
-  #endif
-  #if !CYTHON_COMPILING_IN_LIMITED_API
-  #endif
-  #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
-  #endif
-  #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_1_genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct__genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4trie___pyx_scope_struct_2_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr)) __PYX_ERR(0, 184, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4trie___pyx_scope_struct_2_genexpr_spec, __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr)) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr_spec, __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr = &__pyx_type_4trie___pyx_scope_struct_2_genexpr;
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr = &__pyx_type_8entities_4trie___pyx_scope_struct_1_genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_2_genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_1_genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4trie___pyx_scope_struct_3_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr)) __PYX_ERR(0, 187, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4trie___pyx_scope_struct_3_genexpr_spec, __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr)) __PYX_ERR(0, 183, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr_spec, __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr = &__pyx_type_4trie___pyx_scope_struct_3_genexpr;
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr = &__pyx_type_8entities_4trie___pyx_scope_struct_2_genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_3_genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_2_genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4trie___pyx_scope_struct_4_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr)) __PYX_ERR(0, 191, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4trie___pyx_scope_struct_4_genexpr_spec, __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr)) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr_spec, __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr = &__pyx_type_4trie___pyx_scope_struct_4_genexpr;
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr = &__pyx_type_8entities_4trie___pyx_scope_struct_3_genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_4_genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_3_genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4trie___pyx_scope_struct_5_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr)) __PYX_ERR(0, 192, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4trie___pyx_scope_struct_5_genexpr_spec, __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr)) __PYX_ERR(0, 190, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr_spec, __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr = &__pyx_type_4trie___pyx_scope_struct_5_genexpr;
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr = &__pyx_type_8entities_4trie___pyx_scope_struct_4_genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_5_genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_4_genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4trie___pyx_scope_struct_6_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr)) __PYX_ERR(0, 193, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4trie___pyx_scope_struct_6_genexpr_spec, __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr) < 0) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr)) __PYX_ERR(0, 191, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr_spec, __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr = &__pyx_type_4trie___pyx_scope_struct_6_genexpr;
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr = &__pyx_type_8entities_4trie___pyx_scope_struct_5_genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr) < 0) __PYX_ERR(0, 193, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4trie___pyx_scope_struct_6_genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_5_genexpr->tp_getattro = PyObject_GenericGetAttr;
+  }
+  #endif
+  #if CYTHON_USE_TYPE_SPECS
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr)) __PYX_ERR(0, 192, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr_spec, __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  #else
+  __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr = &__pyx_type_8entities_4trie___pyx_scope_struct_6_genexpr;
+  #endif
+  #if !CYTHON_COMPILING_IN_LIMITED_API
+  #endif
+  #if !CYTHON_USE_TYPE_SPECS
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  #endif
+  #if !CYTHON_COMPILING_IN_LIMITED_API
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8entities_4trie___pyx_scope_struct_6_genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   __Pyx_RefNannyFinishContext();
@@ -9896,13 +9905,13 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_trie) {
+  if (__pyx_module_is_main_entities__trie) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name, __pyx_mstate_global->__pyx_n_u_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "trie")) {
-      if (unlikely((PyDict_SetItemString(modules, "trie", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "entities.trie")) {
+      if (unlikely((PyDict_SetItemString(modules, "entities.trie", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -9920,7 +9929,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "trie.pyx":4
+  /* "entities/trie.pyx":4
  * # distutils: language=c++
  * 
  * from typing import List, Optional, Dict             # <<<<<<<<<<<<<<
@@ -9946,7 +9955,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "trie.pyx":13
+  /* "entities/trie.pyx":13
  * 
  * 
  * from .sentence import Sentence             # <<<<<<<<<<<<<<
@@ -9964,7 +9973,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "trie.pyx":14
+  /* "entities/trie.pyx":14
  * 
  * from .sentence import Sentence
  * from .word import Word             # <<<<<<<<<<<<<<
@@ -9982,7 +9991,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "trie.pyx":16
+  /* "entities/trie.pyx":16
  * from .word import Word
  * 
  * from typing import Optional             # <<<<<<<<<<<<<<
@@ -10005,9 +10014,9 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
  *     cdef tuple state
  *     cdef object _dict
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8TrieNode_3__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TrieNode___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8TrieNode_3__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TrieNode___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_4trie_TrieNode, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":16
@@ -10016,22 +10025,22 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_TrieNode__set_state(self, __pyx_state)
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8TrieNode_5__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TrieNode___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8TrieNode_5__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TrieNode___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_4trie_TrieNode, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_2) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8entities_4trie_TrieNode, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_2) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "trie.pyx":55
+  /* "entities/trie.pyx":55
  *     return (node)
  * 
  * class WordTrie:             # <<<<<<<<<<<<<<
  *     """   word  """
  * 
 */
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_mstate_global->__pyx_empty_tuple, __pyx_mstate_global->__pyx_n_u_WordTrie, __pyx_mstate_global->__pyx_n_u_WordTrie, (PyObject *) NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_kp_u_word_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_mstate_global->__pyx_empty_tuple, __pyx_mstate_global->__pyx_n_u_WordTrie, __pyx_mstate_global->__pyx_n_u_WordTrie, (PyObject *) NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_kp_u_word_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "trie.pyx":64
+  /* "entities/trie.pyx":64
  *     #     int         word_count
  * 
  *     def __init__(self) -> None:             # <<<<<<<<<<<<<<
@@ -10041,14 +10050,14 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8WordTrie_1__init__, 0, __pyx_mstate_global->__pyx_n_u_WordTrie___init, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8WordTrie_1__init__, 0, __pyx_mstate_global->__pyx_n_u_WordTrie___init, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_init, __pyx_t_4) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "trie.pyx":80
+  /* "entities/trie.pyx":80
  *     #     return (node)
  * 
  *     def insert_or_get_word(self, word_content: str, pos_tag: str = None) -> Word:             # <<<<<<<<<<<<<<
@@ -10060,7 +10069,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_word_content, __pyx_mstate_global->__pyx_n_u_str) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_pos_tag, __pyx_mstate_global->__pyx_n_u_str) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_Word) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8WordTrie_3insert_or_get_word, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_insert_or_get_word, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8WordTrie_3insert_or_get_word, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_insert_or_get_word, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_4);
@@ -10068,7 +10077,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_insert_or_get_word, __pyx_t_3) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "trie.pyx":98
+  /* "entities/trie.pyx":98
  *             return (word_obj)
  * 
  *     def get_all_words(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -10078,14 +10087,14 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_kp_u_List_Word) < 0) __PYX_ERR(0, 98, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8WordTrie_5get_all_words, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_all_words, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8WordTrie_5get_all_words, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_all_words, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_get_all_words, __pyx_t_4) < 0) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "trie.pyx":120
+  /* "entities/trie.pyx":120
  *     #         preincrement(it)
  * 
  *     def get_content_words(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -10095,14 +10104,14 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_kp_u_List_Word) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8WordTrie_7get_content_words, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_content_words, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8WordTrie_7get_content_words, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_content_words, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_get_content_words, __pyx_t_3) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "trie.pyx":125
+  /* "entities/trie.pyx":125
  *         return [word for word in all_words if not word.is_stopword]
  * 
  *     def get_stopwords(self) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -10112,14 +10121,14 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_kp_u_List_Word) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8WordTrie_9get_stopwords, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_stopwords, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8WordTrie_9get_stopwords, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_stopwords, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_get_stopwords, __pyx_t_4) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "trie.pyx":148
+  /* "entities/trie.pyx":148
  *     #     return (filtered_words)
  * 
  *     def get_top_words_by_pos(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -10131,7 +10140,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_top_n, __pyx_mstate_global->__pyx_n_u_int) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_exclude_stopwords, __pyx_mstate_global->__pyx_n_u_bool) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_kp_u_List_Word) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8WordTrie_11get_top_words_by_pos, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_top_words_by_pos, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8WordTrie_11get_top_words_by_pos, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_top_words_by_pos, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_4);
@@ -10139,24 +10148,24 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_get_top_words_by_pos, __pyx_t_3) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "trie.pyx":177
+  /* "entities/trie.pyx":176
  * 
  * 
  *     def get_word_stats(self) -> Dict[str, int]:             # <<<<<<<<<<<<<<
  *         """    (  )"""
  *         all_words = self.get_all_words()
 */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_kp_u_Dict_str_int) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_8WordTrie_13get_word_stats, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[16])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_kp_u_Dict_str_int) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_8WordTrie_13get_word_stats, 0, __pyx_mstate_global->__pyx_n_u_WordTrie_get_word_stats, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[16])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_get_word_stats, __pyx_t_4) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_get_word_stats, __pyx_t_4) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "trie.pyx":55
+  /* "entities/trie.pyx":55
  *     return (node)
  * 
  * class WordTrie:             # <<<<<<<<<<<<<<
@@ -10174,12 +10183,12 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4trie_1__pyx_unpickle_TrieNode, 0, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_TrieNode, NULL, __pyx_mstate_global->__pyx_n_u_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[17])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8entities_4trie_1__pyx_unpickle_TrieNode, 0, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_TrieNode, NULL, __pyx_mstate_global->__pyx_n_u_entities_trie, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[17])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_TrieNode, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "trie.pyx":1
+  /* "entities/trie.pyx":1
  * # cython: language_level=3             # <<<<<<<<<<<<<<
  * # distutils: language=c++
  * 
@@ -10198,7 +10207,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
   __Pyx_XDECREF(__pyx_t_4);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init trie", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init entities.trie", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -10212,7 +10221,7 @@ __Pyx_RefNannySetupContext("PyInit_trie", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init trie");
+    PyErr_SetString(PyExc_ImportError, "init entities.trie");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -10295,6 +10304,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_doc, sizeof(__pyx_k_doc), 0, 1, 1}, /* PyObject cname: __pyx_n_u_doc */
   {__pyx_k_dominant_pos, sizeof(__pyx_k_dominant_pos), 0, 1, 1}, /* PyObject cname: __pyx_n_u_dominant_pos */
   {__pyx_k_enable, sizeof(__pyx_k_enable), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_enable */
+  {__pyx_k_entities_trie, sizeof(__pyx_k_entities_trie), 0, 1, 1}, /* PyObject cname: __pyx_n_u_entities_trie */
   {__pyx_k_exclude_stopwords, sizeof(__pyx_k_exclude_stopwords), 0, 1, 1}, /* PyObject cname: __pyx_n_u_exclude_stopwords */
   {__pyx_k_filtered_word, sizeof(__pyx_k_filtered_word), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_filtered_word */
   {__pyx_k_filtered_words, sizeof(__pyx_k_filtered_words), 0, 1, 1}, /* PyObject cname: __pyx_n_u_filtered_words */
@@ -10366,7 +10376,6 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_throw, sizeof(__pyx_k_throw), 0, 1, 1}, /* PyObject cname: __pyx_n_u_throw */
   {__pyx_k_top_n, sizeof(__pyx_k_top_n), 0, 1, 1}, /* PyObject cname: __pyx_n_u_top_n */
   {__pyx_k_total_words, sizeof(__pyx_k_total_words), 0, 1, 1}, /* PyObject cname: __pyx_n_u_total_words */
-  {__pyx_k_trie, sizeof(__pyx_k_trie), 0, 1, 1}, /* PyObject cname: __pyx_n_u_trie */
   {__pyx_k_trie_pyx, sizeof(__pyx_k_trie_pyx), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_trie_pyx */
   {__pyx_k_typing, sizeof(__pyx_k_typing), 0, 1, 1}, /* PyObject cname: __pyx_n_u_typing */
   {__pyx_k_update, sizeof(__pyx_k_update), 0, 1, 1}, /* PyObject cname: __pyx_n_u_update */
@@ -10391,9 +10400,9 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry const *t, PyObject **target, c
 
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_print); if (!__pyx_builtin_print) __PYX_ERR(0, 173, __pyx_L1_error)
-  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 174, __pyx_L1_error)
-  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_print); if (!__pyx_builtin_print) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 181, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -10416,7 +10425,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "trie.pyx":80
+  /* "entities/trie.pyx":80
  *     #     return (node)
  * 
  *     def insert_or_get_word(self, word_content: str, pos_tag: str = None) -> Word:             # <<<<<<<<<<<<<<
@@ -10427,7 +10436,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "trie.pyx":148
+  /* "entities/trie.pyx":148
  *     #     return (filtered_words)
  * 
  *     def get_top_words_by_pos(self, top_n: int = 500, exclude_stopwords: bool = True) -> List[Word]:             # <<<<<<<<<<<<<<
@@ -10486,42 +10495,42 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 174, 6};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 173, 6};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_w};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_lambda, __pyx_k_AQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 182, 2};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 181, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_w};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_genexpr, __pyx_k__3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 183, 2};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 182, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_w};
     __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_genexpr, __pyx_k__3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 184, 2};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 183, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_w};
     __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_genexpr, __pyx_k__4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 187, 2};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 186, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_w};
     __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_genexpr, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 191, 2};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 190, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_w};
     __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_genexpr, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 192, 2};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 191, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_w};
     __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_genexpr, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 193, 2};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 192, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_w};
     __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_genexpr, __pyx_k_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
@@ -10561,12 +10570,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_get_stopwords, __pyx_k_q_D_a_q_T_3d, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 148, 131};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 148, 136};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_top_n, __pyx_mstate->__pyx_n_u_exclude_stopwords, __pyx_mstate->__pyx_n_u_all_words, __pyx_mstate->__pyx_n_u_filtered_words, __pyx_mstate->__pyx_n_u_word};
-    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_get_top_words_by_pos, __pyx_k_7_5HHXXY_D_a_HA_T_HCs_hc_D_Q_gQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_get_top_words_by_pos, __pyx_k_7_5HHXXY_D_a_HA_T_t_t83c_XS_4_g, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 18, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 177, 169};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 18, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 176, 169};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_all_words, __pyx_mstate->__pyx_n_u_noun_count, __pyx_mstate->__pyx_n_u_verb_count, __pyx_mstate->__pyx_n_u_adj_count, __pyx_mstate->__pyx_n_u_stopword_count, __pyx_mstate->__pyx_n_u_content_word_count, __pyx_mstate->__pyx_n_u_content_nouns, __pyx_mstate->__pyx_n_u_content_verbs, __pyx_mstate->__pyx_n_u_content_adjs, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr};
     __pyx_mstate_global->__pyx_codeobj_tab[16] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_trie_pyx, __pyx_mstate->__pyx_n_u_get_word_stats, __pyx_k_D_a_S_S_Cq_AQ_S_Ba_1A_1A_s_1_3a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[16])) goto bad;
   }
