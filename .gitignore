@@ -161,4 +161,4 @@ core/services/DBert/DistillBERT/*
 
 
 GraphMAE2/
-GraphMAE2/*
+GraphMAE2/*core/DistillBERT/
