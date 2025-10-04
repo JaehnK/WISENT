@@ -67,7 +67,7 @@ class DocumentService:
             self._documents.rawdata = documents # 제공된 문서를 내부 _documents 객체에 설정
 
         # 처리할 rawdata가 없으면 빈 리스트로 초기화하고 종료
-        if self._documents.rawdata is None or len(self._documents.rawdata) == 0:
+        if not self._documents.rawdata:
             self._documents.sentence_list = []
             return
 

@@ -9,8 +9,15 @@ from torch_geometric.data import Data
 from torch_geometric.utils import to_undirected
 
 from ..Document.DocumentService import DocumentService
-from .NodeFeatureHandler import NodeFeatureHandler
-from entities import Word, WordGraph
+from entities import Word, WordGraph, NodeFeatureType
+
+# DGL은 필요할 때만 import
+try:
+    import dgl
+    DGL_AVAILABLE = True
+except ImportError:
+    DGL_AVAILABLE = False
+    print("Warning: DGL not available. GraphMAE features will be disabled.")
 
 
 
@@ -23,17 +30,16 @@ class GraphService:
             document_service: 전처리된 문서 데이터를 제공하는 서비스
         """
         self.doc_service = document_service
-        self.node_feature_handler = NodeFeatureHandler(document_service)
-
+        
         # 그래프 데이터
         self.nodes: Optional[torch.Tensor] = None
         self.edges: Optional[torch.Tensor] = None
         self.edges_weight: Optional[torch.Tensor] = None
-
+        
         # 단어-노드 매핑
         self.node_words: Optional[List[Word]] = None
         self.word_to_node: Optional[Dict[str, int]] = None
-
+        
         # PyTorch Geometric Data 객체
         self.graph_data: Optional[Data] = None
     
@@ -81,62 +87,107 @@ class GraphService:
         word_graph.set_edges_from_co_occurrence(edges, weights)
         
         print(f"Set {len(edges)} co-occurrence edges")
-
-    def set_node_features(self, word_graph: 'WordGraph', method: str = 'concat', embed_size: int = 64) -> None:
+    
+    def build_complete_graph(self, top_n: int = 500, exclude_stopwords: bool = True, 
+                            max_length: int = -1) -> 'WordGraph':
         """
-        WordGraph에 노드 특성 벡터 설정
-
-        Args:
-            word_graph: 특성을 설정할 WordGraph 객체
-            method: 특성 계산 방법 ('concat', 'w2v', 'bert')
-            embed_size: 임베딩 벡터 크기
-        """
-        if method not in ['concat', 'w2v', 'bert']:
-            raise ValueError(f"Unsupported node feature method: {method}")
-
-        # NodeFeatureHandler를 통해 임베딩 계산
-        node_features = self.node_feature_handler.calculate_embeddings(word_graph.words, method, embed_size)
-
-        # WordGraph에 노드 특성 설정 (기존 WordGraph 인터페이스 활용)
-        from entities import NodeFeatureType
-        if method == 'bert':
-            # BERT의 경우 768차원이므로 전용 메서드 사용 가능
-            word_graph.set_node_features_from_bert(node_features)
-        else:
-            # w2v, concat의 경우 custom 메서드 사용
-            feature_type = NodeFeatureType.WORD2VEC if method == 'w2v' else NodeFeatureType.CUSTOM
-            word_graph.set_node_features_custom(node_features, feature_type)
-
-        print(f"Set node features using method '{method}' with embed_size {embed_size}")
-
-    def build_complete_graph(self, top_n: int = 500, exclude_stopwords: bool = True,
-                            max_length: int = -1, node_feature_method: str = 'freq',
-                            embed_size: int = 64) -> 'WordGraph':
-        """
-        완전한 WordGraph 생성 (노드 + 공출현 엣지 + 노드 특성)
-
+        완전한 WordGraph 생성 (노드 + 공출현 엣지)
+        
         Args:
             top_n: 상위 몇 개 단어를 노드로 사용할지
             exclude_stopwords: 불용어 제외 여부
             max_length: 문장당 최대 단어 수 제한
-            node_feature_method: 노드 특성 계산 방법 ('freq', 'concat', 'w2v', 'bert')
-            embed_size: 임베딩 벡터 크기 (node_feature_method가 'freq'가 아닐 때 사용)
-
+            
         Returns:
             완전히 구성된 WordGraph 객체
         """
         # 1. WordGraph 객체 생성 (빈도 기반 노드 특성)
         word_graph = self.create_word_graph(top_n, exclude_stopwords)
-
+        
         # 2. 공출현 엣지 설정 (기존 Cython 함수 활용)
         self.set_co_occurrence_edges(word_graph, max_length)
-
-        # 3. 노드 특성 설정
-        if node_feature_method != 'freq':
-            self.set_node_features(word_graph, node_feature_method, embed_size)
-
+        
         return word_graph
-    
+
+    def build_mae_enhanced_graph(self, top_n: int = 500, exclude_stopwords: bool = True,
+                               max_length: int = -1, embed_size: int = 64,
+                               input_method: str = 'bert', mae_config = None) -> 'WordGraph':
+        """
+        GraphMAE 사전훈련이 포함된 완전한 그래프 생성
+
+        Args:
+            top_n: 상위 몇 개 단어를 노드로 사용할지
+            exclude_stopwords: 불용어 제외 여부
+            max_length: 문장당 최대 단어 수 제한
+            embed_size: 임베딩 크기 (입출력 차원 통일)
+            input_method: GraphMAE 입력 특성 방법 ('bert', 'w2v', 'concat')
+            mae_config: GraphMAE 설정 (None이면 기본값)
+
+        Returns:
+            GraphMAE로 향상된 WordGraph 객체
+        """
+        # 1. 기본 그래프 생성
+        word_graph = self.build_complete_graph(top_n, exclude_stopwords, max_length)
+
+        # 2. GraphMAE 서비스 초기화
+        from ..GraphMAE import GraphMAEService, GraphMAEConfig
+        config = mae_config or GraphMAEConfig.create_default(embed_size)
+        mae_service = GraphMAEService(self, config)
+
+        # 3. GraphMAE 사전훈련 및 임베딩 추출
+        mae_embeddings = mae_service.pretrain_and_extract(
+            word_graph, embed_size, input_method
+        )
+
+        # 4. GraphMAE 임베딩을 WordGraph에 설정
+        word_graph.set_node_features_custom(mae_embeddings, NodeFeatureType.GRAPHMAE)
+
+        print(f"GraphMAE enhanced graph created with {embed_size}D embeddings")
+        return word_graph
+
+    def wordgraph_to_dgl(self, word_graph: 'WordGraph', node_features: Optional[torch.Tensor] = None):
+        """
+        WordGraph를 DGL 그래프로 변환
+
+        Args:
+            word_graph: 변환할 WordGraph 객체
+            node_features: 노드 특성 텐서 [num_nodes, feature_dim]
+                          None이면 빈도 기반 특성 사용
+
+        Returns:
+            DGL 그래프 객체
+        """
+        if not DGL_AVAILABLE:
+            raise ImportError("DGL is not available. Please install DGL to use GraphMAE features.")
+
+        if word_graph.edge_index is None:
+            raise ValueError("WordGraph has no edges. Call set_co_occurrence_edges() first.")
+
+        # 엣지 인덱스에서 source, target 노드 추출
+        edge_index = word_graph.edge_index
+        src_nodes = edge_index[0].numpy()
+        dst_nodes = edge_index[1].numpy()
+
+        # DGL 그래프 생성 (무방향 그래프)
+        dgl_graph = dgl.graph((src_nodes, dst_nodes), num_nodes=word_graph.num_nodes)
+        dgl_graph = dgl.to_bidirected(dgl_graph, copy_ndata=True)
+
+        # Self-loop 추가 (0-in-degree 노드 방지)
+        dgl_graph = dgl.add_self_loop(dgl_graph)
+
+        # 노드 특성 설정
+        if node_features is not None:
+            dgl_graph.ndata['feat'] = node_features
+        else:
+            # 기본적으로 빈도 기반 특성 사용
+            freq_features = torch.tensor([[word.freq] for word in word_graph.words], dtype=torch.float32)
+            dgl_graph.ndata['feat'] = freq_features
+
+        # 엣지 가중치는 self-loop 추가 후 크기가 맞지 않으므로 설정하지 않음
+        # GraphMAE는 엣지 가중치를 사용하지 않음
+
+        return dgl_graph
+
     def build_pytorch_geometric_data(self) -> Data:
         """PyTorch Geometric Data 객체 생성"""
         if self.node_words is None or self.edges is None:

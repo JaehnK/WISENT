@@ -178,8 +178,7 @@ class WordTrie:
             if exclude_stopwords and word.is_stopword:
                 continue
             # print(f"{word.content} : {word._dominant_pos} {word.is_noun()} {word.is_verb()} {word.is_adjective()}")
-            # if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
-            if (word.is_noun() or word.is_verb() or word.is_adjective()):
+            if word._dominant_pos and (word.is_noun() or word.is_verb() or word.is_adjective()):
                 filtered_words.append(word)
         
         # 빈도수 기준 내림차순 정렬 후 상위 N개 반환

@@ -1,3 +1,3 @@
-from .BertService import BERTService
+from .BertService import BertService
 
-__all__ = ['BERTService']
+__all__ = ['BertService']

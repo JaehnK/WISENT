@@ -157,5 +157,19 @@ temp/
 # etc
 *.csv
 deprecated/
+<<<<<<< HEAD
+main-service/distilBERT/model
+
+.claude/
+testFiles/
+
+core/services/DBert/DistillBERT/
+core/services/DBert/DistillBERT/*
+
+
+GraphMAE2/
+GraphMAE2/*core/DistillBERT/
+=======
 DistillBERT/
 core/DistillBERT/
+>>>>>>> origin/main

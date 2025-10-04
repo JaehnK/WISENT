@@ -1,9 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Dict, Any
 
-import numpy as np
-
-
 @dataclass
 class Word:
     """단어 엔티티 - 순수한 데이터 모델
@@ -31,11 +28,6 @@ class Word:
     # 노드 정보 (그래프에서 사용)
     isnode: Optional[bool] = None  # 그래프 노드로 사용되는지 여부
     
-    # 임베딩 정보
-    bert_embedding: Optional[np.ndarray] = None
-    bert_count: int = 0  # 임베딩이 누적된 횟수
-    w2v_embedding: Optional[np.ndarray] = None
-
     def __post_init__(self):
         """초기화 후 검증만 수행 - 순수한 데이터 검증"""
         if not self.content:
@@ -81,20 +73,54 @@ class Word:
         """
         return self.is_stopword if self.is_stopword is not None else False
     
-    def update_bert_embedding(self, sentence_embedding: np.ndarray):
-        """BERT 임베딩을 가중평균으로 업데이트"""
-        if self.bert_embedding is None:
-            self.bert_embedding = sentence_embedding.copy()
-            self.bert_count = 1
-        else:
-            # 가중평균
-            old_weight = self.bert_count
-            self.bert_embedding = (self.bert_embedding * old_weight + sentence_embedding) / (old_weight + 1)
-            self.bert_count += 1
-
     @property
     def dominant_pos(self) -> Optional[str]:
         """dominant_pos getter - 외부에서 접근 가능한 인터페이스"""
         return self._dominant_pos
-    
-    
+
+    # POS 체크 메서드 (Cython 코드와의 호환성을 위해 재추가)
+    # Penn Treebank 태그 기준
+    def is_noun(self) -> bool:
+        """명사 여부 확인 (NN, NNS, NNP, NNPS)"""
+        if not self._dominant_pos:
+            return False
+        pos = self._dominant_pos.upper()
+        # Universal POS (NOUN, PROPN) 또는 Penn Treebank (NN*)
+        return pos in ['NOUN', 'PROPN'] or pos.startswith('NN')
+
+    def is_verb(self) -> bool:
+        """동사 여부 확인 (VB, VBD, VBG, VBN, VBP, VBZ)
+
+        주의: be동사, 조동사(can, will, would 등) 제외
+        """
+        if not self._dominant_pos:
+            return False
+        pos = self._dominant_pos.upper()
+
+        # MD(modal)와 AUX는 제외
+        if pos in ['MD', 'AUX']:
+            return False
+
+        # VB 계열이지만 조동사/be동사는 제외
+        if pos.startswith('VB'):
+            # be동사, 조동사는 명시적으로 제외
+            auxiliaries = {'be', 'am', 'is', 'are', 'was', 'were', 'been', 'being',
+                          'have', 'has', 'had', 'having',
+                          'do', 'does', 'did', 'doing',
+                          'can', 'could', 'will', 'would', 'shall', 'should',
+                          'may', 'might', 'must'}
+            if self.content.lower() in auxiliaries:
+                return False
+            return True
+
+        # Universal POS (VERB)
+        return pos == 'VERB'
+
+    def is_adjective(self) -> bool:
+        """형용사 여부 확인 (JJ, JJR, JJS)"""
+        if not self._dominant_pos:
+            return False
+        pos = self._dominant_pos.upper()
+        # Universal POS (ADJ) 또는 Penn Treebank (JJ*)
+        return pos == 'ADJ' or pos.startswith('JJ')
+

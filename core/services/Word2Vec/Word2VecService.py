@@ -31,11 +31,11 @@ class Word2VecService:
         self.training_history = []
     
     @classmethod
-    def create_default(cls, doc_service: DocumentService) -> 'Word2VecService':
+    def create_default(cls, doc_service: DocumentService, min_count: int = 1) -> 'Word2VecService':
         """기본 설정으로 Word2Vec 서비스 생성"""
-        
+
         # 문서 서비스에서 필요한 데이터 추출
-        word_data = doc_service.get_word2vec_data() # 이제 0-indexed ID를 반환
+        word_data = doc_service.get_word2vec_data(min_count=min_count) # 이제 0-indexed ID를 반환
         
         # DocumentService에서 원래 문장 인덱스를 가져오는 대신,
         # 직접 단어 콘텐츠를 사용하여 새로운 0-indexed ID로 매핑
