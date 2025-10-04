@@ -97,6 +97,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
 # CSV files
 *.csv
 
@@ -151,6 +157,7 @@ temp/
 # etc
 *.csv
 deprecated/
+<<<<<<< HEAD
 main-service/distilBERT/model
 
 .claude/
@@ -162,3 +169,7 @@ core/services/DBert/DistillBERT/*
 
 GraphMAE2/
 GraphMAE2/*core/DistillBERT/
+=======
+DistillBERT/
+core/DistillBERT/
+>>>>>>> origin/main
