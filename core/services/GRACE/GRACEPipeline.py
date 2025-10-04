@@ -28,6 +28,8 @@ from ..GraphMAE import GraphMAEService, GraphMAEConfig
 from entities import Word, WordGraph, NodeFeatureType
 
 from .GRACEConfig import GRACEConfig
+from .ClusteringService import ClusteringService
+from .MetricsService import MetricsService
 
 
 class GRACEPipeline:
@@ -44,6 +46,8 @@ class GRACEPipeline:
         self.doc_service: Optional[DocumentService] = None
         self.graph_service: Optional[GraphService] = None
         self.node_feature_handler: Optional[NodeFeatureHandler] = None
+        self.clustering_service = ClusteringService(random_state=42)
+        self.metrics_service = MetricsService()
 
         # 중간 결과 저장
         self.documents: Optional[List[str]] = None
@@ -270,51 +274,44 @@ class GRACEPipeline:
         if self.graphmae_embeddings is None:
             raise RuntimeError("GraphMAE 임베딩이 없습니다. train_graphmae()를 먼저 호출하세요.")
 
-        # TODO: ClusteringService 구현 후 연동
-        # 현재는 기본 K-means만 구현
-        from sklearn.cluster import KMeans
-
-        embeddings_np = self.graphmae_embeddings.numpy()
-
         if self.config.num_clusters is not None:
             # 지정된 클러스터 수로 실행
-            n_clusters = self.config.num_clusters
-            kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
-            self.cluster_labels = kmeans.fit_predict(embeddings_np)
-            self._log(f"  K-means 완료: {n_clusters}개 클러스터")
+            self.cluster_labels = self.clustering_service.kmeans_clustering(
+                self.graphmae_embeddings,
+                n_clusters=self.config.num_clusters,
+                n_init=10
+            )
+            self._log(f"  K-means 완료: {self.config.num_clusters}개 클러스터")
         else:
             # Elbow Method로 최적 클러스터 수 탐색
             self._log(f"  Elbow Method로 최적 클러스터 수 탐색 중 ({self.config.min_clusters}-{self.config.max_clusters})...")
 
-            inertias = []
-            silhouette_scores = []
+            self.cluster_labels, best_k, inertias, silhouette_scores = \
+                self.clustering_service.auto_clustering_elbow(
+                    self.graphmae_embeddings,
+                    min_clusters=self.config.min_clusters,
+                    max_clusters=self.config.max_clusters,
+                    n_init=10
+                )
+
             k_range = range(self.config.min_clusters, self.config.max_clusters + 1)
-
-            from sklearn.metrics import silhouette_score
-
-            for k in k_range:
-                kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
-                labels = kmeans.fit_predict(embeddings_np)
-                inertias.append(kmeans.inertia_)
-                silhouette_scores.append(silhouette_score(embeddings_np, labels))
-
-            # Elbow point 찾기 (inertia 감소율이 급격히 줄어드는 지점)
-            best_k = self._find_elbow_point(list(k_range), inertias)
-
-            # 최적 k로 최종 클러스터링
-            kmeans = KMeans(n_clusters=best_k, random_state=42, n_init=10)
-            self.cluster_labels = kmeans.fit_predict(embeddings_np)
-
             self._log(f"  Elbow Point: k={best_k}")
             self._log(f"  최적 클러스터 수: {best_k} (Silhouette: {silhouette_scores[best_k - self.config.min_clusters]:.4f})")
 
             # Elbow curve 시각화 저장
             if self.config.save_graph_viz:
-                self._save_elbow_curve(list(k_range), inertias, silhouette_scores, best_k)
+                from pathlib import Path
+                from datetime import datetime
+                output_dir = Path(self.config.output_dir)
+                output_dir.mkdir(parents=True, exist_ok=True)
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                save_path = output_dir / f"elbow_curve_{timestamp}.png"
+                self.clustering_service.save_elbow_curve(list(k_range), str(save_path))
+                self._log(f"  Elbow curve 저장: {save_path}")
 
         # 클러스터별 단어 분포
-        unique, counts = np.unique(self.cluster_labels, return_counts=True)
-        self._log(f"  클러스터별 단어 수: {dict(zip(unique, counts))}")
+        cluster_dist = self.clustering_service.get_cluster_distribution()
+        self._log(f"  클러스터별 단어 수: {cluster_dist}")
 
     # ============================================================
     # 6. 평가 및 결과 저장
@@ -325,36 +322,27 @@ class GRACEPipeline:
         if self.cluster_labels is None or self.graphmae_embeddings is None:
             raise RuntimeError("클러스터링이 완료되지 않았습니다.")
 
-        embeddings_np = self.graphmae_embeddings.numpy()
-        unique_clusters, counts = np.unique(self.cluster_labels, return_counts=True)
+        cluster_dist = self.clustering_service.get_cluster_distribution()
         results = {
             'config': self.config.__dict__,
             'graph_stats': self.word_graph.get_graph_stats(),
-            'num_clusters': int(len(unique_clusters)),
-            'cluster_distribution': {int(k): int(v) for k, v in zip(unique_clusters, counts)},
+            'num_clusters': len(cluster_dist),
+            'cluster_distribution': cluster_dist,
             'metrics': {},
             'clusters': self._build_cluster_info()
         }
 
-        # 평가 지표 계산
-        from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
+        # 평가 지표 계산 (MetricsService 사용)
+        metrics = self.metrics_service.calculate_metrics(
+            self.graphmae_embeddings,
+            self.cluster_labels,
+            self.config.eval_metrics
+        )
+        results['metrics'] = metrics
 
-        if 'silhouette' in self.config.eval_metrics:
-            results['metrics']['silhouette'] = float(silhouette_score(embeddings_np, self.cluster_labels))
-            self._log(f"  Silhouette Score: {results['metrics']['silhouette']:.4f}")
-
-        if 'davies_bouldin' in self.config.eval_metrics:
-            results['metrics']['davies_bouldin'] = float(davies_bouldin_score(embeddings_np, self.cluster_labels))
-            self._log(f"  Davies-Bouldin Score: {results['metrics']['davies_bouldin']:.4f}")
-
-        if 'calinski_harabasz' in self.config.eval_metrics:
-            results['metrics']['calinski_harabasz'] = float(calinski_harabasz_score(embeddings_np, self.cluster_labels))
-            self._log(f"  Calinski-Harabasz Score: {results['metrics']['calinski_harabasz']:.4f}")
-
-        # TODO: NPMI 계산 (공출현 정보 필요)
-        if 'npmi' in self.config.eval_metrics:
-            # results['metrics']['npmi'] = self._calculate_npmi()
-            pass
+        # 메트릭 출력
+        for metric_name, value in metrics.items():
+            self._log(f"  {metric_name}: {value:.4f}")
 
         # 결과 저장
         if self.config.save_results:
@@ -399,64 +387,6 @@ class GRACEPipeline:
                 'word_list': [w.content for w in self.word_graph.words]
             }, embed_path)
             self._log(f"  임베딩 저장: {embed_path}")
-
-    def _find_elbow_point(self, k_values: List[int], inertias: List[float]) -> int:
-        """
-        Elbow Method로 최적 클러스터 수 찾기
-
-        각도 변화율을 계산하여 가장 급격하게 꺾이는 지점 탐색
-        """
-        if len(k_values) < 3:
-            return k_values[0]
-
-        # 정규화된 inertia 계산
-        inertias_norm = np.array(inertias)
-        inertias_norm = (inertias_norm - inertias_norm.min()) / (inertias_norm.max() - inertias_norm.min())
-
-        # 2차 미분 (곡률) 계산
-        second_derivative = np.diff(inertias_norm, 2)
-
-        # 곡률이 최대인 지점 = elbow point
-        elbow_idx = np.argmax(second_derivative) + 1  # diff로 인한 인덱스 조정
-
-        return k_values[elbow_idx]
-
-    def _save_elbow_curve(self, k_values: List[int], inertias: List[float],
-                          silhouette_scores: List[float], best_k: int) -> None:
-        """Elbow curve 시각화 저장"""
-        import matplotlib.pyplot as plt
-
-        output_dir = Path(self.config.output_dir)
-        output_dir.mkdir(parents=True, exist_ok=True)
-
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
-
-        # Inertia plot (Elbow curve)
-        ax1.plot(k_values, inertias, 'bo-', linewidth=2, markersize=8)
-        ax1.axvline(x=best_k, color='r', linestyle='--', linewidth=2, label=f'Elbow Point (k={best_k})')
-        ax1.set_xlabel('Number of Clusters (k)', fontsize=12)
-        ax1.set_ylabel('Inertia (Within-cluster sum of squares)', fontsize=12)
-        ax1.set_title('Elbow Method', fontsize=14, fontweight='bold')
-        ax1.legend()
-        ax1.grid(True, alpha=0.3)
-
-        # Silhouette score plot
-        ax2.plot(k_values, silhouette_scores, 'go-', linewidth=2, markersize=8)
-        ax2.axvline(x=best_k, color='r', linestyle='--', linewidth=2, label=f'Selected k={best_k}')
-        ax2.set_xlabel('Number of Clusters (k)', fontsize=12)
-        ax2.set_ylabel('Silhouette Score', fontsize=12)
-        ax2.set_title('Silhouette Score vs K', fontsize=14, fontweight='bold')
-        ax2.legend()
-        ax2.grid(True, alpha=0.3)
-
-        plt.tight_layout()
-
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        save_path = output_dir / f"elbow_curve_{timestamp}.png"
-        plt.savefig(save_path, dpi=300, bbox_inches='tight')
-        plt.close()
-
-        self._log(f"  Elbow curve 저장: {save_path}")
 
     def _log(self, message: str) -> None:
         """로그 출력"""
