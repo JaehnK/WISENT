@@ -48,17 +48,19 @@ core/
 
 ### 당신이 제시한 계획에 포함된 사항들
 
-#### ✅ 2.1. 전통적 클러스터링 추가
-**위치**: `ClusteringService.py`
+#### ✅ 2.1. 전통적 그래프 클러스터링 추가
+**위치**: `GraphClusteringService.py` (신규 파일)
 
 ```python
-# 추가 필요 메서드
-- dbscan_clustering()         # DBSCAN
-- hierarchical_clustering()   # Agglomerative Clustering
-- spectral_clustering()       # Spectral Clustering (선택)
+# 그래프 구조 기반 클러스터링 (의미연결망에 직접 적용)
+- louvain_clustering()        # Louvain (Modularity 최적화)
+- leiden_clustering()         # Leiden (Louvain 개선판)
+- girvan_newman_clustering()  # Girvan-Newman (Edge betweenness)
 ```
 
-**논문 기여**: Baseline 비교 → GRACE의 우수성 증명
+**논문 기여**:
+- 전통적 그래프 클러스터링과 비교 → "구조만 활용하는 방법의 한계" 증명
+- GRACE의 차별점: GraphMAE로 구조 + 의미 임베딩 동시 학습 → **특화된 방법의 필요성** 입증
 
 ---
 

@@ -12,7 +12,7 @@ from datetime import datetime
 
 
 class ClusteringService:
-    """클러스터링 전담 서비스"""
+    """클러스터링 서비스"""
 
     def __init__(self, random_state: int = 42):
         """

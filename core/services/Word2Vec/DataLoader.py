@@ -58,42 +58,53 @@ class MemoryDataLoader:
         print(f"Negative sampling table created with {len(self.negatives)} entries")
     
     def _init_discard_table(self):
-        """Subsampling을 위한 discard 확률 테이블 초기화"""
+        """Subsampling을 위한 유지 확률(keep probability) 테이블 초기화"""
         if not self.word_frequency:
             return
             
+        # Mikolov et al. subsampling: p_keep ≈ (sqrt(f/t) + 1) * (t/f)
+        # f: 단어 상대빈도, t: 임계값(보통 1e-5~1e-3)
         t = 0.0001  # threshold for subsampling
         f = np.array(list(self.word_frequency.values())) / self.token_count
-        self.discards = np.sqrt(t / f) + (t / f)
-        
-        # 확률이 1을 넘지 않도록 클리핑
-        self.discards = np.minimum(self.discards, 1.0)
+        keep_probs = (np.sqrt(f / t) + 1.0) * (t / f)
+        self.discards = np.minimum(keep_probs, 1.0)
         
     def get_negatives(self, target: int, size: int) -> np.ndarray:
-        """Negative samples 반환"""
+        """Negative samples 반환 (pos와 동일 ID 제외)"""
         if len(self.negatives) == 0:
-            # negative table이 없으면 랜덤하게 생성 (vocab_size 범위 내에서)
-            return np.random.randint(0, self.vocab_size, size)
-        
-        response = self.negatives[self.negpos:self.negpos + size]
-        self.negpos = (self.negpos + size) % len(self.negatives)
-        
-        if len(response) != size:
-            # 테이블 끝에 도달하면 처음부터 다시
-            remaining = size - len(response)
-            additional = self.negatives[:remaining]
-            response = np.concatenate((response, additional))
+            response = np.random.randint(0, self.vocab_size, size)
+        else:
+            response = self.negatives[self.negpos:self.negpos + size]
+            self.negpos = (self.negpos + size) % len(self.negatives)
+            if len(response) != size:
+                # 테이블 끝에 도달하면 처음부터 다시
+                remaining = size - len(response)
+                additional = self.negatives[:remaining]
+                response = np.concatenate((response, additional))
         
         # 인덱스가 vocab_size를 초과하지 않도록 클리핑
         response = np.clip(response, 0, self.vocab_size - 1)
         
+        # target과 동일한 음성 샘플은 재샘플링하여 치환
+        if self.vocab_size > 1:
+            mask = (response == target)
+            if np.any(mask):
+                # 동일한 개수만큼 재샘플 후 치환 (최소 충돌 회피)
+                resample = np.random.randint(0, self.vocab_size, mask.sum())
+                # 혹시 또 target이 나올 수 있으니 한 번 더 보정
+                second_mask = (resample == target)
+                if np.any(second_mask):
+                    resample[second_mask] = (resample[second_mask] + 1) % self.vocab_size
+                response[mask] = resample
+        
         return response
     
     def should_discard(self, word_id: int) -> bool:
-        """Subsampling: 해당 단어를 버릴지 결정"""
+        """Subsampling: 해당 단어를 버릴지 결정 (keep 확률 기반)"""
         if word_id >= len(self.discards) or word_id < 0:
             return False
-        return np.random.rand() < self.discards[word_id]
+        keep_prob = self.discards[word_id]
+        return np.random.rand() > keep_prob
 
 
 class MemoryWord2vecDataset(Dataset):

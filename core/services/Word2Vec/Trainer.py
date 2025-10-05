@@ -24,6 +24,11 @@ class Word2VecTrainer:
         self.use_cuda = use_cuda if use_cuda is not None else torch.cuda.is_available()
         self.device = torch.device("cuda" if self.use_cuda else "cpu")
         
+        # 학습률 스케줄 상태
+        self.global_step = 0
+        self.total_steps = 0
+        self.min_lr_ratio = 1e-3  # 최종 lr = initial_lr * 1e-3
+        
         print(f"Using device: {self.device}")
     
     def train(self, 
@@ -42,12 +47,21 @@ class Word2VecTrainer:
             dataset,
             batch_size=self.batch_size,
             shuffle=True,
-            num_workers=0,  # 메모리 기반이므로 멀티프로세싱 불필요
+            num_workers=4,  # 데이터 로딩 병렬화
+            pin_memory=True,  # GPU 전송 속도 향상
             collate_fn=dataset.collate_fn
         )
         
         print(f"Starting training with {len(dataset)} training pairs")
         print(f"Batch size: {self.batch_size}, Iterations: {self.iterations}")
+        
+        # 전체 스텝 계산 및 옵티마이저 1회 초기화
+        batches_per_epoch = max(1, len(torch_dataloader))
+        self.total_steps = self.iterations * batches_per_epoch
+        self.global_step = 0
+        
+        optimizer = optim.SGD(model.parameters(), lr=self.initial_lr, momentum=0.9)
+        print(f"Optimizer: SGD(momentum=0.9), initial_lr={self.initial_lr}, final_lr={self.initial_lr * self.min_lr_ratio}")
         
         # 각 iteration별 훈련
         for iteration in range(self.iterations):
@@ -55,21 +69,14 @@ class Word2VecTrainer:
             print(f"Iteration {iteration + 1}/{self.iterations}")
             print(f"{'='*50}")
             
-            self._train_epoch(model, torch_dataloader, iteration)
+            self._train_epoch(model, torch_dataloader, iteration, optimizer)
             
         print(f"\nTraining completed!")
         
         return model
     
-    def _train_epoch(self, model, dataloader, iteration: int):
+    def _train_epoch(self, model, dataloader, iteration: int, optimizer):
         """한 epoch 훈련"""
-        
-        # 옵티마이저와 스케줄러 설정
-        optimizer = optim.SparseAdam(model.parameters(), lr=self.initial_lr)
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-            optimizer, 
-            T_max=len(dataloader)
-        )
         
         running_loss = 0.0
         total_batches = len(dataloader)
@@ -93,15 +100,23 @@ class Word2VecTrainer:
             pos_v = sample_batched[1].to(self.device)
             neg_v = sample_batched[2].to(self.device)
             
+            # 선형 학습률 감소 적용
+            current_lr = self._compute_linear_lr()
+            for param_group in optimizer.param_groups:
+                param_group['lr'] = current_lr
+            
             # 순전파
             optimizer.zero_grad()
             loss = model.forward(pos_u, pos_v, neg_v)
             
             # 역전파
             loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
             optimizer.step()
-            scheduler.step()
             
+            # 글로벌 스텝 증가
+            self.global_step += 1
+
             # 손실 추적 (지수 이동 평균)
             running_loss = running_loss * 0.9 + loss.item() * 0.1
             
@@ -109,14 +124,22 @@ class Word2VecTrainer:
             if batch_idx % 10 == 0:
                 progress_bar.set_postfix({
                     'Loss': f'{running_loss:.4f}',
-                    'LR': f'{scheduler.get_last_lr()[0]:.6f}'
+                    'LR': f'{optimizer.param_groups[0]["lr"]:.6f}'
                 })
             
             # 주기적으로 손실 출력 (tqdm postfix로 대체되므로 주석 처리)
             # if batch_idx > 0 and batch_idx % 500 == 0:
             #     print(f"\nBatch {batch_idx}/{total_batches} - Loss: {running_loss:.4f}")
-        
         print(f"Epoch {iteration + 1} completed - Final loss: {running_loss:.4f}")
+
+    def _compute_linear_lr(self) -> float:
+        """초기 lr에서 최종 lr로 선형 감소한 현재 lr을 계산"""
+        if self.total_steps <= 1:
+            return self.initial_lr
+        progress = min(1.0, max(0.0, self.global_step / (self.total_steps - 1)))
+        start_lr = self.initial_lr
+        end_lr = self.initial_lr * self.min_lr_ratio
+        return start_lr + (end_lr - start_lr) * progress
     
     def evaluate_similarity(self, 
                             model, 
