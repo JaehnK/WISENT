@@ -504,7 +504,10 @@ class AblationService:
         metrics = metrics_service.calculate_metrics(
             embeddings,
             labels,
-            ['silhouette', 'davies_bouldin', 'calinski_harabasz']
+            config.eval_metrics,
+            # NPMI를 위한 추가 정보
+            word_graph=self.word_graph,
+            total_docs=self.base_config.num_documents
         )
 
         return metrics

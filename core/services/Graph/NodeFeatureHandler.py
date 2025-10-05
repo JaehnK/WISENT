@@ -44,6 +44,7 @@ class NodeFeatureHandler:
 
     def _get_w2v_embeddings(self, words: List[Word], embed_size: int) -> torch.Tensor:
         """Word2Vec 임베딩 계산"""
+        print(f"    [Word2Vec] {len(words)}개 단어에 대한 임베딩 계산 중 (target_dim={embed_size})...")
         self.w2v.train()
         embeddings = []
         for word in words:
@@ -61,33 +62,42 @@ class NodeFeatureHandler:
             else:
                 # 단어가 없으면 0 벡터
                 embeddings.append(np.zeros(embed_size))
-        return torch.tensor(embeddings, dtype=torch.float32)
+        result = torch.tensor(embeddings, dtype=torch.float32)
+        print(f"    [Word2Vec] 완료: shape={result.shape}")
+        return result
 
     def _get_bert_embeddings(self, words: List[Word]) -> torch.Tensor:
         """BERT 임베딩 계산"""
+        print(f"    [BERT] {len(words)}개 단어에 대한 BERT 임베딩 계산 중...")
         embeddings = []
         for word in words:
             # WordTrie에서 BERT 임베딩 추출
             embedding = self.dbert.get_word_embedding(word.content)
             embeddings.append(embedding)
-        return torch.tensor(embeddings, dtype=torch.float32)
+        result = torch.tensor(embeddings, dtype=torch.float32)
+        print(f"    [BERT] 완료: shape={result.shape}")
+        return result
 
     def _get_concat_embeddings(self, words: List[Word], embed_size: int) -> torch.Tensor:
         """Word2Vec + BERT 연결 임베딩 (차원 조정 후 concat)"""
         target_dim = embed_size // 2
+        print(f"    [Concat] Word2Vec + BERT 멀티모달 임베딩 (각 {target_dim}차원)")
 
         # Word2Vec 임베딩 (target_dim 크기로 요청)
         w2v_embeddings = self._get_w2v_embeddings(words, target_dim)
         bert_embeddings = self._get_bert_embeddings(words)
 
         # BERT 차원 조정 (768 -> target_dim)
+        print(f"    [Concat] BERT 차원 조정: {bert_embeddings.shape[1]} -> {target_dim}")
         bert_reduced = self._adjust_embedding_dimension(bert_embeddings, target_dim)
 
         # Word2Vec도 target_dim으로 조정 (혹시 모를 경우)
         w2v_reduced = self._adjust_embedding_dimension(w2v_embeddings, target_dim)
 
         # 조정된 임베딩들을 concat
-        return torch.cat([w2v_reduced, bert_reduced], dim=1)
+        result = torch.cat([w2v_reduced, bert_reduced], dim=1)
+        print(f"    [Concat] 최종 임베딩 shape: {result.shape}")
+        return result
 
     def _adjust_embedding_dimension(self, embeddings: torch.Tensor, target_dim: int) -> torch.Tensor:
         """임베딩 차원을 target_dim으로 조정 (자르기 또는 패딩)"""

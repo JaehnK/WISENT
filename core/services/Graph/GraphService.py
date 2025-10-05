@@ -54,8 +54,8 @@ class GraphService:
         Returns:
             WordGraph 객체
         """
-        # DocumentService에서 상위 단어들 가져오기
-        top_words = self.doc_service.get_top_words(top_n, exclude_stopwords)
+        # WordManagementService에서 상위 단어들 가져오기 (불용어 필터링 포함)
+        top_words = self.doc_service._word_service.get_top_words(top_n, exclude_stopwords)
         
         if not top_words:
             raise ValueError("No words found. Please process documents first.")
@@ -63,7 +63,7 @@ class GraphService:
         # WordGraph 객체 생성 (기본적으로 빈도 기반 노드 특성)
         word_graph = WordGraph(top_words)
         
-        print(f"Created WordGraph with {len(top_words)} nodes")
+        print(f"Created WordGraph with {len(top_words)} nodes (exclude_stopwords={exclude_stopwords})")
         return word_graph
     
     def set_co_occurrence_edges(self, word_graph: 'WordGraph', max_length: int = -1) -> None:

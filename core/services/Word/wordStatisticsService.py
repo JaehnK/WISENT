@@ -27,9 +27,25 @@ class WordStatisticsService:
         return {pos: count / total for pos, count in word.pos_counts.items()}
     
     @staticmethod
-    def get_top_words_by_frequency(words: List[Word], top_n: int = 10, contain_stopword: bool = False) -> List[Word]:
-        """빈도순으로 상위 단어 반환"""
-        return sorted(words, key=lambda w: w.freq, reverse=True)[:top_n]
+    def get_top_words_by_frequency(words: List[Word], top_n: int = 10, exclude_stopwords: bool = False) -> List[Word]:
+        """빈도순으로 상위 단어 반환
+        
+        Args:
+            words: 단어 리스트
+            top_n: 상위 몇 개를 반환할지
+            exclude_stopwords: True이면 불용어 제외, False이면 포함
+            
+        Returns:
+            빈도순으로 정렬된 상위 단어 리스트
+        """
+        # 불용어 필터링
+        if exclude_stopwords:
+            filtered_words = [w for w in words if not w.get_stopword_status()]
+        else:
+            filtered_words = words
+        
+        # 빈도순 정렬 및 상위 N개 반환
+        return sorted(filtered_words, key=lambda w: w.freq, reverse=True)[:top_n]
     
     @staticmethod
     def get_word_frequency_summary(words: List[Word]) -> Dict[str, Any]:

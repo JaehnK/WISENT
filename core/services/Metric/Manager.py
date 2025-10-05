@@ -68,12 +68,20 @@ class MetricManager:
         for name in metric_names:
             metric = self._metrics.get(name)
             if metric is None:
+                print(f"Warning: Metric '{name}' not registered, skipping.")
                 continue
             try:
                 results[name] = metric.compute(embeddings_np, labels, **kwargs)
             except NotImplementedError:
+                print(f"Warning: Metric '{name}' not implemented, returning NaN.")
+                results[name] = float("nan")
+            except Exception as e:
+                print(f"Error computing metric '{name}': {e}")
+                import traceback
+                traceback.print_exc()
                 results[name] = float("nan")
         return results
+
 
 
 

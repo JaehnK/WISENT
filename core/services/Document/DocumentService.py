@@ -141,10 +141,10 @@ class DocumentService:
             'pos_distribution': self._word_stats.get_pos_distribution(word)
         }
     
-    def get_top_words(self, top_n: int = 10, except_stopword: bool = False) -> List[Dict[str, Any]]:
-        """상위 단어들의 상세 정보 반환"""
+    def get_top_words(self, top_n: int = 10, exclude_stopwords: bool = False) -> List[Word]:
+        """상위 단어들 반환 (파라미터 이름 통일: exclude_stopwords)"""
         words = self._word_service.get_all_words()
-        top_words = self._word_stats.get_top_words_by_frequency(words, top_n, except_stopword)
+        top_words = self._word_stats.get_top_words_by_frequency(words, top_n, exclude_stopwords)
         
         # return [
         #     {
