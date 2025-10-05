@@ -29,7 +29,7 @@ from entities import Word, WordGraph, NodeFeatureType
 
 from .GRACEConfig import GRACEConfig
 from .ClusteringService import ClusteringService
-from .MetricsService import MetricsService
+from ..Metric import MetricsService
 
 
 class GRACEPipeline:
@@ -336,7 +336,10 @@ class GRACEPipeline:
         metrics = self.metrics_service.calculate_metrics(
             self.graphmae_embeddings,
             self.cluster_labels,
-            self.config.eval_metrics
+            self.config.eval_metrics,
+            # NPMI를 위한 추가 정보
+            word_graph=self.word_graph,
+            total_docs=len(self.documents) if self.documents else 0
         )
         results['metrics'] = metrics
 

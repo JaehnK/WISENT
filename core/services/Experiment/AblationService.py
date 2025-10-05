@@ -17,7 +17,7 @@ import json
 from ..GRACE.GRACEConfig import GRACEConfig
 from ..GRACE.GRACEPipeline import GRACEPipeline
 from ..GRACE.ClusteringService import ClusteringService
-from ..GRACE.MetricsService import MetricsService
+from ..Metric import MetricsService
 from ..Document.DocumentService import DocumentService
 from ..Graph.GraphService import GraphService
 from ..Graph.NodeFeatureHandler import NodeFeatureHandler

@@ -169,25 +169,31 @@ class WordGraph:
         self._node_feature_type = feature_type
         self._update_metadata()
         
-    def set_edges_from_co_occurrence(self, 
-                                    edge_list: List[Tuple[int, int]], 
+    def set_edges_from_co_occurrence(self,
+                                    edge_list: List[Tuple[int, int]],
                                     co_occurrence_weights: List[float]) -> None:
         """
         공출현 기반 엣지 설정
-        
+
         Args:
             edge_list: [(src_node_id, dst_node_id), ...] 형태의 엣지 리스트
             co_occurrence_weights: 공출현 가중치 리스트
         """
         if len(edge_list) != len(co_occurrence_weights):
             raise ValueError("Edge list and weights must have same length")
-        
-        # PyTorch Geometric 형태로 변환
-        edge_index = torch.tensor(edge_list, dtype=torch.long).t().contiguous()  # [2, num_edges]
-        edge_attr = torch.tensor(co_occurrence_weights, dtype=torch.float32).unsqueeze(1)  # [num_edges, 1]
-        
-        self._edge_index = edge_index
-        self._edge_attr = edge_attr
+
+        # 빈 엣지 리스트 처리
+        if len(edge_list) == 0:
+            self._edge_index = torch.empty((2, 0), dtype=torch.long)
+            self._edge_attr = torch.empty((0, 1), dtype=torch.float32)
+        else:
+            # PyTorch Geometric 형태로 변환
+            edge_index = torch.tensor(edge_list, dtype=torch.long).t().contiguous()  # [2, num_edges]
+            edge_attr = torch.tensor(co_occurrence_weights, dtype=torch.float32).unsqueeze(1)  # [num_edges, 1]
+
+            self._edge_index = edge_index
+            self._edge_attr = edge_attr
+
         self._edge_feature_type = EdgeFeatureType.CO_OCCURRENCE
         self._update_metadata()
     
