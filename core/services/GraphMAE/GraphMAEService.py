@@ -3,6 +3,8 @@ import torch
 import dgl
 import sys
 import os
+import numpy as np
+import random
 
 # GraphMAE2 경로 추가
 sys.path.append(os.path.join(os.path.dirname(__file__), '../../GraphMAE2'))
@@ -31,16 +33,26 @@ class GraphMAEService:
         # NodeFeatureHandler 초기화 (수정된 생성자에 맞춤)
         self.node_handler = NodeFeatureHandler(graph_service.doc_service)
 
-    def create_mae_model(self, input_dim: int) -> PreModel:
+    def create_mae_model(self, input_dim: int, random_seed: int = 42) -> PreModel:
         """
         주어진 입력 차원에 맞는 GraphMAE 모델 생성
 
         Args:
             input_dim: 입력 특성 차원 (embed_size와 동일)
+            random_seed: 재현성을 위한 랜덤 시드
 
         Returns:
             GraphMAE PreModel 인스턴스
         """
+        # 재현성을 위한 랜덤 시드 고정
+        torch.manual_seed(random_seed)
+        np.random.seed(random_seed)
+        random.seed(random_seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(random_seed)
+            torch.backends.cudnn.deterministic = True
+            torch.backends.cudnn.benchmark = False
+
         model = PreModel(
             in_dim=input_dim,
             num_hidden=self.config.hidden_dim,

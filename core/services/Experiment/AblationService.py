@@ -427,8 +427,16 @@ class AblationService:
         Returns:
             {metric_name: value}
         """
-        # NodeFeatureHandler로 임베딩 계산
-        node_feature_handler = NodeFeatureHandler(self.doc_service)
+        # 재현성을 위한 랜덤 시드 고정
+        import random
+        torch.manual_seed(self.random_state)
+        np.random.seed(self.random_state)
+        random.seed(self.random_state)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(self.random_state)
+
+        # NodeFeatureHandler로 임베딩 계산 (random_seed 전달)
+        node_feature_handler = NodeFeatureHandler(self.doc_service, random_seed=self.random_state)
         node_features = node_feature_handler.calculate_embeddings(
             self.word_graph.words,
             method=config.embedding_method,
@@ -458,8 +466,8 @@ class AblationService:
             # DGL 그래프 변환
             dgl_graph = graph_service.wordgraph_to_dgl(self.word_graph, node_features)
 
-            # 모델 학습
-            mae_service.model = mae_service.create_mae_model(embed_size)
+            # 모델 학습 (random_seed 전달)
+            mae_service.model = mae_service.create_mae_model(embed_size, random_seed=self.random_state)
             device = torch.device(mae_config.device)
             mae_service.model.to(device)
             dgl_graph = dgl_graph.to(device)

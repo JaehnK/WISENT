@@ -35,7 +35,7 @@ def main():
     # GRACE 설정 생성
     config = GRACEConfig(
         csv_path=csv_path,
-        num_documents=1000,
+        num_documents=100000,
         text_column='body',  # CSV의 텍스트 컬럼명 (subreddit,body,controversiality,score)
 
         # 그래프 설정

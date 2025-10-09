@@ -42,6 +42,15 @@ class GRACEPipeline:
         """
         self.config = config
 
+        # 재현성을 위한 랜덤 시드 고정 (전역)
+        import random
+        import numpy as np
+        torch.manual_seed(42)
+        np.random.seed(42)
+        random.seed(42)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(42)
+
         # 서비스 인스턴스
         self.doc_service: Optional[DocumentService] = None
         self.graph_service: Optional[GraphService] = None
@@ -177,7 +186,7 @@ class GRACEPipeline:
         if self.word_graph is None or self.graph_service is None:
             raise RuntimeError("WordGraph가 생성되지 않았습니다. build_semantic_network()를 먼저 호출하세요.")
 
-        self.node_feature_handler = NodeFeatureHandler(self.doc_service)
+        self.node_feature_handler = NodeFeatureHandler(self.doc_service, random_seed=42)
 
         method_desc = {
             'concat': f"Word2Vec({self.config.w2v_dim}) + BERT({self.config.bert_dim})",
@@ -233,8 +242,8 @@ class GRACEPipeline:
             self.word_graph, self.word_graph.node_features
         )
 
-        # 모델 생성 및 학습
-        mae_service.model = mae_service.create_mae_model(embed_size)
+        # 모델 생성 및 학습 (random_seed=42)
+        mae_service.model = mae_service.create_mae_model(embed_size, random_seed=42)
         device_obj = torch.device(mae_config.device)
         mae_service.model.to(device_obj)
         dgl_graph = dgl_graph.to(device_obj)

@@ -6,20 +6,31 @@ from typing import Dict, Optional
 import os
 import numpy as np
 from datetime import datetime
+import random
 
 class Word2VecTrainer:
     """메모리 기반 Word2Vec 훈련기"""
-    
-    def __init__(self, 
+
+    def __init__(self,
                 iterations: int = 3,
                 initial_lr: float = 0.001,
                 batch_size: int = 32,
-                use_cuda: Optional[bool] = None):
-        
+                use_cuda: Optional[bool] = None,
+                random_seed: int = 42):
+
+        # 재현성을 위한 랜덤 시드 고정
+        torch.manual_seed(random_seed)
+        np.random.seed(random_seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(random_seed)
+            torch.backends.cudnn.deterministic = True
+            torch.backends.cudnn.benchmark = False
+
         self.iterations = iterations
         self.initial_lr = initial_lr
         self.batch_size = batch_size
-        
+        self.random_seed = random_seed
+
         # GPU 사용 설정
         self.use_cuda = use_cuda if use_cuda is not None else torch.cuda.is_available()
         self.device = torch.device("cuda" if self.use_cuda else "cpu")
@@ -28,8 +39,9 @@ class Word2VecTrainer:
         self.global_step = 0
         self.total_steps = 0
         self.min_lr_ratio = 1e-3  # 최종 lr = initial_lr * 1e-3
-        
+
         print(f"Using device: {self.device}")
+        print(f"Random seed: {random_seed} (for reproducibility)")
     
     def train(self, 
             model,  # SkipGramModel
