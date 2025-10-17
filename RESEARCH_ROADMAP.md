@@ -69,7 +69,6 @@ core/
 
 ```python
 class BaselineService:
-    - tfidf_kmeans()           # TF-IDF + K-means
     - word2vec_only_kmeans()   # Word2Vec만 사용
     - bert_only_kmeans()       # BERT만 사용
     - no_graphmae_kmeans()     # GraphMAE 없이

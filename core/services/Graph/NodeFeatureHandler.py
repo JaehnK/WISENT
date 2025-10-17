@@ -1,6 +1,7 @@
 from typing import List
 import torch
 import numpy as np
+import random
 from sklearn.decomposition import PCA
 from ..Document.DocumentService import DocumentService
 from ..DBert import BertService
@@ -13,8 +14,16 @@ class NodeFeatureHandler:
     Handles node features for graph nodes.
     """
 
-    def __init__(self, docs: DocumentService, min_count: int = 1):
+    def __init__(self, docs: DocumentService, min_count: int = 1, random_seed: int = 42):
+        # 재현성을 위한 랜덤 시드 고정
+        torch.manual_seed(random_seed)
+        np.random.seed(random_seed)
+        random.seed(random_seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(random_seed)
+
         self.documents = docs
+        self.random_seed = random_seed
         # Word2VecService 동적 import 및 초기화
         from ..Word2Vec.Word2VecService import Word2VecService as W2VService
         self.w2v = W2VService.create_default(docs, min_count=min_count)
