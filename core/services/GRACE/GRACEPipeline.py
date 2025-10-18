@@ -226,11 +226,14 @@ class GRACEPipeline:
         mae_config.learning_rate = self.config.graphmae_lr
         mae_config.weight_decay = self.config.graphmae_weight_decay
         mae_config.mask_rate = self.config.mask_rate
+        mae_config.encoder_type = self.config.encoder_type
+        mae_config.decoder_type = self.config.decoder_type
         mae_config.device = self.config.graphmae_device or (
             "cuda" if torch.cuda.is_available() else "cpu"
         )
 
         self._log(f"  학습 설정: {mae_config.max_epochs} epochs, device: {mae_config.device}")
+        self._log(f"  Encoder: {mae_config.encoder_type}, Decoder: {mae_config.decoder_type}")
         if torch.cuda.is_available() and mae_config.device == "cuda":
             self._log(f"  GPU: {torch.cuda.get_device_name(0)}")
 

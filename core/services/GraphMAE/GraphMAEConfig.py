@@ -30,8 +30,8 @@ class GraphMAEConfig:
     lam: float = 1.0
 
     # 기타
-    encoder_type: str = "gat"
-    decoder_type: str = "gat"
+    encoder_type: str = "gcn"  # Supported: "gat", "tsgat", "gcn", "mlp", "linear"
+    decoder_type: str = "gcn"  # Supported: "gat", "tsgat", "gcn", "mlp", "linear"
     activation: str = "relu"
     feat_drop: float = 0.2
     attn_drop: float = 0.1

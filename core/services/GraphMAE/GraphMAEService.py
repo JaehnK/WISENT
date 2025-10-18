@@ -150,12 +150,13 @@ class GraphMAEService:
             if (epoch + 1) % 100 == 0:
                 print(f"Epoch {epoch + 1}/{self.config.max_epochs}, Loss: {loss.item():.4f}")
 
-        # 6. 임베딩 추출
+        # 6. 임베딩 추출 (L2 정규화 자동 적용)
         self.model.eval()
         with torch.no_grad():
             embeddings = self.model.embed(dgl_graph, dgl_graph.ndata['feat'])
 
         print(f"GraphMAE pretraining completed. Generated embeddings: {embeddings.shape}")
+        print(f"Embeddings are L2-normalized for consistency with SCE loss training objective.")
         return embeddings.cpu()
 
     def extract_embeddings(self, word_graph: WordGraph, embed_size: int = 64) -> torch.Tensor:
@@ -167,7 +168,7 @@ class GraphMAEService:
             embed_size: 임베딩 크기
 
         Returns:
-            [num_nodes, embed_size] 형태의 임베딩
+            [num_nodes, embed_size] 형태의 L2 정규화된 임베딩
         """
         if self.model is None:
             raise ValueError("Model not trained. Call pretrain_and_extract() first.")
@@ -180,7 +181,7 @@ class GraphMAEService:
         device = torch.device(self.config.device if torch.cuda.is_available() else 'cpu')
         dgl_graph = dgl_graph.to(device)
 
-        # 임베딩 추출
+        # 임베딩 추출 (L2 정규화 자동 적용)
         self.model.eval()
         with torch.no_grad():
             embeddings = self.model.embed(dgl_graph, dgl_graph.ndata['feat'])

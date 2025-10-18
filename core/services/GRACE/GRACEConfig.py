@@ -19,6 +19,8 @@ class GRACEConfig:
     top_n_words: int = 500
     exclude_stopwords: bool = True
     max_sentence_length: int = -1  # -1은 제한 없음
+    edge_top_k: int = -1  # 각 노드당 상위 k개 엣지만 유지 (-1은 전부 유지)
+    edge_weight_threshold: float = 0.0  # 이 값 이상의 weight를 가진 엣지만 유지
 
     # === 임베딩 설정 ===
     embedding_method: Literal['concat', 'w2v', 'bert'] = 'concat'
@@ -32,6 +34,8 @@ class GRACEConfig:
     graphmae_weight_decay: float = 0.0
     graphmae_device: Optional[str] = None  # None이면 자동 (CUDA 우선)
     mask_rate: float = 0.75
+    encoder_type: str = "gcn"  # Supported: "gat", "tsgat", "gcn", "mlp", "linear"
+    decoder_type: str = "gcn"  # Supported: "gat", "tsgat", "gcn", "mlp", "linear"
 
     # === 클러스터링 설정 ===
     clustering_method: Literal['kmeans', 'dbscan', 'hierarchical'] = 'kmeans'

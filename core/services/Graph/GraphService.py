@@ -183,8 +183,33 @@ class GraphService:
             freq_features = torch.tensor([[word.freq] for word in word_graph.words], dtype=torch.float32)
             dgl_graph.ndata['feat'] = freq_features
 
-        # 엣지 가중치는 self-loop 추가 후 크기가 맞지 않으므로 설정하지 않음
-        # GraphMAE는 엣지 가중치를 사용하지 않음
+        # 엣지 가중치 설정 (공출현 빈도 활용)
+        if word_graph.edge_attr is not None:
+            # 원본 엣지 가중치 추출 (양방향이므로 2배)
+            original_weights = word_graph.edge_attr.squeeze().numpy()  # [num_edges]
+
+            # Bidirected 후 가중치도 복제됨 (src->dst, dst->src)
+            bidirected_weights = torch.cat([
+                torch.tensor(original_weights, dtype=torch.float32),
+                torch.tensor(original_weights, dtype=torch.float32)
+            ])
+
+            # Self-loop 가중치 (최대값으로 설정)
+            num_self_loops = word_graph.num_nodes
+            max_weight = bidirected_weights.max() if len(bidirected_weights) > 0 else 1.0
+            self_loop_weights = torch.full((num_self_loops,), max_weight, dtype=torch.float32)
+
+            # 전체 가중치 결합
+            all_weights = torch.cat([bidirected_weights, self_loop_weights])
+
+            # Min-Max 정규화 [0, 1]
+            min_val = all_weights.min()
+            max_val = all_weights.max()
+            if max_val - min_val > 0:
+                all_weights = (all_weights - min_val) / (max_val - min_val)
+
+            # DGL 그래프에 설정
+            dgl_graph.edata['weight'] = all_weights.unsqueeze(1)  # [num_edges, 1]
 
         return dgl_graph
 
